@@ -16,7 +16,7 @@ public class SungJukApp {
 			results[i][0] = tot;
 			double d_avg = 0.0;
 			d_avg = tot / 3.0;
-			results[i][1] = d_avg;
+			results[i][1] = (int)d_avg;
 			results[i][2] = 1;
 			//초기화
 			tot = 0;

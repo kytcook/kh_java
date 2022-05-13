@@ -13,9 +13,9 @@ public class RandomGame_2A {
 	//사용자가 입력하는 값을 받아서 판정하는 메소드에 전달하기 구현
 	public void userInput() {
 		Scanner scn = new Scanner(System.in);
-		System.out.println("0부터 9까지의 숫자를 입력하시오.");
 		String str = null;
 		str = scn.next();
+		System.out.println("0부터 9까지의 숫자를 입력하시오.");
 	}
 	
 	public void gameStart() {

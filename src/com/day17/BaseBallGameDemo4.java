@@ -4,6 +4,16 @@ import java.util.Scanner;
 
 public class BaseBallGameDemo4 {
 	int my[] = new int[3];
+	// 컴터가 채번한 숫자를 담을 배열 선언 - 전변으로 처리해 보기
+	int com[] = new int[3];
+	// 0부터 9사이의 중복을 제거하는 3자리 숫자 채번하기
+	public void nanSu () {
+		// 0.0~1.0 → 0.0 ~ 10.0 
+		do {
+			com[1] = (int)(Math.random()*10);
+		}while(com[0]==com[2] || com[1]==com[2]);
+	}
+	// 파라미터를 String으로 한 이유? - 화면에서 입력 받을 때 숫자를 쳐도 문자열로 취급되니까 "245"
 	public String account(String input) {
 		System.out.println("사용자가 입력한 값 받아오기 : " + input);
 		// length : 배열의 원소개수
