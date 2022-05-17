@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class MapTest_1 {
-	// 앞에 꺾새 <제네릭 다이아몬드 연산자
+	// 앞에 꺾새 <>제네릭 다이아몬드 연산자
 	Map<String, Object> map = new HashMap<>();// Object: value의 타입이다
 	public MapTest_1() {
 //		printMap(); // 위치의 문제 : 선언이 먼저인가 초기화가 먼저인가.

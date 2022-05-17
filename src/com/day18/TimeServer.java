@@ -77,7 +77,7 @@ public class TimeServer extends Thread {
 		// 1번 부터 6557X번호 사이에 있는 숫자를 사용할 수 있지만 보통 운영체제가 1~1023번 까지는 사용하므로 
 		// 이 구간 번호는 제외하고 사용해야 함. 반드시 지켜야 함
 		// 이미 할당된 번호를 사용하면 에러 발생함
-		int port = 2101;
+		int port = 2055;
 		// 언제 접속을 시도할지 예측할 수 없는 클라이언트측을 위해 서버측에서만 제공함
 		ServerSocket server = null;
 		// ServerSocket에 접속 해온 클라이언트측 정보를 받을 객체 선언

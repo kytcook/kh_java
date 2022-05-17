@@ -3,12 +3,12 @@ package homework;
 import java.util.Random;
 
 public class RandomArray_2 {
-	int[] Array = new int[(Integer) null];
+	int[] Array = null;
 	int i;
 	int n;
 
 	public RandomArray_2(int n) {
-		Array[] = [n];          // 이 부분 배열안에 어떻게 n의 파라미터값을 넣을 수 있을까요??
+		Array = new int[n];          // 이 부분 배열안에 어떻게 n의 파라미터값을 넣을 수 있을까요??
 		n = -1;
 		for (i = 0; i <= n ; i++) {
 			Array[i] = (int)(Math.random() * 21) - 10;
