@@ -8,9 +8,8 @@ public class RandomArray_1 {
 	int i;
 
 	public RandomArray_1() {
-		n += -1;
 		System.out.println("[-10부터 10까지 랜덤정수 10개를 배열에 담습니다.]");
-		for (i = 0; i <= n; i++) {
+		for (i = 0; i < n; i++) {
 			Array[i] = (int) (Math.random() * 21) - 10;
 			System.out.print(Array[i] + ", ");
 		}
@@ -18,13 +17,13 @@ public class RandomArray_1 {
 
 	public void hap() {
 		System.out.println("\n[채번된 정수와 일치하는지 확인하세요.]");
-		for (i = 0; i <= n; i++) {
+		for (i = 0; i < n; i++) {
 			System.out.print(Array[i] + ", ");
 		}
 		System.out.println();
 		int plushap = 0;
 		int minushap = 0;
-		for (i = 0; i <= n; i++) {
+		for (i = 0; i < n; i++) {
 			if (Array[i] >= 0) {
 				System.out.print(plushap + " + " + Array[i] + " = ");
 				plushap += Array[i];

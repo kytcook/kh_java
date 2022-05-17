@@ -19,7 +19,10 @@ public class Method_1 {
 	 * @return - 파라미터로 받은 값을 메소드 외부로 내보낼 때 사용 가능.
 	 ***************************************************************/
 	String methodD(String insa) {
-		System.out.println("methodD 호출 성공");		
+		System.out.println("methodD 호출 성공");
+		String a = "null";
+		System.out.println(a);
+		System.out.println(insa);
 		return insa;
 	}
 	public static void main(String[] args) {

@@ -1,5 +1,5 @@
 package com.day16;
-
+// 정수형 타입과 실수형 타입
 public class C {
 
 	public static void main(String[] args) {

@@ -2,7 +2,7 @@ package com.day9;
 
 //.6
 public class shuffle {
-	int i = 3;
+	int i;
 	int j = 6;
 	public boolean whaffleA(int i,int j) {
 		boolean isOk = false;
@@ -116,9 +116,6 @@ public class shuffle {
 //		i = j;// 3 → 6
 //		j = imsi;
 //		System.out.println(i + ", "+ j);
-//		
-//		
-//		
 //	}
 //	
 //}

@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class JTexAreaTest1 extends JFrame implements ActionListener {
+public class JTextAreaTest1 extends JFrame implements ActionListener {
 	JPanel jp_center = new JPanel ();// 속지
 	//JPanel jp_south = new JPanel ();
 	JTextArea jta_display = new JTextArea();
@@ -33,12 +33,12 @@ public class JTexAreaTest1 extends JFrame implements ActionListener {
 	}
 	
 	public static void main(String[] args) {
-		JTexAreaTest1 jtt = new JTexAreaTest1();
+		JTextAreaTest1 jtt = new JTextAreaTest1();
 		jtt.initDisplay();
 		
 		
 	}
-
+	//이벤트가 감지되었을 때 실행되는 콜백 메소드이다.
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();

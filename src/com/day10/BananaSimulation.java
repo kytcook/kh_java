@@ -23,10 +23,10 @@ public class BananaSimulation {
 		
 		System.out.println(b1 + ", " + b2 + ",\n " + b3 + ", " + b4);
 		System.out.println("b1.x => " + b1.x); //1
-		System.out.println("b2.x => " + b2.x); //1
+		System.out.println("b2.x => " + b2.x); //2
 		System.out.println("b3.x => " + b3.x); //1
 		System.out.println("b4.x => " + b4.x); //1
-		System.out.println("b5.x => " + b5.x); //1
+		System.out.println("b5.x => " + b5.x); //3
 	}
 
 }

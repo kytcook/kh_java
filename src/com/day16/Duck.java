@@ -1,4 +1,5 @@
 package com.day16;
+// 추상 클래스
 // 클래스 선언부에 abstract가 붙으면 추상클래스 선언이다.
 public abstract class Duck {
 	FlyBehavior flyBehavior = null;
