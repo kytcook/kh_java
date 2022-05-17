@@ -20,6 +20,7 @@ public class MemberVOTest1 {
 		// 타입을 적게 되면(9번) 같은 이름의 변수를 중복선언 할 수 없다. 
 		// -> (MemberVO mVO = new MemberVO()
 		mVO = new MemberVO(); // 주소번지가 다르다..(MemberVO mVO = new MemberVO();
+		mVO = new MemberVO(); // 새로운 객체를 계속 만들면 주소가 다르다
 		mVO.setName("이순신");
 		System.out.println(mVO.getName());
 	}

@@ -15,6 +15,8 @@ public class P38 {
 		//s = (String)d; // 타입이 달라서 불가능하다
 		//isOk = (boolean)i; // 논리연산자라서 불가능하다
 		System.out.println(i); // 3.14 → 3
+		System.out.println(s); 
+		System.out.println(isOK);
 	}
 
 }

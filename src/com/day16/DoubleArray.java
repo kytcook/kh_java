@@ -1,5 +1,5 @@
 package com.day16;
-
+// 배열과 향상된 for문
 public class DoubleArray {
 
 	public static void main(String[] args) {

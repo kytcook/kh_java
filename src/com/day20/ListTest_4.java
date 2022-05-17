@@ -10,7 +10,7 @@ import java.util.List;
  * 어떤 값에 더블쿼테이션을 붙이면 String타입이다.
  */
 
-public class ListTest_3 {
+public class ListTest_4 {
 
 	public static void main(String[] args) {
 		// 제네릭을 추가한 인스턴스화의 경우 타입체크 필요없음
