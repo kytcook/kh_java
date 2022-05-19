@@ -21,19 +21,18 @@ import java.util.Set;
 
 // 기본적으로 오브젝트라는 클래스를 상속받고 있지만 생략되어있다.
 // Object : 로그인할때, 회원가입할 때 사용할 수 있는 
-public class MapTest_1 extends Object{
+public class MapTest_2 extends Object{
 
 	public static void main(String[] args) {
 		// <Object : 모든타입을 담을 수 있따. > 
 		Map<String, Object> pmap = new HashMap<>();
-		pmap.put("one", 1);
-		pmap.put("two", 2);
-		pmap.put("three", 2); // 키는 덮어쓰기 된다. 하나만 사용해야 한다. 
-		pmap.put("three", 3); 
-		Set<String> set  = pmap.keySet();
-		// insert here
-//		Object pmap.put[] = new Object[null, null]; 내가 혼자 한것
-		Object keys[] = set.toArray();// 메소드의 리턴타입이 참조형이다.
+		pmap.put("mem_id", "tomato");
+		pmap.put("mem_pw", "111");
+		pmap.put("mem_name", "토마토"); // 키는 덮어쓰기 된다. 하나만 사용해야 한다.
+		// 두 개 코드를 한 줄에
+		// 메소드 호출의 리턴값으로 객체를 주입받을 수 있다.
+		Object keys[] = pmap.keySet().toArray();
+//		Set<String> set  = pmap.keySet();
 		for(Object key:keys) {
 			System.out.println(key+ ", " + pmap.get(key));
 		}

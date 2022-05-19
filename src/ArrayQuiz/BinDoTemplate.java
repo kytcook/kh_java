@@ -28,34 +28,15 @@ public class BinDoTemplate {
 	void numberCount(int nanSus[], int size, int pCount[]) {
 		//insert here
 		for(int i = 0; i < size; i++) {
-			Swich(nanSus[i]) {
-			case 1 : nanSus[i] = {1}
-			break;
+			Switch (nanSus[i]) {
+			case 0:
+				pCount[i]++;
+				break;
 			
-			case 2 : nanSus[i] = {2}
-			break;
-			
-			case 3 : nanSus[i] = {3}
-			break;
-			
-			case 4 : nanSus[i] = {4}
-			break;
-			
-			case 5 : nanSus[i] = {5}
-			break;
-			
-			case 6 : nanSus[i] = {6}
-			break;
-			
-			case 7 : nanSus[i] = {7}
-			break;
-			
-			case 8 : nanSus[i] = {8}
-			break;
-			
-			case 9 : nanSus[i] = {9}
-			break;
-			
+			case 1: 
+				pCount[i]++;
+				break;
+	
 			}
 		}
 		

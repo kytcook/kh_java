@@ -35,14 +35,13 @@ public class Bindo {
 		}
 		System.out.println();
 		
-		bindoTest(baek, ten, count);
 	}
 	
 	public void bindoTest(int[] baek, int[] ten, int count) { // 0 부터 9까지 랜덤으로 출력된 수의 각 빈도 확인 
 		// 0~9 까지의 각 숫자를 나타낼 배열 ten 
 		for(int i=0; i<ten.length; i++) {
 			ten[i] = i;
-			System.out.print(ten[i] + " "); // 배열 ten 출력
+			System.out.print(ten[i] + "x "); // 배열 ten 출력
 		}
 		System.out.println();
 		
@@ -53,9 +52,9 @@ public class Bindo {
 					count++;
 				}
 			}
-			System.out.print(count + " "); // 빈도수 출력
-			count = 0; // count 초기화 (다음 숫자의 빈도수를 세기 위해)
 		}
+		System.out.println(count + " "); // 빈도수 출력
+		count = 0; // count 초기화 (다음 숫자의 빈도수를 세기 위해)
 		return;
 	}
 	
