@@ -12,6 +12,13 @@ public class DuckSimulation {
 		myDuck = new RubberDuck();
 		myDuck.display();
 		myDuck.performFly();
+		WoodDuck herDuck = new WoodDuck();
+		herDuck.display();
+		herDuck.performFly();
+//		herDuck = (WoodDuck)myDuck;// 오른쪽에 있는 것이 왼쪽에 있는 것보다 작아야 한다. (강제형전환 : 눈에 보이는 오류는 잡히지만 예외가 발생한다. )
+//		herDuck.display();// 에러가 난다. ClassCastException
+		//myDuck = herDuck;
+		
 	}
 
 }
