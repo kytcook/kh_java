@@ -16,8 +16,8 @@ public class DeptApp {
 	While(rs.next())
 	// while문 안에서는 map을 4번 인스턴스화 해야 한다. 가로가로가로가로
 	
-	
-			
+	3
+//			dsfsdfdsfdsfsdfsdgdfsdasdasdsada
 			
 	try catch
 	public static void main(String[] args) {
