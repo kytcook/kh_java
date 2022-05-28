@@ -1,0 +1,17 @@
+package com.day4;
+
+public class Variable_1 {
+	// 선언부 - 전역변수(global variable, member variable)
+	// : 다른 클래스에서도 사용할 수 있다. 호출할 수 있다. 값을 참조할 수 있다. 타입이 안맞으면 컴파일이 실패한다.
+	int age = 20;
+	void methodA() {
+		// 
+		age = 30;
+	}
+	public static void main(String[] args) {
+		Variable_1 v1 = new Variable_1(); //인스턴스화 : 메모리에 상주하게 한다.
+		System.out.println("before : "+v1.age);
+		v1.methodA(); // 메소드 호출
+		System.out.println("after : "+v1.age);		
+	}
+}
