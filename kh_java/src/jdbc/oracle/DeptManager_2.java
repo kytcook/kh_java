@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;​
 
 public class DeptManager_2 extends JFrame implements ActionListener{
 	public final String _DRIVER = "oracle.jdbc.driver.OracleDriver";
-	public final String _URL = "jdbc:oracle:thin:@192.168.40.3:1521:orcl11";
+	public final String _URL = "jdbc:oracle:thin:@192.168.1.86:1521:orcl11";
 	public final String _USER = "scott";
 	public final String _PW = "tiger";
 	Connection 			con   = null;// Interface - 단독으로 인스턴스 불가 A a = new A()
@@ -49,7 +49,7 @@ public class DeptManager_2 extends JFrame implements ActionListener{
 			// 있는 위치는 D:\\app\\user1\\product\\11.1.0\\db_1\\jdbc\\lib 아래에 ojdbc6.jar안에 있어요
 			Class.forName(_DRIVER);
 //			con = DriverManager.getConnection(_URL,_USER,_PW);
-			con = DriverManager.getConnection(_192.168.40.9,_SCOTT,_tiger);
+			con = DriverManager.getConnection(_URL,_USER,_PW);
 			// 파라미터로 받은 select문을 전달
 			pstmt = con.prepareStatement(sql);
 			// 전달 된 select문에 대한 처리를 요청하고 커서 받아내기
@@ -113,3 +113,4 @@ public class DeptManager_2 extends JFrame implements ActionListener{
 	}
 ​
 }
+

@@ -26,7 +26,7 @@ public class JDBCTest {
 			// 오라클 제조사가 제공하는 드라이버 클래스가 있어야 함.
 			// 있는 위치는 D:\\oracle_App\\jdbc\\lib 아래에 ojdbc6.jar안에 있어요
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.40.11:1521:orcl","YURI","tiger");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.86:1521:orcl11","kytcook","tiger");
 			// 파라미터로 받은 select문을 전달
 			pstmt = con.prepareStatement(sql);
 			// 전달 된 select문에 대한 처리를 요청하고 커서 받아내기

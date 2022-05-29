@@ -29,10 +29,10 @@ public class Overloading_1 {
 	public static void main(String[] args) {
 //		Super sup = new Super ();
 //		sup.methodA(); // Super - methodA호출 성공
-		Sub sub = new Sub();
-		sub.methodA(); // Sub - methodA호출 성공
+//		Sub sub = new Sub();
+//		sub.methodA(); // Sub - methodA호출 성공
 //		// 선언부와 생성부의 타입이 다를 수 있다. - 폴리모피즘, 다형성
-//		Super sup1 = new Sub();
+		Super sup1 = new Sub();
 //		// 자바에서는 선언부의 이름으로 생성된다. 아니다 생성부의 이름으로 생성된다. 답은 후자
 //		sup1.methodA();
 	}
