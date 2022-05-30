@@ -23,7 +23,7 @@ public class SignUpForm_ver1 extends JFrame implements ActionListener {
 //	TalkClientVer2 tcv = null;
 	String nickName="";												//
 //	ChatDao chatDao = new ChatDao();
-	String imgPath="C:\\Users\\kytco\\OneDrive\\문서\\카카오톡 받은 파일\\꽉자바파일모음\\회의\\20220526_데이터모델링\\";	// 이미지 경로를 문자열로..지정??
+	String imgPath="D:\\java_study\\workspace_java\\메신저UI자료\\20220526_데이터모델링\\";	// 이미지 경로를 문자열로..지정??
 //	ChatMemberVO cmvo = null;
 	JLabel jlb_id = new JLabel("아이디");								// "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_pw = new JLabel("비밀번호");							// "[입력]" : 문자열을 화면에 그림
@@ -48,7 +48,7 @@ public class SignUpForm_ver1 extends JFrame implements ActionListener {
 
 	// JPanel에 쓰일 이미지아이콘
 	//ImageIcon ig = new ImageIcon("C:\\Users\\minkh\\Desktop\\practice\\dev_java\\src\\com\\Final\\image\\main.png");
-	ImageIcon ig = new ImageIcon(imgPath+"main.PNG");
+	ImageIcon ig = new ImageIcon(imgPath+"카톡로그인 (2).jpg");
 
 	/////////////////////////////////////////////////////
 	/* 생성자 */
@@ -127,6 +127,7 @@ public class SignUpForm_ver1 extends JFrame implements ActionListener {
 		// 회원가입 버튼 라인 - 중앙 맨 아래박스
 		jbtn_join.setBounds(125, 450, 120, 40);
 		this.add(jbtn_join);		
+		this.add(jbtn_join);
 	}
 
 	public static void main(String[] args) throws Exception {
