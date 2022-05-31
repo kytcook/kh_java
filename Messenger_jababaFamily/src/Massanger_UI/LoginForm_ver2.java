@@ -16,7 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
-public class LoginForm_ver1 extends JFrame implements ActionListener {
+public class LoginForm_ver2 extends JFrame implements ActionListener {
 	/////////////////////////////////////////////////////
 	/* 선언부 */
 	/////////////////////////////////////////////////////
@@ -29,14 +29,14 @@ public class LoginForm_ver1 extends JFrame implements ActionListener {
 	JLabel jlb_pw = new JLabel("비밀번호");							// "[입력]" : 문자열을 화면에 그림
 	
 
-	Font jl_font = new Font("휴먼매직체", Font.BOLD, 13);				// ID와 PW의 (글씨체, 폰트굵기, 크기)를 파라미터 값으로 호출한다?
-	JTextField jtf_id = new JTextField("테스트중!");					// ID의 입력박스에 test 가 기본으로 입력되어 있다.
-	JPasswordField jpf_pw = new JPasswordField("123");				// PW의 입력박스에 123 이 기본으로 입력되어 있다.
+	Font		   	jl_font = new Font("휴먼매직체", Font.BOLD, 13);				// ID와 PW의 (글씨체, 폰트굵기, 크기)를 파라미터 값으로 호출한다?
+	JTextField 		jtf_id 	= new JTextField("테스트중!");					// ID의 입력박스에 test 가 기본으로 입력되어 있다.
+	JPasswordField 	jpf_pw 	= new JPasswordField("123");				// PW의 입력박스에 123 이 기본으로 입력되어 있다.
 
-	JButton jbtn_login = new JButton(
+	JButton jbtn_login 	= new JButton(
 			new ImageIcon(imgPath+"카톡로그인.jpg"));					// 3번째 박스에 로그인이미지 : 이미지 경로 + 이미지파일이름
 			//new ImageIcon("C:\\Users\\minkh\\Desktop\\practice\\dev_java\\src\\com\\Final\\image\\login.png"));
-	JButton jbtn_join = new JButton(
+	JButton jbtn_join 	= new JButton(
 			new ImageIcon(imgPath+"카톡회원가입.jpg"));					// 4번째 박스에 회원가입이미지
 			//new ImageIcon("C:\\Users\\minkh\\Desktop\\practice\\dev_java\\src\\com\\Final\\image\\co   nfirm.png"));
 
@@ -47,7 +47,7 @@ public class LoginForm_ver1 extends JFrame implements ActionListener {
 	/////////////////////////////////////////////////////
 	/* 생성자 */
 	/////////////////////////////////////////////////////
-	public LoginForm_ver1(){
+	public LoginForm_ver2(){
 		initDisplay();
 	}
 
@@ -118,17 +118,18 @@ public class LoginForm_ver1 extends JFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new LoginForm_ver1();
+		new LoginForm_ver2();
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
-		if (obj == jbtn_join) {
-
-		} 
-		else if (obj == jbtn_login) {
-
-		}
-	}
+        if (obj == jbtn_join) {
+        	 new SignUpForm_ver2();
+        	
+        } 
+        else if (obj == jbtn_login) {
+        	System.out.println("로그인");
+        }
+    }
 }
 
