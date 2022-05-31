@@ -111,6 +111,6 @@ public class DeptManager_2 extends JFrame implements ActionListener{
 		}
 		
 	}
-​
+
 }
 
