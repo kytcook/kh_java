@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ChattingClient extends JFrame implements ActionListener {
 	
-	private final String ip = "127.0.0.1";
+	private final String ip = "127.0.0.1";	// ->27
 	public String getIp() {
 		return ip;
 	}
@@ -24,13 +24,13 @@ public class ChattingClient extends JFrame implements ActionListener {
 	
 	ChatDAO dao;
 	Socket socket; // 소켓
-	ObjectOutputStream oos = null;// 말 하고 싶을 때
-	ObjectInputStream ois = null;// 듣기 할 때
+	ObjectOutputStream oos = null;	// 말 하고 싶을 때
+	ObjectInputStream ois = null;	// 듣기 할 때 -> 31
 	
-	public ChattingClient() {
-		dao = new ChatDAO();
-		lv = new LoginView(this);
-		sv = new SignUpView(this);
+	public ChattingClient() {			// ChattingClient 생성자 -> 16
+		ChatDAO dao = new ChatDAO();	// ChatDAO 인스턴스화		
+		lv = new LoginView(this);		// LoginView 인스턴스화
+		sv = new SignUpView(this);		// sv
 		cv = new ChatView(this);
 	}
 	
@@ -111,8 +111,8 @@ public class ChattingClient extends JFrame implements ActionListener {
 	}
 	
 	public static void main(String[] args) {
-		JFrame.setDefaultLookAndFeelDecorated(true);
-		new ChattingClient();
+		JFrame.setDefaultLookAndFeelDecorated(true);		//?
+		new ChattingClient();								// ChattingClient메소드호출 -> 30
 	}
 
 }
