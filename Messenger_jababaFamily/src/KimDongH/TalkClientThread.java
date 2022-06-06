@@ -1,11 +1,12 @@
-package DongH;
+package KimDongH;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-public class TalkClientThread2 extends Thread {
+
+public class TalkClientThread extends Thread {
 	ChatView tc = null;
-	public TalkClientThread2(ChatView tc) {
+	public TalkClientThread(ChatView tc) {
 		this.tc = tc;
 	}
 	/*

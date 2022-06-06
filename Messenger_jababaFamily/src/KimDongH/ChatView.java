@@ -1,4 +1,4 @@
-package DongH;
+package KimDongH;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -20,8 +22,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+
 public class ChatView extends JFrame {
-	Event ev;
 	////////////////통신과 관련한 전역변수 추가 시작//////////////
 	Socket 				socket 	= null;
 	ObjectOutputStream 	oos 	= null;//말 하고 싶을 때
@@ -47,11 +49,61 @@ public class ChatView extends JFrame {
 	JScrollPane jsp_display = null;
 	//배경 이미지에 사용될 객체 선언-JTextArea에 페인팅
 	Image back = null;
-	public ChatView(Event ev) {
-		this.ev = ev;
-		jtf_msg.addActionListener(ev);
-		jbtn_change.addActionListener(ev);
-		jbtn_exit.addActionListener(ev);
+	public ChatView() {
+		initDisplay();
+		jtf_msg.addActionListener(new ActionListener() {
+			
+			int nickName;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String msg = jtf_msg.getText();
+				if(e.getSource() == jtf_msg) {
+					try {
+						oos.writeObject(201
+								   +"#"+nickName
+								   +"#"+msg);
+						jtf_msg.setText("");
+					} catch (Exception e1) {
+					}
+				
+				if(e.getSource() == jbtn_exit) {
+					try {
+						oos.writeObject(500+"#"+this.nickName);
+						//자바가상머신과 연결고리 끊기
+						System.exit(0);
+					} catch (Exception e2) {
+
+					}
+				}
+			}
+			}
+		});
+	
+		jbtn_change.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == jbtn_change) {
+					String afterName = JOptionPane.showInputDialog("변경할 대화명을 입력하세요.");
+					if(afterName == null || afterName.trim().length()<1) {
+						JOptionPane.showMessageDialog(null
+						, "변경할 대화명을 입력하세요"
+						, "INFO", JOptionPane.INFORMATION_MESSAGE);
+						return;
+					}
+					try {
+						oos.writeObject(202
+								   +"#"+nickName
+								   +"#"+afterName
+								   +"#"+nickName+"의 대화명이 "+afterName+"으로 변경되었습니다.");
+					} catch (Exception e3) {
+						// TODO: handle exception
+					}
+				}
+			}
+		});
+//		jbtn_exit.addActionListener();
 	}
 	public void initDisplay() {
 		//사용자의 닉네임 받기
@@ -93,11 +145,24 @@ public class ChatView extends JFrame {
 		this.setVisible(true);
 	}
 	public static void main(String[] args) {
-
-	}
-	public void ChatView() {
-		// TODO Auto-generated method stub
 		
+	}
+	public void init() {
+		try {
+			//서버측의 ip주소 작성하기
+			socket = new Socket("127.0.0.1",3001);
+			oos = new ObjectOutputStream(socket.getOutputStream());
+			ois = new ObjectInputStream(socket.getInputStream());
+			//initDisplay에서 닉네임이 결정된 후 init메소드가 호출되므로
+			//서버에게 내가 입장한 사실을 알린다.(말하기)
+			oos.writeObject(100+"#"+nickName);
+			//서버에 말을 한 후 들을 준비를 한다.
+			TalkClientThread tct = new TalkClientThread(this);
+			tct.start();
+		} catch (Exception e) {
+			//예외가 발생했을 때 직접적인 원인되는 클래스명 출력하기
+			System.out.println(e.toString());
+		}
 	}
 
 }
