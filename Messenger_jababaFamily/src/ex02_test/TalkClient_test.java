@@ -97,6 +97,7 @@ public class TalkClient_test extends JFrame implements ActionListener {
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		TalkClient_test tc = new TalkClient_test();
 		tc.initDisplay();
+//		LoginView_test lvt = new LoginView_test();  
 		tc.init();
 	}
 	//소켓 관련 초기화
