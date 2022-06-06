@@ -28,14 +28,14 @@ public class ChattingClient extends JFrame implements ActionListener {
 	ObjectInputStream ois = null;	// 듣기 할 때 -> 31
 	
 	public ChattingClient() {			// ChattingClient 생성자 -> 16
-		ChatDAO dao = new ChatDAO();	// ChatDAO 인스턴스화		
+		dao = new ChatDAO();			// ChatDAO 인스턴스화		
 		lv = new LoginView(this);		// LoginView 인스턴스화
-		sv = new SignUpView(this);		// sv
-		cv = new ChatView(this);
+		sv = new SignUpView(this);		// SignUpView 인스턴스화
+		cv = new ChatView(this);		// ChatView 인스턴스화
 	}
 	
 	public void init() {
-		try {
+		try {		// 예외발생 소캣
 			socket = new Socket(ip, 5000);
 			oos = new ObjectOutputStream(socket.getOutputStream());
 			ois = new ObjectInputStream(socket.getInputStream());

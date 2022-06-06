@@ -56,7 +56,8 @@ public class TalkClient_test extends JFrame implements ActionListener {
 	}
 	public void initDisplay() {
 		//사용자의 닉네임 받기
-		nickName = JOptionPane.showInputDialog("닉네임을 입력하세요.");
+//		nickName = JOptionPane.showInputDialog("닉네임을 입력하세요.");
+		//ChattingRoom
 		this.setLayout(new GridLayout(1,2));
 		jp_second.setLayout(new BorderLayout());
 		jp_second.add("Center",jsp);
@@ -96,8 +97,9 @@ public class TalkClient_test extends JFrame implements ActionListener {
 	public static void main(String args[]) {
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		TalkClient_test tc = new TalkClient_test();
+		LoginView_test lvt = new LoginView_test();  
+//		SignupView_test s = new SignupView_test();
 		tc.initDisplay();
-//		LoginView_test lvt = new LoginView_test();  
 		tc.init();
 	}
 	//소켓 관련 초기화
