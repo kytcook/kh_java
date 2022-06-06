@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import ex7.DBConnection;
+import ex10.DBConnection;
 
 public class ChatDAO {
 	Connection con = DBConnection.getConnection();
