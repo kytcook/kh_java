@@ -27,7 +27,7 @@ public class LoginView_test extends JFrame {
 //		TalkClientVer2 tcv = null;
 	String nickName = "";
 //		ChatDao chatDao = new ChatDao();
-	String imgPath = "D:\\java_study\\꽉자바파일모음\\회의\\20220526_데이터모델링\\"; // 이미지 경로를 문자열로..지정??
+	String imgPath = "C:\\Users\\kytco\\OneDrive\\문서\\카카오톡 받은 파일\\꽉자바파일모음\\회의\\20220526_데이터모델링\\"; // 이미지 경로를 문자열로..지정??
 //		ChatMemberVO cmvo = null;
 	JLabel jlb_id = new JLabel("아이디"); // "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_pw = new JLabel("비밀번호"); // "[입력]" : 문자열을 화면에 그림
