@@ -27,7 +27,6 @@ public class LoginForm_ver2 extends JFrame implements ActionListener {
 //	ChatMemberVO cmvo = null;
 	JLabel jlb_id = new JLabel("아이디");								// "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_pw = new JLabel("비밀번호");							// "[입력]" : 문자열을 화면에 그림
-	
 
 	Font		   	jl_font = new Font("휴먼매직체", Font.BOLD, 13);				// ID와 PW의 (글씨체, 폰트굵기, 크기)를 파라미터 값으로 호출한다?
 	JTextField 		jtf_id 	= new JTextField("테스트중!");					// ID의 입력박스에 test 가 기본으로 입력되어 있다.
@@ -82,6 +81,7 @@ public class LoginForm_ver2 extends JFrame implements ActionListener {
 		this.addWindowListener(new WindowAdapter() {				// -> ??????
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
+		
 			}
 		});
 		// id 라인
@@ -125,7 +125,6 @@ public class LoginForm_ver2 extends JFrame implements ActionListener {
 		Object obj = e.getSource();
         if (obj == jbtn_join) {
         	 new SignUpForm_ver2();
-        	
         } 
         else if (obj == jbtn_login) {
         	System.out.println("로그인");
