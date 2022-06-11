@@ -1,4 +1,4 @@
-package ajdbc.crud;
+package ajdbc;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import jdbc.oracle.DBConnectionMgr;
-import oracle.vo.DeptVO;
+import oracle.DeptVO;
 
 public class CRUDDept extends JFrame implements ActionListener {
 	// 선언부
@@ -52,9 +52,9 @@ public class CRUDDept extends JFrame implements ActionListener {
 
 	// 남쪽에 들어갈 버튼
 	JPanel 				jp_south 	= new JPanel(); // 디폴트레이아웃 : FlowLAyout
-	JTextField 			jtf_deptno 	= new JTextField("", 20);
-	JTextField 			jtf_dname 	= new JTextField("", 20);
-	JTextField 			jtf_loc 	= new JTextField("", 20);
+	JTextField 			jtf_deptno 	= new JTextField("", 15);
+	JTextField 			jtf_dname 	= new JTextField("", 15);
+	JTextField 			jtf_loc 	= new JTextField("", 15);
 
 	// 생성자
 	public CRUDDept() {
@@ -143,6 +143,7 @@ public class CRUDDept extends JFrame implements ActionListener {
 		} finally {
 			DBConnectionMgr.freeConnection(pstmt, con);
 		}
+		
 		return result;
 	}
 
@@ -154,13 +155,14 @@ public class CRUDDept extends JFrame implements ActionListener {
 	public List<Map<String, Object>> deptSelectAll() {
 		System.out.println("deptSelectAll 호출 성공");
 //		List<Map<String,Object>> deptList = null;
-		List<Map<String, Object>> deptList = new ArrayList<>();
-		StringBuilder sql = new StringBuilder();
+		List<Map<String, Object>> deptList	 = new ArrayList<>();
+		StringBuilder 			  sql		 = new StringBuilder();
 		sql.append("SELECT deptno, dname, loc FROM dept");
 		try {
-			con = dbMgr.getConnection();
-			pstmt = con.prepareStatement(sql.toString());
-			rs = pstmt.executeQuery();
+			con		= dbMgr.getConnection();
+			pstmt 	= con.prepareStatement(sql.toString());
+			rs 		= pstmt.executeQuery();
+			
 			Map<String, Object> rmap = null;
 			while (rs.next()) {
 				rmap = new HashMap<>();
@@ -244,12 +246,12 @@ public class CRUDDept extends JFrame implements ActionListener {
 		// 입력하고 싶니? - 입력버튼을 누르기 - 이벤트처리
 		else if (obj == jbtn_ins) {
 			System.out.println("입력 호출 성공");
-			String deptno = getDeptno();
-			String dname = getDname();
-			String loc = getLoc();
+			String deptno	= getDeptno();
+			String dname	= getDname();
+			String loc 		= getLoc();
 //			System.out.println(deptno + ", " + dname + ", " + loc);
-
-			DeptVO pdVO = new DeptVO();
+			DeptVO pdVO		= new DeptVO();
+			
 			pdVO.setDeptno(Integer.parseInt(deptno));
 			pdVO.setDname(dname);
 			pdVO.setLoc(loc);
