@@ -27,36 +27,36 @@ import javax.swing.table.DefaultTableModel;
 // 로그인 후 단톡 채팅방 UI 및 클라이언트 소켓 생성클래스
 public class TalkClient extends JFrame implements ActionListener {
 	//////////////// 통신과 관련한 전역변수 추가 시작//////////////
-	Socket socket = null;
-	ObjectOutputStream oos = null;// 말 하고 싶을 때
-	ObjectInputStream ois = null;// 듣기 할 때
-	String nickName = null;// 닉네임 등록
+	Socket 				socket 	 = null;
+	ObjectOutputStream 	oos		 = null;// 말 하고 싶을 때
+	ObjectInputStream 	ois		 = null;// 듣기 할 때
+	String 				nickName = null;// 닉네임 등록
 	//////////////// 통신과 관련한 전역변수 추가 끝 //////////////
-	JPanel jp_second = new JPanel();
-	JPanel jp_second_south = new JPanel();
-	JButton jbtn_one = new JButton("1:1");
-	JButton jbtn_change = new JButton("대화명변경");
-	JButton jbtn_font = new JButton("글자색");
-	JButton jbtn_exit = new JButton("나가기");
-	String cols[] = { "대화명" };
-	String data[][] = new String[0][1];
-	DefaultTableModel dtm = new DefaultTableModel(data, cols);
-	JTable jtb = new JTable(dtm);
-	JScrollPane jsp = new JScrollPane(jtb);
-	JPanel jp_first = new JPanel();
-	JPanel jp_first_south = new JPanel();
-	JTextField jtf_msg = new JTextField(20);// south속지 center
-	JButton jbtn_send = new JButton("전송");// south속지 east
-	JTextArea jta_display = null;
-	JScrollPane jsp_display = null;
+	JPanel 		jp_second 		= new JPanel();
+	JPanel 		jp_second_south = new JPanel();
+	JButton 	jbtn_one 		= new JButton("1:1");
+	JButton 	jbtn_change 	= new JButton("대화명변경");
+	JButton 	jbtn_font 		= new JButton("글자색");
+	JButton 	jbtn_exit 		= new JButton("나가기");
+	String 		cols[] 			= { "대화명" };
+	String 		data[][] 		= new String[0][1];
+	DefaultTableModel dtm 		= new DefaultTableModel(data, cols);
+	JTable 		jtb 			= new JTable(dtm);
+	JScrollPane jsp 			= new JScrollPane(jtb);
+	JPanel 		jp_first 		= new JPanel();
+	JPanel 		jp_first_south 	= new JPanel();
+	JTextField 	jtf_msg 		= new JTextField(20);// south속지 center
+	JButton 	jbtn_send 		= new JButton("전송");// south속지 east
+	JTextArea 	jta_display 	= null;
+	JScrollPane jsp_display 	= null;
 	// 배경 이미지에 사용될 객체 선언-JTextArea에 페인팅
-	Image back = null;
-	boolean is = true;
+	Image 	back = null;
+	boolean is	 = true;
 	public Login view = null;
 	String user_Name;
 
 	public TalkClient(Login view) { // 파라미터로 view의 주소값을 넘겨 받는다
-		this.view = view; // 뷰에서 닉네임을 얻어오기 위해서...
+		this.view	   = view; // 뷰에서 닉네임을 얻어오기 위해서...
 		this.user_Name = view.user_Name;
 		jtf_msg.addActionListener(this);
 		jbtn_change.addActionListener(this);
@@ -121,9 +121,9 @@ public class TalkClient extends JFrame implements ActionListener {
 		try {
 			LoginDao login = new LoginDao();
 			// 서버측의 ip주소 작성하기
-			socket = new Socket("127.0.0.1", 3002);
-			oos = new ObjectOutputStream(socket.getOutputStream());
-			ois = new ObjectInputStream(socket.getInputStream());
+			socket 	 = new Socket("127.0.0.1", 3002);
+			oos		 = new ObjectOutputStream(socket.getOutputStream());
+			ois		 = new ObjectInputStream(socket.getInputStream());
 			// initDisplay에서 닉네임이 결정된 후 init메소드가 호출되므로
 			// 서버에게 내가 입장한 사실을 알린다.(말하기)
 			oos.writeObject(100 + "#" + user_Name); // 100은 Integer객체이므로 ""안써도됨 #만 구분자로 ""붙인다

@@ -18,15 +18,16 @@ import javax.swing.JTextField;
 // LoginView
 public class Login extends JFrame implements ActionListener {
 	//선언부
-	String nickName = "";
-	String imgPath = "D:\\java_study\\workspace_java\\project1.3\\img\\";
-	JLabel jlb_id = new JLabel("아이디");
-	JLabel jlb_pw = new JLabel("패스워드");
-	Font jl_font = new Font("맑은고딕체", Font.BOLD, 14);
-	JTextField jtf_id = new JTextField("");
-	JPasswordField jpf_pw = new JPasswordField("");
-	JButton jbtn_login = new JButton(new ImageIcon(imgPath + "로그인2.png"));
-	JButton jbtn_join = new JButton(new ImageIcon(imgPath + "회원가입2.png"));
+	String 			nickName 	= "";
+	String 			imgPath 	= "D:\\java_study\\workspace_java\\kh_javaAC\\project1.3\\img\\";
+	JLabel 			jlb_id 		= new JLabel("아이디");
+	JLabel 			jlb_pw 		= new JLabel("패스워드");
+	Font 			jl_font 	= new Font("맑은고딕체", Font.BOLD, 14);
+	JTextField		jtf_id
+	= new JTextField("");
+	JPasswordField 	jpf_pw 		= new JPasswordField("");
+	JButton 		jbtn_login 	= new JButton(new ImageIcon(imgPath + "로그인2.png"));
+	JButton 		jbtn_join	= new JButton(new ImageIcon(imgPath + "카톡회원가입.jpg"));
 	// JPanel에 쓰일 이미지아이콘
 	ImageIcon ig = new ImageIcon(imgPath + "둥이.png");
 
@@ -96,11 +97,11 @@ public class Login extends JFrame implements ActionListener {
 		jpf_pw.setBounds(110, 240, 185, 40);
 		this.add(jpf_pw);
 
-		// 로그인 버튼 라인
+		// 로그인 버튼 
 		jbtn_login.setBounds(175, 285, 120, 40);
 		this.add(jbtn_login);
 
-		// 회원가입 버튼 라인
+		// 회원가입 버튼 
 		jbtn_join.setBounds(45, 285, 120, 40);
 		this.add(jbtn_join);
 	}
@@ -152,5 +153,5 @@ public class Login extends JFrame implements ActionListener {
 			}
 		}
 
-	}
+	}/////////////////[end of actionPerformed]
 }

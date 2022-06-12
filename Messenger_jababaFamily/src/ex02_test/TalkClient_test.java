@@ -49,11 +49,11 @@ public class TalkClient_test extends JFrame implements ActionListener {
 	//배경 이미지에 사용될 객체 선언-JTextArea에 페인팅
 	Image back = null;
 	public TalkClient_test() {
-		
 		jtf_msg.addActionListener(this);
 		jbtn_change.addActionListener(this);
 		jbtn_exit.addActionListener(this);
 	}
+	
 	public void initDisplay() {
 		//사용자의 닉네임 받기
 //		nickName = JOptionPane.showInputDialog("닉네임을 입력하세요.");

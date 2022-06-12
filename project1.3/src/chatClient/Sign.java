@@ -18,23 +18,22 @@ import javax.swing.JTextField;
 
 public class Sign extends JFrame implements ActionListener {
 	// 선언부
-	String nickName = ""; //
-	String imgPath = "D:\\java_study\\workspace_java\\project1.3\\img\\"; // 이미지 경로를 문자열로..지정??
-	JLabel jlb_id = new JLabel("아이디"); // "[입력]" : 문자열을 화면에 그림
-	JLabel jlb_pw = new JLabel("비밀번호"); // "[입력]" : 문자열을 화면에 그림
-	JLabel jlb_repw = new JLabel("비밀번호 재확인"); // "[입력]" : 문자열을 화면에 그림
-	JLabel jlb_name = new JLabel("이름"); // "[입력]" : 문자열을 화면에 그림
-	JLabel jlb_number = new JLabel("전화번호"); // "[입력]" : 문자열을 화면에 그림
+	String nickName 	= ""; //
+	String imgPath 		= "D:\\java_study\\workspace_java\\kh_javaAC\\project1.3\\img\\"; // 이미지 경로를 문자열로..지정??
+	JLabel jlb_id 		= new JLabel("아이디"); // "[입력]" : 문자열을 화면에 그림
+	JLabel jlb_pw 		= new JLabel("비밀번호"); // "[입력]" : 문자열을 화면에 그림
+	JLabel jlb_repw		= new JLabel("비밀번호 재확인"); // "[입력]" : 문자열을 화면에 그림
+	JLabel jlb_name		= new JLabel("이름"); // "[입력]" : 문자열을 화면에 그림
 
 	Font jl_font = new Font("맑은고딕체", Font.BOLD, 17);
-	JTextField jtf_id = new JTextField("");
-	JPasswordField jpf_pw = new JPasswordField("");
-	JPasswordField jpf_repw = new JPasswordField("");
-	JTextField jtf_name = new JTextField("");
-	JTextField jtf_number = new JTextField("");
+	JTextField		 jtf_id 	= new JTextField("");
+	JPasswordField	 jpf_pw 	= new JPasswordField("");
+	JPasswordField	 jpf_repw 	= new JPasswordField("");
+	JTextField 		 jtf_name 	= new JTextField("");
+	JTextField 		 jtf_number = new JTextField("");
 
 	JButton jbtn_idcheck = new JButton(new ImageIcon(imgPath + "/버튼.png")); // 버튼
-	JButton jbtn_ok = new JButton(new ImageIcon(imgPath + "/가입하기.png"));
+	JButton jbtn_ok 	 = new JButton(new ImageIcon(imgPath + "/가입하기.png"));
 
 	// JPanel에 쓰일 이미지아이콘
 	ImageIcon ig = new ImageIcon(imgPath + "/main4.png");
