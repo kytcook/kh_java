@@ -1,4 +1,4 @@
-package oracle.vo;
+package oracle;
 // Lombok - setter, getter 생략 - 자동으로 해주지만
 // 초보자는 정석대로 이해하고 나중에 쓰자.
 // setter - 쓰기, 저장 : 반드시 파라미터가 있다. 무엇을 쓰고 저장할 것인가? 리턴타입이 없다. 전역변수에 담는다.
