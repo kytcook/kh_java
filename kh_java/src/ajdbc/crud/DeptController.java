@@ -22,11 +22,10 @@ public class DeptController {
 	public DeptController (DeptVO pdVO) {
 		this.gdVO = pdVO;
 	}
-	// 핵심이니까 분석해보자 꼬옥~!!
 	public DeptVO send(DeptVO pdVO) {
 //		DeptVO rdVO = null;
 		DeptVO rdVO = new DeptVO();// ⓐ
-		// delete || 
+		// delete | insert | update | select
 		String command = pdVO.getCommand();//getter와 setter
 		int result = 0;
 		// 너 삭제할거야?

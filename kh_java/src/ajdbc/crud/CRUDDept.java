@@ -90,7 +90,6 @@ public class CRUDDept extends JFrame implements ActionListener, MouseListener {
 	public int deptInsert(DeptVO pdVO) {
 		System.out.println("deptInsert 호출 성공");
 		int result = 0;
-		
 		StringBuilder sql = new StringBuilder();
 		sql.append("INSERT INTO dept(deptno, dname, loc) VALUES(?,?,?)");
 		// 물리적으로 떨어져 있는 오라클 서버와 통신
@@ -101,7 +100,7 @@ public class CRUDDept extends JFrame implements ActionListener, MouseListener {
 		try {
 			con = dbMgr.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
-			// 중간에 어떤 코드가 끼어들더라도, 코드에 대한 변경을 최소하한다.
+			// 중간에 어떤 코드가 끼어들더라도, 코드에 대한 변경을 최소화한다.
 			// 동적쿼리를 처리하는 PreparedStatment에서 ? 자리에 필요한 파라미터를 적용하는데
 			// 테이블 설계가 바뀌거나 컬럼이 추가되는 경우를 예측하여 최소한의 코드 변경이 되도록 변수를 사용해 본다.
 			// ? 자리는 1부터이므로 ++i 로 시작한다.
@@ -141,7 +140,7 @@ public class CRUDDept extends JFrame implements ActionListener, MouseListener {
 		StringBuilder sql = new StringBuilder();
 		sql.append("UPDATE dept          ");
 		sql.append("   SET dname = ?,    ");
-		sql.append("		loc =  ?      ");
+		sql.append("		loc =  ?     ");
 		sql.append(" WHERE deptno = 71;  ");
 		int result = 0;
 		try {
@@ -218,7 +217,7 @@ public class CRUDDept extends JFrame implements ActionListener, MouseListener {
 			Map<String, Object> rmap = null;
 			
 			while (rs.next()) {
-				rmap = new HashMap<>();// 같은 이름의 변ㅅ누이지만 서로 다른 주소번지를 갖는다.
+				rmap = new HashMap<>();// 같은 이름의 변수이지만 서로 다른 주소번지를 갖는다.
 				rmap.put("deptno", rs.getInt("deptno"));
 				rmap.put("dname", rs.getString("dname"));
 				rmap.put("loc", rs.getString("loc"));
@@ -266,8 +265,8 @@ public class CRUDDept extends JFrame implements ActionListener, MouseListener {
 	public DeptVO deptSelectDetail(int deptno) {
 		System.out.println("deptSelectDetail 호출 성공");
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT deptno, dname, loc FROM dept  ");
-	    sql.append("WHERE deptno = ?                                             ");
+		sql.append(" SELECT deptno, dname, loc FROM dept  ");
+	    sql.append(" WHERE deptno = ?                     ");
 		DeptVO rdVO = null;
 		try {
 			con = dbMgr.getConnection();
