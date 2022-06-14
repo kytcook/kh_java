@@ -172,6 +172,6 @@ public class Sign extends JFrame implements ActionListener {
 
 
 /*
- 불리언 변수 id_check는 꼭 필요한가?
- 
+ - 불리언 변수 id_check는 꼭 필요한가?
+ - id 중복체크할 때, 오라클 서버의 테이블이 비어있으면 가입하기버튼이 활성화 되지 않는다. 로우가 하나라도 들어가 있어야 활성화가 된다. why???????
  */
