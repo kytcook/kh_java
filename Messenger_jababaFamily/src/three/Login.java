@@ -16,7 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Login extends JFrame implements ActionListener{
-	String nickName	="";
+//	String nickName	=""; // 이거 왜있는거지?
     String imgPath	="D:\\java_study\\workspace_java\\kh_javaAC\\Messenger_jababaFamily\\src\\img\\";
     JLabel jlb_id 	= new JLabel("아이디");
     JLabel jlb_pw 	= new JLabel("패스워드");

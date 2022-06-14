@@ -21,19 +21,19 @@ public class MemberDAO {
 
 	/**********************************************************
 	 * 회원가입 구현
-	 * @param  MemberVO mbVO	- 사용자가 입력한 id, pw, name
+	 * @param  MemberVO mbVO	- 사용자가 입력한 id, pw, nickname
 	 * @return int 		result	- 1: 회원가입 성공, -1: 회원가입 실패
 	 * 
 	 * INSERT INTO MEMBER(ID, PW, NAME) VALUES(?, ?, ?)
 	 **********************************************************/
 	// 회원가입 메소드
-	public int signUp(String id, String pw, String name) {
+	public int signUp(String id, String pw, String nickname) {
 		System.out.println("회원가입 메소드 호출 성공");
 		
 		int result = 0;
 		
 		StringBuilder sql = new StringBuilder();
-		sql.append("INSERT INTO MEMBER(ID, PW, NAME) ");
+		sql.append("INSERT INTO MEMBER(ID, PW, NICKNAME) ");
 		sql.append("		    VALUES(?, ?, ?)      ");
 		
 		con = DBConnectionMgr.getConnection();
@@ -45,7 +45,7 @@ public class MemberDAO {
 			
 			pstmt.setString(i++, id);
 			pstmt.setString(i++, pw);
-			pstmt.setString(i++, name);
+			pstmt.setString(i++, nickname);
 			result = pstmt.executeUpdate();
 			
 			System.out.println("회원가입 성공");
@@ -62,7 +62,7 @@ public class MemberDAO {
 	
 	/**********************************************************
 	 * 아이디 중복 검사 구현
-	 * @param  String id		- 사용자가 입력한 id, pw, name
+	 * @param  String id		- 사용자가 입력한 id, pw, nickname
 	 * @return MemberVO mbVO	
 	 * 
 	 * SELECT ID FROM MEMBER WHERE ID = ?

@@ -20,8 +20,8 @@ public class Sign extends JFrame implements ActionListener {
 	/////////////////////////////////////////////////////
 	/* 선언부 */
 	/////////////////////////////////////////////////////
-	String nickName	="";												//
-	String imgPath	="D:\\java_study\\workspace_java\\kh_javaAC\\Messenger_jababaFamily\\src\\img\\";	// 이미지 경로를 문자열로..지정??
+//	String nickName	= "";	// 이거 왜 있는거지?										
+	String imgPath	= "D:\\java_study\\workspace_java\\kh_javaAC\\Messenger_jababaFamily\\src\\img\\";	// 이미지 경로를 문자열로..지정??
 	JLabel jlb_id 	= new JLabel("아이디");								// "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_pw 	= new JLabel("비밀번호");							// "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_repw = new JLabel("비밀번호 재확인");					// "[입력]" : 문자열을 화면에 그림
@@ -61,7 +61,7 @@ public class Sign extends JFrame implements ActionListener {
 	/////////////////////////////////////////////////////
 
 	/* 배경이미지 */
-	class mypana2 extends JPanel {
+	class mypanal extends JPanel {
 		public void paintComponent(Graphics g) {
 			g.drawImage(ig.getImage(), 0, 0, null);
 			setOpaque(false);
@@ -72,7 +72,7 @@ public class Sign extends JFrame implements ActionListener {
 	/* 화면처리 */
 	/////////////////////////////////////////////////////
 	public void initDisplay() {
-		setContentPane(new mypana2());
+		setContentPane(new mypanal());
 		
 		/* 버튼과 텍스트필드 구성 */
 //		jbtn_ok.addActionListener(this);
@@ -125,10 +125,8 @@ public class Sign extends JFrame implements ActionListener {
 		jbtn_but.setBounds(295, 135, 25, 25);
 		this.add(jbtn_but);  
 	}
-	public static void main(String[] args) {
-		new Sign();
-	}
 
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// 회원가입 버튼
@@ -157,7 +155,7 @@ public class Sign extends JFrame implements ActionListener {
 			String user_ID = jtf_id.getText();		// user_ID에 입력받은 텍스트를 담음
 			String user_pw = jpf_pw.getText();		// user_pw에 입력받은 텍스트를 넣음 
 			String user_name = jtf_name.getText();	// user_name에 입력받은 텍스트를 담음
-        	int result = mDao.signUp(user_ID,user_pw,user_name); // 위에서 담은 3가지 변수값을 Dao클래스의 signUp메소드로 던져서 대조후에 리턴값 받음
+        	int result = mDao.signUp(user_ID,user_pw,user_name); // 위에서 담은 3가지 변수값을 Dao클래스 아래 signUp메소드로 던져서 DB 대조후에 리턴값 받음
         	if(result == 1) {					
         		//회원가입 성공
         	}
