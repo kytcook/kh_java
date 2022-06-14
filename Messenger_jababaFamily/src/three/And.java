@@ -35,7 +35,7 @@ public class And extends JFrame implements ActionListener {
 	/****************************************
 	 * 				   생성자					*	
 	 ****************************************/
-	public void And() {
+	public And() {
 		initDisplay();
 //		jbtn_chrin.addActionListener(this);
 //		jbtn_rc.addActionListener(this);
