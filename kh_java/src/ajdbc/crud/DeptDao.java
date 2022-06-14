@@ -53,6 +53,18 @@ public class DeptDao {
 		// 왜 생성한 역순인가? - 의존관계에 있다. Connection, PreparedStatement, ResultSet - 자바성능 튜닝 가이드
 		try {
 			con = dbMgr.getConnection();
+			// 오라클의 커밋을 자바에서는 기본으로 자동 디폴트 설정되어 있다. 따라서 오라클에서 인서트나 업데이트를 해서 값 변화를 준다면 커밋해줘여 한다,
+			// false이면 커밋이 안된다.
+			// 굳이 저렇게 해야 하는 경우가 있나? ==> throw new Exception() 예외를 강제로 발생시킨다.
+			// 우편번호에 이상한 이름넣는 애들, 전화번호에 문자넣는 애들에 대처하기 위해서 예외상항으로 던진다.
+			// false이면 커밋하지 말고 기다려? 왜? 두번째 테이블에 아직 insert가 안됐으니까.
+			// con.setAutoCommit(false);
+			// int result1 =xxx.masterInsert(); 
+			// result = 1
+			// int result2 = xxx.detailInsert();
+			// result = 1 둘 다 1일 때 커밋해라
+			// if(result1==1 )con.commit(); // 트랜잭션 처리
+			con.setAutoCommit(true);// 생략이 가능하다.
 			pstmt = con.prepareStatement(sql.toString());
 			// 중간에 어떤 코드가 끼어들더라도, 코드에 대한 변경을 최소하한다.
 			// 동적쿼리를 처리하는 PreparedStatment에서 ? 자리에 필요한 파라미터를 적용하는데
@@ -170,7 +182,7 @@ public class DeptDao {
 			Map<String, Object> rmap = null;
 			
 			while (rs.next()) {
-				rmap = new HashMap<>();// 같은 이름의 변ㅅ누이지만 서로 다른 주소번지를 갖는다.
+				rmap = new HashMap<>();// 같은 이름의 변수이지만 서로 다른 주소번지를 갖는다.
 				rmap.put("deptno", rs.getInt("deptno"));
 				rmap.put("dname", rs.getString("dname"));
 				rmap.put("loc", rs.getString("loc"));
