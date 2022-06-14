@@ -13,37 +13,36 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Sign extends JFrame implements ActionListener {
 	/////////////////////////////////////////////////////
 	/* 선언부 */
 	/////////////////////////////////////////////////////
-	String nickName="";												//
-	String imgPath="C:\\java\\workspace_java\\project\\이미지\\";	// 이미지 경로를 문자열로..지정??
-	JLabel jlb_id = new JLabel("아이디");								// "[입력]" : 문자열을 화면에 그림
-	JLabel jlb_pw = new JLabel("비밀번호");							// "[입력]" : 문자열을 화면에 그림
+	String nickName	="";												//
+	String imgPath	="D:\\java_study\\workspace_java\\kh_javaAC\\Messenger_jababaFamily\\src\\img\\";	// 이미지 경로를 문자열로..지정??
+	JLabel jlb_id 	= new JLabel("아이디");								// "[입력]" : 문자열을 화면에 그림
+	JLabel jlb_pw 	= new JLabel("비밀번호");							// "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_repw = new JLabel("비밀번호 재확인");					// "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_name = new JLabel("이름");							// "[입력]" : 문자열을 화면에 그림
 	
-
-	Font jl_font = new Font("맑은고딕체", Font.BOLD, 17);				// ID와 PW의 (글씨체, 폰트굵기, 크기)를 파라미터 값으로 호출한다?
-	JTextField jtf_id = new JTextField("");						
-	JTextField jpf_pw = new JTextField("");				// PW는 숨겨진다
-	JTextField jtf_repw = new JTextField("");			
-	JTextField jtf_name = new JTextField("");						
+	Font			jl_font 	= new Font("맑은고딕체", Font.BOLD, 17);				// ID와 PW의 (글씨체, 폰트굵기, 크기)를 파라미터 값으로 호출한다?
+	JTextField 		jtf_id 		= new JTextField("");						
+	JPasswordField 	jpf_pw		= new JPasswordField("");				// PW는 숨겨진다
+	JPasswordField 	jpf_repw 	= new JPasswordField("");			
+	JTextField 		jtf_name 	= new JTextField("");						
 	
-    JButton jbtn_but = new JButton(
-    		new ImageIcon(imgPath+"버튼.png")); //버튼
+    JButton jbtn_but 	= new JButton(
+    			new ImageIcon(imgPath+"버튼.png")); //버튼
 	
-	 JButton jbtn_ok = new JButton(
+	JButton jbtn_ok 	= new JButton(
 	    		new ImageIcon(imgPath+"가입하기.png"));
-	
 	// JPanel에 쓰일 이미지아이콘
 	ImageIcon ig = new ImageIcon(imgPath+"main4.png");
 	
-	boolean      isIDCheck     =  false;
-	int result;
+	boolean	isIDCheck = false;
+	int		result;
 	
 	
 	/////////////////////////////////////////////////////
@@ -53,7 +52,7 @@ public class Sign extends JFrame implements ActionListener {
 
 	public Sign(){
 		initDisplay();
-		jbtn_ok.setEnabled(false);
+//		jbtn_ok.setEnabled(false);			// 생성자 위치에 있으면 안됌 why?
 		jbtn_ok.addActionListener(this);
 		jbtn_but.addActionListener(this);
 	}
@@ -99,16 +98,16 @@ public class Sign extends JFrame implements ActionListener {
 		// pw 라인
 		jlb_pw.setBounds(40, 180, 80, 40);
 		jlb_pw.setFont(jl_font);
-		jpf_pw.setBounds(40, 213, 250, 40); // 모음유무에 따라 실제 값 차이는 없지만 시각적인 줄간격 오차가 나서 모음에는 3씩 추가
+		jpf_pw.setBounds(40, 213, 250, 40); 
 		this.add(jlb_pw);
 		this.add(jpf_pw);
 		
 		// 비번 재확인
 		jlb_repw.setBounds(40, 260, 150, 40);
 		jlb_repw.setFont(jl_font);
-		jtf_repw.setBounds(40, 293, 250, 40);
+		jpf_repw.setBounds(40, 293, 250, 40);
 		this.add(jlb_repw);
-		this.add(jtf_repw);
+		this.add(jpf_repw);
 		
 		// 이름
 		jlb_name.setBounds(40, 340, 80, 40);
@@ -118,6 +117,7 @@ public class Sign extends JFrame implements ActionListener {
 		this.add(jtf_name);
 
 		//가입하기 버튼
+		jbtn_ok.setEnabled(false);					// 아이디 중복검사가 될 때까지 가입하기 버튼은 잠겨있다.
 		jbtn_ok.setBounds(105, 465, 120, 40);
 		this.add(jbtn_ok);
 		
@@ -138,27 +138,27 @@ public class Sign extends JFrame implements ActionListener {
 			dispose();
 		}
 		// 중복확인 버튼
-		if (obj == jbtn_but) {
-			MemberDAO mDao = new MemberDAO();
-			String user_id = jtf_id.getText();
-			int result = mDao.idCheck(user_id);
-			if(result == -1) {
+		if (obj == jbtn_but) {						// '아이디체크 버튼' 눌리면
+			MemberDAO mDao = new MemberDAO();		// DAO 인스턴스화
+			String user_id = jtf_id.getText();		// user_id에 입력한 값을 저장한다.
+			int result = mDao.idCheck(user_id);		// dao클래스로 위에 입력한 id값을 파라미터로 던져주고 반환받은 값을 result에 저장
+			if(result == -1) {						// 만약 result가 -1이면 중복된 아이디가 있다.
 				
-			}else if(result == 1) {
-				jtf_id.setEditable(false);
-				jbtn_but.setEnabled(false);
-				isIDCheck = true;
-				jbtn_ok.setEnabled(isIDCheck);
+			}else if(result == 1) {					// 사용가능한 아이디라면
+				jtf_id.setEditable(false);			// 아이디입력칸 비활성화
+				jbtn_but.setEnabled(false);			// '중복체크버튼' 비활성화
+				isIDCheck = true;					// isIDCheck 전역변수를 true로 바꿔줌
+				jbtn_ok.setEnabled(isIDCheck);		// isIDCheck의 값을 받아서 '가입하기' 버튼 상태변화
 			}
 			}
         
-		else if (obj == jbtn_ok) {
-			MemberDAO mDao = new MemberDAO();
-			String user_ID = jtf_id.getText();
-			String user_pw = jpf_pw.getText();
-			String user_name = jtf_name.getText();
-        	int result = mDao.signUp(user_ID,user_pw,user_name); // 회원가입을 하면 dao에서 받아온 값이 여기 들어가야 하는데 어떻게 해야? 
-        	if(result == 1) {
+		else if (obj == jbtn_ok) {					// '가입하기 버튼'이 눌리면
+			MemberDAO mDao = new MemberDAO();		// DAO 인스턴스화
+			String user_ID = jtf_id.getText();		// user_ID에 입력받은 텍스트를 담음
+			String user_pw = jpf_pw.getText();		// user_pw에 입력받은 텍스트를 넣음 
+			String user_name = jtf_name.getText();	// user_name에 입력받은 텍스트를 담음
+        	int result = mDao.signUp(user_ID,user_pw,user_name); // 위에서 담은 3가지 변수값을 Dao클래스의 signUp메소드로 던져서 대조후에 리턴값 받음
+        	if(result == 1) {					
         		//회원가입 성공
         	}
         	else if(result == -1) {
@@ -169,3 +169,9 @@ public class Sign extends JFrame implements ActionListener {
 }
 
 }
+
+
+/*
+ 불리언 변수 id_check는 꼭 필요한가?
+ 
+ */

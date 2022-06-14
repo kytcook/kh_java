@@ -49,7 +49,7 @@ public class MemberDAO {
 			result = pstmt.executeUpdate();
 			
 			System.out.println("회원가입 성공");
-			//result = 1;
+			result = 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("회원가입 실패");

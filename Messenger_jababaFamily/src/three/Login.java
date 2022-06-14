@@ -16,13 +16,15 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Login extends JFrame implements ActionListener{
-	String nickName="";
-    String imgPath="C:\\java\\workspace_java\\project\\이미지\\";
-    JLabel jlb_id = new JLabel("아이디");
-    JLabel jlb_pw = new JLabel("패스워드");
-    Font jl_font = new Font("맑은고딕체", Font.BOLD, 14);
-    JTextField jtf_id = new JTextField("");
-    JPasswordField jpf_pw = new JPasswordField("");
+	String nickName	="";
+    String imgPath	="D:\\java_study\\workspace_java\\kh_javaAC\\Messenger_jababaFamily\\src\\img\\";
+    JLabel jlb_id 	= new JLabel("아이디");
+    JLabel jlb_pw 	= new JLabel("패스워드");
+    
+    Font 			jl_font = new Font("맑은고딕체", Font.BOLD, 14);
+    JTextField 		jtf_id 	= new JTextField("");
+    JPasswordField 	jpf_pw 	= new JPasswordField("");
+    
     JButton jbtn_login = new JButton(
             new ImageIcon(imgPath+"로그인2.png"));
     JButton jbtn_join = new JButton(
@@ -115,12 +117,13 @@ public class Login extends JFrame implements ActionListener{
         	if(result == 1) {
         		// 로그인성공
         		this.dispose();
-        		TalkClient tc = new TalkClient(this);
+        		TalkClient tc = new TalkClient();
         		tc.initDisplay();
         		tc.init();
         	}
         	else if(result == 0) {
         		//아이디와 비밀번호가 일치하지 않습니다.
+        		
         	}
         	else if(result == -1) {
         		//등록되지 않은 회원입니다.
