@@ -69,7 +69,7 @@ public class DeptView extends JFrame implements ActionListener, MouseListener {
 
 	}	
 	public static void main(String[] args) {
-	
+		new DeptView();
 	}
 
 	@Override

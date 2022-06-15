@@ -11,7 +11,7 @@ public class DBConnectionMgr {
 	
 	public static final String _DRIVER = "oracle.jdbc.driver.OracleDriver";
 	public static final String url 	= "jdbc:oracle:thin:@localhost:1521:orcl11";
-	public static final String user = "KYTCOOK";
+	public static final String user = "TOMATO";
 	public static final String pw 	= "tiger";
 	
 	public static Connection getConnection(){ // 연결 

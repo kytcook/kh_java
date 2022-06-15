@@ -37,15 +37,16 @@ public class TalkClient extends JFrame implements ActionListener {
 	JButton jbtn_exit	  = new JButton("나가기");
 	String cols[] 		  = {"대화명"};
 	String data[][] 	  = new String[0][1];
+	
 	DefaultTableModel dtm = new DefaultTableModel(data,cols);
-	JTable			  jtb = new JTable(dtm);
-	JScrollPane       jsp = new JScrollPane(jtb);
-	JPanel jp_first 		= new JPanel();
-	JPanel jp_first_south 	= new JPanel();
-	JTextField jtf_msg = new JTextField(20);//south속지 center
-	JButton jbtn_send  = new JButton("전송");//south속지 east
-	JTextArea jta_display = null;
-	JScrollPane jsp_display = null;
+	JTable			  jtb 				= new JTable(dtm);
+	JScrollPane       jsp 				= new JScrollPane(jtb);
+	JPanel 			  jp_first 			= new JPanel();
+	JPanel 			  jp_first_south 	= new JPanel();
+	JTextField 		  jtf_msg			= new JTextField(20);//south속지 center
+	JButton 		  jbtn_send  		= new JButton("전송");//south속지 east
+	JTextArea 		  jta_display 		= null;
+	JScrollPane 	  jsp_display 		= null;
 	//배경 이미지에 사용될 객체 선언-JTextArea에 페인팅
 	Image back = null;
 	public TalkClient() {
