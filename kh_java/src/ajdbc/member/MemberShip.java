@@ -47,11 +47,18 @@ public class MemberShip extends JFrame implements ActionListener, MouseListener 
 	PreparedStatement 	pstmt 	= null;// DML구문 전달하고 오라클에게 요청
 	ResultSet 			rs 		= null;// 조회경우 커서를 조작 필요
 	/////////////////DB연동 ////////////////////////////
-	
-	// 생성자
+	MemberApp memberApp = null; //인스턴스
+	/****************************
+	 * 			 생성자           *
+	 ****************************/
 	public MemberShip() {
-		initDisplay();
+//		initDisplay(); -
 	}
+	
+	public MemberShip(MemberApp memberApp) {
+		this.memberApp = memberApp;
+	}
+	
 	public int memberInsert(MemberVO pmVO) {
 		int result = 0;
 		StringBuilder sql = new StringBuilder();
@@ -125,6 +132,7 @@ public class MemberShip extends JFrame implements ActionListener, MouseListener 
 		// 처음 화면이 열렸을 때는 아이디 중복검사가 되지 않았으니까 비활성화
 		jbtn_signup.setEnabled(false);// 잠깐만 상태 꺼줄랭 - 회원가입 비활성화
 		// 이벤트 소스와 이벤트처리 핸들러 클래스 연결하기
+		jbtn_zipcode.addActionListener(this);
 		jbtn_idcheck.addActionListener(this);
 		jbtn_signup.addActionListener(this);
 		jp_center.setLayout(null);//null로 뭉개준다.
@@ -194,6 +202,10 @@ public class MemberShip extends JFrame implements ActionListener, MouseListener 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
+		if(obj == jbtn_zipcode) {
+			ZipcodeSearch zs = new ZipcodeSearch(this);
+			zs.initDisplay();
+		}
 		if(obj == jbtn_signup) {
 			MemberVO pmVO = new MemberVO();
 			pmVO.setMem_id(getId());
@@ -205,7 +217,12 @@ public class MemberShip extends JFrame implements ActionListener, MouseListener 
 			if(result == 1) {
 				System.out.println("result ===> " + result);
 				// insert here - 회원가입 성공 후 memberApp클래스의 새로고침 메소드 호출하기
+				this.dispose();
+				memberApp.refreshData();
 				
+//				A a = null; 인스턴스화 위치의 문제를 고려해라
+//				  a = new A(); 
+//				A a = new A(); 
 			}
 		}
 		// 너 아이디 중복체크 하려구?
@@ -221,21 +238,13 @@ public class MemberShip extends JFrame implements ActionListener, MouseListener 
 				jbtn_signup.setEnabled(isOk);
 			}
 		}
-//		// 우편번호 찾기
-//		if(obj == jbtn_zipcode) {
-//			boolean isOk = idCheck(getId());
-//			System.out.println("ID중복체크 호출");
-//			if(isOk) { 
-//				JOptionPane.showMessageDialog(this, "사용할 수 없는 아이디 입니다.", "ERROR", JOptionPane.ERROR_MESSAGE);
-//				return;
-//			} else {
-//				JOptionPane.showMessageDialog(this, "사용할 수 있는 아이디 입니다.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-//				isOk = true;
-//				jbtn_signup.setEnabled(isOk);
-//			}
-//		}
+		// 우편번호 찾기
+		if(obj == jbtn_zipcode) {
+			System.out.println("우편번호 호출");
+			new ZipcodeSearch();
+			}
+		}
 	
-	}
 	public String getId() {return jtf_id.getText();}
 	public void setId(String mem_id) {jtf_id.setText(mem_id);}
 	
@@ -254,7 +263,7 @@ public class MemberShip extends JFrame implements ActionListener, MouseListener 
 	
 
 	public static void main(String[] args) {
-		new MemberShip();
+		 MemberShip mbs = new MemberShip();
 	}
 
 }

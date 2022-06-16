@@ -1,4 +1,4 @@
-package ajdbc;
+package ajdbc.Zicode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -60,8 +60,8 @@ public class ZipcodeSearch {
 	// 조회된 우편번호 목록 출력하기
 	
 	public static void main(String[] args) {
-		String userDong = null;
-		ZipcodeSearch zs = new ZipcodeSearch();
+		String 			userDong = null;
+		ZipcodeSearch 	zs		 = new ZipcodeSearch();
 		while("1".equals(userDong) || userDong == null) {
 			System.out.println("동을 입력하세요(예 : 당산동)");
 			userDong = zs.userInput();

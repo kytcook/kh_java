@@ -1,4 +1,4 @@
-package ajdbc;
+package ajdbc.Zicode;
 
 import java.awt.Color;
 import java.awt.event.ItemEvent;
@@ -39,11 +39,12 @@ public class ZipCodeSearchApp extends JFrame implements ItemListener {
 							,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
 							, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		DBConnectionMgr dbMgr = new DBConnectionMgr();
-		Connection		con		=	null;
+		Connection			con		=	null;
 		PreparedStatement	pstmt	= null;
-		ResultSet		rs		=null;
+		ResultSet			rs		=null;
 		public ZipCodeSearchApp () {
 			zdos	  = getZDOList();
+//			 zdos  = new String[]{"전체"};
 			zdos  = new String[] {"전체"};
 			sigus = new String[] {"전체"};
 			dongs = new String[] {"전체"};
