@@ -20,7 +20,9 @@ import jdbc.oracle.DBConnectionMgr;
 import oracle.MemberVO;
 
 public class MemberShip extends JFrame implements ActionListener, MouseListener {
-	// 선언부
+	/****************************
+	 * 			 선언부           *
+	 ****************************/
 	JPanel		jp_center		= new JPanel();
 	JLabel		jlb_id 			= new JLabel("아이디");
 	JTextField	jtf_id 			= new JTextField("",20);
@@ -47,12 +49,12 @@ public class MemberShip extends JFrame implements ActionListener, MouseListener 
 	PreparedStatement 	pstmt 	= null;// DML구문 전달하고 오라클에게 요청
 	ResultSet 			rs 		= null;// 조회경우 커서를 조작 필요
 	/////////////////DB연동 ////////////////////////////
-	MemberApp memberApp = null; //인스턴스
+	MemberApp memberApp = null; // 멤버앱의 주소번지 저장을 위해 널값으로 선언해둔다.
 	/****************************
 	 * 			 생성자           *
 	 ****************************/
 	public MemberShip() {
-//		initDisplay(); -
+//		initDisplay(); 이걸 여기다가 넣으면 2번 실행된다,
 	}
 	
 	public MemberShip(MemberApp memberApp) {
@@ -203,10 +205,10 @@ public class MemberShip extends JFrame implements ActionListener, MouseListener 
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
 		if(obj == jbtn_zipcode) {
-			ZipcodeSearch zs = new ZipcodeSearch(this);
+			ZipcodeSearch zs = new ZipcodeSearch(this);//현재 클래스 주소를 매개변수로하여
 			zs.initDisplay();
 		}
-		if(obj == jbtn_signup) {
+		if(obj == jbtn_signup) { 					// 회원가입 버튼 클릭
 			MemberVO pmVO = new MemberVO();
 			pmVO.setMem_id(getId());
 			pmVO.setMem_pw(getPw());

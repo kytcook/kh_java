@@ -83,7 +83,7 @@ public class ChatView extends JFrame implements ActionListener {
 		jp_first_south.add("East",jbtn_send);								// '전송'버튼은 동쪽
 		back = getToolkit().getImage("src\\chat\\step1\\accountmain.png");	//
 		
-		jta_display = new JTextArea() {										// 
+		jta_display = new JTextArea() {										// 대충 배경관련된거
 			private static final long serialVersionUID = 1L;
 			public void paint(Graphics g) {
 				g.drawImage(back, 0, 0, this);
@@ -108,10 +108,8 @@ public class ChatView extends JFrame implements ActionListener {
 	
 	/* 단위테스트용 - 나중에 지우기! */
 	public static void main(String args[]) {
-		JFrame.setDefaultLookAndFeelDecorated(true);
+		JFrame.setDefaultLookAndFeelDecorated(true);						//????
 		ChatView cv = new ChatView();
-		cv.initDisplay();
-		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {

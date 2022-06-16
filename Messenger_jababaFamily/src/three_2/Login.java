@@ -117,9 +117,7 @@ public class Login extends JFrame implements ActionListener{
         	if(result == 1) {
         		// 로그인성공
         		this.dispose();
-        		TalkClient tc = new TalkClient();
-        		tc.initDisplay();
-        		tc.init();
+        		ChatView cv = new ChatView();
         	}
         	else if(result == 0) {
         		//아이디와 비밀번호가 일치하지 않습니다.

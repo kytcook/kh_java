@@ -53,7 +53,7 @@ implements FocusListener, ActionListener, MouseListener {
 	Connection 			con 	= null;// 물리적으로 떨어진 오라클 서버와 연결통로
 	PreparedStatement 	pstmt 	= null;// DML구문 전달하고 오라클에게 요청 / 쿼리문을 오라클서버에게 전달
 	ResultSet 			rs 		= null;// 조회경우 커서를 조작 필요
-	MemberShip			ms		= null;
+	MemberShip			ms		= null;// MemberShip의 주소를 저장한다.
 	//////////////////// DB연동 ///////////////////////
 	
 	
@@ -61,7 +61,7 @@ implements FocusListener, ActionListener, MouseListener {
 	 * 		   생성자			*
 	 ************************/
 	public ZipcodeSearch() {}
-	public ZipcodeSearch(MemberShip ms) {
+	public ZipcodeSearch(MemberShip ms) { // 인스턴스 클래스
 		this.ms = ms;
 	}
 	

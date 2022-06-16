@@ -46,10 +46,10 @@ public class MemberApp extends JFrame implements ActionListener, MouseListener {
 
 	JPanel		jp_north	= new JPanel ();
 	JButton		jbtn_sel	= new JButton("조회");
-	JButton		jbtn_ins	= new JButton("입력");// 멤버앱에서 입력버튼이 눌렸을 때 멤버쉽 화면이 열리고 싶다
+	JButton		jbtn_ins	= new JButton("입력");				// ?멤버앱에서 입력버튼이 눌렸을 때 멤버쉽 화면이 열리고 싶다
 	JButton		jbtn_upd	= new JButton("수정");
 	JButton		jbtn_del	= new JButton("삭제");
-	String cols[] 	= {"번호","아이디","이름","주소"}; 				//JTable의 헤더에 들어갈 1차 배열
+	String cols[] 	= {"번호","아이디","이름","주소"}; 				// JTable의 헤더에 들어갈 1차 배열
 	String data[][] = new String[0][4]; 						// 데이터가 들어갈 2차 배열, 바디부분에 들어갈
 	DefaultTableModel dtm	= new DefaultTableModel(data,cols);	// 테이블 구조를 가지고 있는 디폴트테이블모델
 	JTable			  jtb	= new JTable(dtm);
@@ -60,7 +60,7 @@ public class MemberApp extends JFrame implements ActionListener, MouseListener {
 	// 메소드가 호출되는 위치로 창이 켜지는 타이밍을 제어 - 메모리에 띄어둔다:setVisible false->true 어떤게 좋은가.
 	// this(MemberApp)을 가리킨다.
 	// >
-	MemberShip		  ms	= new MemberShip(this);// ()과 (this)의 차이
+	MemberShip		  ms	= new MemberShip(this);// ()과 (this)의 차이 / memberApp의 주소번지를 슝-memberShip생성자 파라미터로
 	
 	/****************************
 	 * 			 생성자           *

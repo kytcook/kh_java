@@ -42,7 +42,7 @@ public class TalkClient extends JFrame implements ActionListener {
 	String 	cols[] 		  	= {"대화명"};							//
 	String	data[][] 	  	= new String[0][1];					//
 	DefaultTableModel dtm 	= new DefaultTableModel(data,cols); // ????채팅과 관련된건가????
-	JTable		jtb 			= new JTable(dtm);				//
+	JTable		jtb 			= new JTable(dtm);				// 
 	JScrollPane jsp 			= new JScrollPane(jtb);			// 아마 채팅길어지면 스크롤 내리는 바?
 	JPanel 		jp_first 		= new JPanel();					// JPanel 1
 	JPanel 		jp_first_south 	= new JPanel();					// 아래로 붙을 JPanel 1 
@@ -64,52 +64,12 @@ public class TalkClient extends JFrame implements ActionListener {
 		jbtn_exit.addActionListener(this);
 	}
 	/* 화면 그리기 */
-	public void initDisplay() {
-		//사용자의 닉네임 받기
-		nickName = JOptionPane.showInputDialog("닉네임을 입력하세요.");			// 최초 닉네임입력칸
-		this.setLayout(new GridLayout(1,10));								// 
-		
-		jp_second.setLayout(new BorderLayout());							// 
-		jp_second.add("Center",jsp);										// 채팅창 관련인듯?
-		jp_second_south.setLayout(new GridLayout(2,2));						// 아래 버튼 4개 x,y축 위치지정인듯?
-		jp_second_south.add(jbtn_one);										// '1:1' 버튼
-		jp_second_south.add(jbtn_change);									// '대화명변경' 버튼
-		jp_second_south.add(jbtn_font);										// '글자색' 버튼
-		jp_second_south.add(jbtn_exit);										// '나가기' 버튼
-		jp_second.add("South",jp_second_south);								// jp_second_south에 담긴 JPanal을 방위 남쪽으로 붙임
-		// chatview의 왼편
-		jp_first.setLayout(new BorderLayout());								// 보더레이아웃으로 레이아웃 세팅이겠지.?
-		jp_first_south.setLayout(new BorderLayout());						// 
-		jp_first_south.add("Center",jtf_msg);								// 입력칸 중앙
-		jp_first_south.add("East",jbtn_send);								// '전송'버튼은 동쪽
-		back = getToolkit().getImage("src\\chat\\step1\\accountmain.png");	//
-		
-		jta_display = new JTextArea() {										// 
-			private static final long serialVersionUID = 1L;
-			public void paint(Graphics g) {
-				g.drawImage(back, 0, 0, this);
-				Point p = jsp_display.getViewport().getViewPosition();
-				g.drawImage(back, p.x, p.y, null);
-				paintComponent(g);
-			}
-		};
-		jta_display.setLineWrap(true);
-		jta_display.setOpaque(false);
-		Font font = new Font("돋움",Font.BOLD,16);
-		jta_display.setFont(font);
-		jsp_display = new JScrollPane(jta_display);		
-		jp_first.add("Center",jsp_display);
-		jp_first.add("South",jp_first_south);
-		this.add(jp_first);
-		this.add(jp_second);
-		this.setTitle(nickName);
-		this.setSize(800, 550);
-		this.setVisible(true);
-	}
+
+
 	public static void main(String args[]) {
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		TalkClient tc = new TalkClient();
-		tc.initDisplay();
+//		tc.initDisplay();
 		tc.init();
 	}
 	//소켓 관련 초기화
@@ -132,9 +92,9 @@ public class TalkClient extends JFrame implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		Object obj = ae.getSource();
-		String msg = jtf_msg.getText();
-		if(jtf_msg==obj) {
+		Object obj = ae.getSource();		// 이벤트소스를 변수obj에 저장
+		String msg = jtf_msg.getText();		// 변수 jtf_msg에서 입력받은 텍스트를 msg에 저장 // 그냥 아래다 바로 안 쓴 이유??
+		if( obj == jtf_msg ) {				// obj와 jtf_msg가 같을 때
 			try {
 				oos.writeObject(201
 						   +"#"+nickName
@@ -144,7 +104,7 @@ public class TalkClient extends JFrame implements ActionListener {
 				// TODO: handle exception
 			}
 		}
-		else if(jbtn_exit==obj) {
+		else if( obj == jbtn_exit ) {		// 나가기 버튼 누르면
 			try {
 				oos.writeObject(500+"#"+this.nickName);
 				//자바가상머신과 연결고리 끊기
@@ -153,7 +113,7 @@ public class TalkClient extends JFrame implements ActionListener {
 				// TODO: handle exception
 			}
 		}
-		else if(jbtn_change == obj) {
+		else if( obj == jbtn_change ) {		//
 			String afterName = JOptionPane.showInputDialog("변경할 대화명을 입력하세요.");
 			if(afterName == null || afterName.trim().length()<1) {
 				JOptionPane.showMessageDialog(this
@@ -173,3 +133,11 @@ public class TalkClient extends JFrame implements ActionListener {
 	}//////////////////////end of actionPerformed
 }
 
+/*
+ * (96) 
+ * Chatview에 화면구현부만 따로 떼어놨는데, 액션퍼폼에서 채팅창은 어디까지가 서버고 어디까지가 UI영역이야??
+ * 다 UI인가?? 
+ * 
+ * git에서 가져온 프로제트 어떻게 동기화? 하ㅏ까
+ */
+ 
