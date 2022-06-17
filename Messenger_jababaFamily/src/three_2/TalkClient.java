@@ -29,47 +29,83 @@ public class TalkClient extends JFrame implements ActionListener {
 	ObjectInputStream 	ois			= null;	//듣기 할 때
 	String 				nickName	= null;	//닉네임 등록
 	////////////////통신과 관련한 전역변수 추가  끝  //////////////
+	JPanel 		jp_second	  	= new JPanel();						// 오른쪽 JPanel
+	JPanel 		jp_second_south = new JPanel();						// 오른쪽 JPanel 남쪽 
+	JButton 	jbtn_one	  	= new JButton("1:1");				// '1:1' 버튼
+	JButton 	jbtn_change	  	= new JButton("대화명변경");			// '대화명변경' 버튼
+	JButton	 	jbtn_font	  	= new JButton("글자색");				// '글자색' 버튼
+	JButton 	jbtn_exit	  	= new JButton("나가기");				// '나가기' 버튼
 	
-	/* 오른편 패널 구성 */
-	JPanel 	jp_second	  	= new JPanel();						// JPanel 2
-	JPanel 	jp_second_south = new JPanel();						// 아래로 붙을 JPanel 2  
-	JButton jbtn_one	  	= new JButton("1:1");				// '1:1' 버튼
-	JButton jbtn_change	  	= new JButton("대화명변경");			// '대화명변경' 버튼
-	JButton jbtn_font	  	= new JButton("글자색");				// '글자색' 버튼
-	JButton jbtn_exit	  	= new JButton("나가기");				// '나가기' 버튼
+	String 		cols[] 		  	= {"대화명"};							//
+	String		data[][] 	  	= new String[0][1];					//
+	DefaultTableModel dtm 		= new DefaultTableModel(data,cols); // 데이터를 담을 객체 디폴트테이블모델
+	JTable		jtb 			= new JTable(dtm);					// 
+	JScrollPane jsp 			= new JScrollPane(jtb);				//
 	
-	/* 왼편 패널 구성 */
-	String 	cols[] 		  	= {"대화명"};							//
-	String	data[][] 	  	= new String[0][1];					//
-	DefaultTableModel dtm 	= new DefaultTableModel(data,cols); // ????채팅과 관련된건가????
-	JTable		jtb 			= new JTable(dtm);				// 
-	JScrollPane jsp 			= new JScrollPane(jtb);			// 아마 채팅길어지면 스크롤 내리는 바?
-	JPanel 		jp_first 		= new JPanel();					// JPanel 1
-	JPanel 		jp_first_south 	= new JPanel();					// 아래로 붙을 JPanel 1 
-	JTextField 	jtf_msg 		= new JTextField(20);			// south속지 center
-	JButton 	jbtn_send  		= new JButton("전송");			// south속지 east
-	JTextArea 	jta_display 	= null;							// 채팅입력칸 - 값이 정해지면 안됑~
-	JScrollPane jsp_display 	= null;							// 
+	JPanel 		jp_first 		= new JPanel();						// 왼쪽 JPanel
+	JPanel 		jp_first_south 	= new JPanel();						// 왼쪽 JPanel
+	JTextField 	jtf_msg 		= new JTextField(20);				// 채팅입렵창
+	JButton 	jbtn_send  		= new JButton("전송");				// 전송버튼
+	JTextArea 	jta_display 	= null;								// 
+	JScrollPane jsp_display 	= null;								// 
 	
 	//배경 이미지에 사용될 객체 선언-JTextArea에 페인팅
 	Image back = null;
-	/*****************************************
-	 * 					생성자				 *
-	 *****************************************/
+	
+	/**********************************
+	 * 				생성자		      *
+	 **********************************/
 	public TalkClient() {
 		jtf_msg.addActionListener(this);
 	}
+	/* 오버로드 */
 	public TalkClient(Login lg) {
 		jbtn_change.addActionListener(this);
 		jbtn_exit.addActionListener(this);
 	}
-	/* 화면 그리기 */
-
-
+	public void initDisplay() {
+		//사용자의 닉네임 받기
+		nickName = JOptionPane.showInputDialog("닉네임을 입력하세요.");	// 닉네임 
+		this.setLayout(new GridLayout(1,2));						//
+		jp_second.setLayout(new BorderLayout());
+		jp_second.add("Center",jsp);
+		jp_second_south.setLayout(new GridLayout(2,2));
+		jp_second_south.add(jbtn_one);
+		jp_second_south.add(jbtn_change);
+		jp_second_south.add(jbtn_font);
+		jp_second_south.add(jbtn_exit);
+		jp_second.add("South",jp_second_south);
+		jp_first.setLayout(new BorderLayout());
+		jp_first_south.setLayout(new BorderLayout());
+		jp_first_south.add("Center",jtf_msg);
+		jp_first_south.add("East",jbtn_send);
+		back = getToolkit().getImage("src\\chat\\step1\\accountmain.png");
+		jta_display = new JTextArea() {
+			private static final long serialVersionUID = 1L;
+			public void paint(Graphics g) {
+				g.drawImage(back, 0, 0, this);
+				Point p = jsp_display.getViewport().getViewPosition();
+				g.drawImage(back, p.x, p.y, null);
+				paintComponent(g);
+			}
+		};
+		jta_display.setLineWrap(true);
+		jta_display.setOpaque(false);
+		Font font = new Font("돋움",Font.BOLD,16);
+		jta_display.setFont(font);
+		jsp_display = new JScrollPane(jta_display);		
+		jp_first.add("Center",jsp_display);
+		jp_first.add("South",jp_first_south);
+		this.add(jp_first);
+		this.add(jp_second);
+		this.setTitle(nickName);
+		this.setSize(800, 550);
+		this.setVisible(true);
+	}
 	public static void main(String args[]) {
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		TalkClient tc = new TalkClient();
-//		tc.initDisplay();
+		tc.initDisplay();
 		tc.init();
 	}
 	//소켓 관련 초기화
@@ -92,9 +128,9 @@ public class TalkClient extends JFrame implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		Object obj = ae.getSource();		// 이벤트소스를 변수obj에 저장
-		String msg = jtf_msg.getText();		// 변수 jtf_msg에서 입력받은 텍스트를 msg에 저장 // 그냥 아래다 바로 안 쓴 이유??
-		if( obj == jtf_msg ) {				// obj와 jtf_msg가 같을 때
+		Object obj = ae.getSource();
+		String msg = jtf_msg.getText();
+		if(jtf_msg==obj) {
 			try {
 				oos.writeObject(201
 						   +"#"+nickName
@@ -104,7 +140,7 @@ public class TalkClient extends JFrame implements ActionListener {
 				// TODO: handle exception
 			}
 		}
-		else if( obj == jbtn_exit ) {		// 나가기 버튼 누르면
+		else if(jbtn_exit==obj) {
 			try {
 				oos.writeObject(500+"#"+this.nickName);
 				//자바가상머신과 연결고리 끊기
@@ -113,7 +149,7 @@ public class TalkClient extends JFrame implements ActionListener {
 				// TODO: handle exception
 			}
 		}
-		else if( obj == jbtn_change ) {		//
+		else if(jbtn_change == obj) {
 			String afterName = JOptionPane.showInputDialog("변경할 대화명을 입력하세요.");
 			if(afterName == null || afterName.trim().length()<1) {
 				JOptionPane.showMessageDialog(this
@@ -133,11 +169,3 @@ public class TalkClient extends JFrame implements ActionListener {
 	}//////////////////////end of actionPerformed
 }
 
-/*
- * (96) 
- * Chatview에 화면구현부만 따로 떼어놨는데, 액션퍼폼에서 채팅창은 어디까지가 서버고 어디까지가 UI영역이야??
- * 다 UI인가?? 
- * 
- * git에서 가져온 프로제트 어떻게 동기화? 하ㅏ까
- */
- 

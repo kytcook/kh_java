@@ -138,7 +138,7 @@ public class Sign extends JFrame implements ActionListener {
 		if (obj == jbtn_but) {						// '아이디체크 버튼' 눌리면
 			MemberDAO mDao = new MemberDAO();		// DAO 인스턴스화
 			String user_id = jtf_id.getText();		// user_id에 입력한 값을 저장한다.
-			int result = mDao.idCheck(user_id);		// dao클래스로 위에 입력한 id값을 파라미터로 던져주고 반환받은 값을 result에 저장
+			int result = mDao.idCheck(user_id);		// 위에서 입력한 id값을 dao클래스의 아이디체크메소드 파라미터로 던져주고 반환받은 값을 result에 저장
 			if(result == -1) {						// 만약 result가 -1이면 중복된 아이디가 있다.
 				
 			}else if(result == 1) {					// 사용가능한 아이디라면
