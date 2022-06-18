@@ -145,7 +145,7 @@ public class Sign extends JFrame implements ActionListener {
 			}else if(result == 1) {					// 사용가능한 아이디라면
 				jtf_id.setEditable(false);			// 아이디입력칸 비활성화
 				jbtn_but.setEnabled(false);			// '중복체크버튼' 비활성화
-//				isIDCheck = true;					// isIDCheck 전역변수를 true로 바꿔줌
+				isIDCheck = true;					// isIDCheck 전역변수를 true로 바꿔줌
 				jbtn_ok.setEnabled(isIDCheck);		// isIDCheck의 값을 받아서 '가입하기' 버튼 상태변화
 			}
 			}

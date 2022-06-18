@@ -1,32 +1,31 @@
 package three_2;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.print.PrinterException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import three_2.Login.mypanal;
 
 public class And extends JFrame implements ActionListener {
 	/****************************************
 	 * 				   선언부					*	
 	 ****************************************/
 	String imgPath	="D:\\java_study\\workspace_java\\kh_javaAC\\Messenger_jababaFamily\\src\\img\\";	// 이미지 경로를 문자열로..지정??
-	JButton jbtn_chrin = new JButton("채팅방입장");
-//			(new ImageIcon(imgPath+"로그인2.png"));
-    JButton jbtn_rc = new JButton("방생성");
-//    		(new ImageIcon(imgPath+"회원가입2.png"));
-    JButton jbtn_pf = new JButton("프로필");
-//    		new ImageIcon(imgPath+"회원가입2.png"));
-	
+	RoundedButton jbtn_roomin = new RoundedButton("방입장");		// 방입장 버튼
+	RoundedButton jbtn_1 	  = new RoundedButton("");			// 공방
+	RoundedButton jbtn_2	  = new RoundedButton("");			// 공방
+//	JButton jbtn_roomin	= new JButton("방입장");					// 기본 J버튼
+//			(new ImageIcon(imgPath+"로그인2.png"));	
+	JButton jbtn_maker 	= new JButton(new ImageIcon(imgPath+"말풍선2.png")); 	// 방생성
+	JButton jbtn_pf		= new JButton(new ImageIcon(imgPath+"설정2.png"));	// 프로필
+    
+    Font jl_font = new Font("맑은고딕체", Font.BOLD, 20);
 	
 	// JPanel에 쓰일 이미지아이콘
 		ImageIcon ig = new ImageIcon(imgPath+"main4.png");
@@ -69,15 +68,27 @@ public class And extends JFrame implements ActionListener {
 	   	 public void windowClosing(WindowEvent e) {
 	            System.exit(0);
 	   	 }});
-	     // 채팅방
-//	     jbtn_chrin.setBounds(175, 285, 120, 40);
-//		 this.add(jbtn_chrin);
-//		 
-//		 jbtn_rc.setBounds(175, 285, 120, 40);
-//		 this.add(jbtn_rc);
-//		 
-//		 jbtn_pf.setBounds(175, 285, 120, 40);
-//		 this.add(jbtn_pf);
+	     // 방입장
+	     jbtn_roomin.setBounds(40, 150, 270, 50);
+		 this.add(jbtn_roomin);
+		 
+		 // 가짜방
+		 jbtn_1.setBounds(40, 230, 270, 50);	
+		 jbtn_2.setBounds(40, 310, 270, 50);
+		 this.add(jbtn_1);
+		 this.add(jbtn_2);
+		 
+		 // 방추가
+		 jbtn_maker.setBounds(215, 500, 40, 40);
+		 jbtn_maker.setBorderPainted(false);		// 외부라인 색조절
+		 jbtn_maker.setContentAreaFilled(false);;	// 배경색 투명도 조절
+		 this.add(jbtn_maker);
+		 
+		 // 프로필
+		 jbtn_pf.setBounds(275, 500, 40, 40);
+		 jbtn_pf.setBorderPainted(false);
+		 jbtn_pf.setContentAreaFilled(false);;
+		 this.add(jbtn_pf);
 			
 		}	
 	// 단위테스트용 - 나중에 없애주세
