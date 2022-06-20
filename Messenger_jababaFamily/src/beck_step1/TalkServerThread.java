@@ -1,4 +1,8 @@
+<<<<<<< HEAD:Messenger_jababaFamily/src/beck_step1/TalkServerThread.java
 package beck_step1;
+=======
+package step1;
+>>>>>>> 6cf0eee2f717fef32aeab610ec5ac1a94da8b5d7:Messenger_jababaFamily/src/step1/TalkServerThread.java
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

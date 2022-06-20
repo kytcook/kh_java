@@ -1,10 +1,14 @@
+<<<<<<< HEAD:Messenger_jababaFamily/src/beck_step1/TalkClientThread.java
 package beck_step1;
+=======
+package step1;
+>>>>>>> 6cf0eee2f717fef32aeab610ec5ac1a94da8b5d7:Messenger_jababaFamily/src/step1/TalkClientThread.java
 
 import java.util.StringTokenizer;
 import java.util.Vector;
 
 public class TalkClientThread extends Thread {
-	TalkClient tc = null;
+	TalkClient tc = null;	// TalkClinet변수를 비워둔다 -> 
 	public TalkClientThread(TalkClient tc) {
 		this.tc = tc;
 	}

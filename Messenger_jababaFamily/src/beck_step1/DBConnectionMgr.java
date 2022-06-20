@@ -1,4 +1,8 @@
+<<<<<<< HEAD:Messenger_jababaFamily/src/beck_step1/DBConnectionMgr.java
 package beck_step1;
+=======
+package step1;
+>>>>>>> 6cf0eee2f717fef32aeab610ec5ac1a94da8b5d7:Messenger_jababaFamily/src/step1/DBConnectionMgr.java
 
 import java.sql.Connection;
 import java.sql.DriverManager;
