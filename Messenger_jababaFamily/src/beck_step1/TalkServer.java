@@ -1,4 +1,4 @@
-package chat.step1;
+package beck_step1;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class TalkServer extends JFrame implements Runnable{
+public class TalkServer extends JFrame implements Runnable{	// 추상클래스 Runnalble을 implements한다.
 	TalkServerThread 		tst 		= null;
 	List<TalkServerThread> 	globalList 	= null;
 	ServerSocket 			server 		= null;
@@ -31,7 +31,7 @@ public class TalkServer extends JFrame implements Runnable{
 			                                         ,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	JPanel 		jp_north = new JPanel();
 	JButton 	jbtn_log = new JButton("로그저장");
-	String      logPath  = "src\\chat\\step1\\";
+	String      logPath  = "src\\beck_step1\\";
 	public void initDisplay() {
 		jbtn_log.addActionListener(new ActionListener() {
 			@Override
@@ -105,9 +105,9 @@ public class TalkServer extends JFrame implements Runnable{
 	 ******************************************************/
 	public String setTimer() {
 		Calendar cal = Calendar.getInstance();
-		int yyyy = cal.get(Calendar.YEAR);
-		int mm = cal.get(Calendar.MONTH)+1;
-		int day =  cal.get(Calendar.DAY_OF_MONTH);
+		int yyyy	= cal.get(Calendar.YEAR);
+		int mm		= cal.get(Calendar.MONTH)+1;
+		int day 	= cal.get(Calendar.DAY_OF_MONTH);
 		return yyyy+"-"+
 			   (mm < 10 ? "0"+mm:""+mm)+"-"+
 			   (day < 10 ? "0"+day:""+day);

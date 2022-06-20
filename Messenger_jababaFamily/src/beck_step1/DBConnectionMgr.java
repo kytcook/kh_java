@@ -1,4 +1,4 @@
-package chat.step1;
+package beck_step1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ public class DBConnectionMgr {
 		Connection con = null;
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url, "scott", "tiger");
+			con = DriverManager.getConnection("192.168.1.86", "scott", "tiger");
 		}catch(Exception e){
 			System.out.println("Exception=["+ e +"]");
 		}  

@@ -1,4 +1,4 @@
-package chat.step1;
+package beck_step1;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -36,15 +36,15 @@ public class TalkClientThread extends Thread {
 					}break;
 					case 201:{
 						String nickName = st.nextToken();
-						String message = st.nextToken();
+						String message 	= st.nextToken();
 						tc.jta_display.append("["+nickName+"]"+message+"\n");
 						tc.jta_display.setCaretPosition
 						(tc.jta_display.getDocument().getLength());					
 					}break;
 					case 202:{
-						String nickName = st.nextToken();
+						String nickName  = st.nextToken();
 						String afterName = st.nextToken();
-						String message = st.nextToken();
+						String message 	 = st.nextToken();
 						//테이블에 대화명 변경하기
 						for(int i=0;i<tc.dtm.getRowCount();i++) {
 							String imsi = (String)tc.dtm.getValueAt(i, 0);

@@ -1,4 +1,4 @@
-package chat.step1;
+package beck_step1;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -7,13 +7,13 @@ import java.util.StringTokenizer;
 
 
 public class TalkServerThread extends Thread {
-	public TalkServer ts = null;
-	Socket client = null;
-	ObjectOutputStream oos = null;
-	ObjectInputStream ois = null;
-	String chatName = null;//현재 서버에 입장한 클라이언트 스레드 닉네임 저장
+	public TalkServer ts 	= null;
+	Socket client 			= null;
+	ObjectOutputStream	oos	= null;
+	ObjectInputStream 	ois	= null;
+	String chatName 		= null;//현재 서버에 입장한 클라이언트 스레드 닉네임 저장
 	public TalkServerThread(TalkServer ts) {
-		this.ts = ts;
+		this.ts		= ts;
 		this.client = ts.socket;
 		try {
 			oos = new ObjectOutputStream(client.getOutputStream());

@@ -1,4 +1,4 @@
-package chat.step1;
+package beck_step1;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -24,27 +24,27 @@ import javax.swing.table.DefaultTableModel;
 
 public class TalkClient extends JFrame implements ActionListener {
 	////////////////통신과 관련한 전역변수 추가 시작//////////////
-	Socket 				socket 	= null;
-	ObjectOutputStream 	oos 	= null;//말 하고 싶을 때
-	ObjectInputStream 	ois		= null;//듣기 할 때
-	String 				nickName= null;//닉네임 등록
+	Socket 				socket 		= null;
+	ObjectOutputStream 	oos 		= null;//말 하고 싶을 때
+	ObjectInputStream 	ois			= null;//듣기 할 때
+	String 				nickName	= null;//닉네임 등록
 	////////////////통신과 관련한 전역변수 추가  끝  //////////////
-	JPanel jp_second	  = new JPanel();
-	JPanel jp_second_south = new JPanel();
-	JButton jbtn_one	  = new JButton("1:1");
-	JButton jbtn_change	  = new JButton("대화명변경");
-	JButton jbtn_font	  = new JButton("글자색");
-	JButton jbtn_exit	  = new JButton("나가기");
-	String cols[] 		  = {"대화명"};
-	String data[][] 	  = new String[0][1];
-	DefaultTableModel dtm = new DefaultTableModel(data,cols);
-	JTable			  jtb = new JTable(dtm);
-	JScrollPane       jsp = new JScrollPane(jtb);
-	JPanel jp_first 		= new JPanel();
-	JPanel jp_first_south 	= new JPanel();
-	JTextField jtf_msg = new JTextField(20);//south속지 center
-	JButton jbtn_send  = new JButton("전송");//south속지 east
-	JTextArea jta_display = null;
+	JPanel 	jp_second	  	= new JPanel();
+	JPanel 	jp_second_south = new JPanel();
+	JButton jbtn_one	  	= new JButton("1:1");
+	JButton jbtn_change	  	= new JButton("대화명변경");
+	JButton jbtn_font	  	= new JButton("글자색");
+	JButton jbtn_exit	  	= new JButton("나가기");
+	String 	cols[] 		  	= {"대화명"};
+	String 	data[][] 	  	= new String[0][1];
+	DefaultTableModel dtm	= new DefaultTableModel(data,cols);
+	JTable			  jtb	= new JTable(dtm);
+	JScrollPane       jsp 	= new JScrollPane(jtb);
+	JPanel 	jp_first 		= new JPanel();
+	JPanel 	jp_first_south 	= new JPanel();
+	JTextField 	jtf_msg 	= new JTextField(20);//south속지 center
+	JButton		jbtn_send  	= new JButton("전송");//south속지 east
+	JTextArea 	jta_display = null;
 	JScrollPane jsp_display = null;
 	//배경 이미지에 사용될 객체 선언-JTextArea에 페인팅
 	Image back = null;

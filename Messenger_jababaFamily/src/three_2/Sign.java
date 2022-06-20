@@ -21,12 +21,12 @@ public class Sign extends JFrame implements ActionListener {
 	/* 선언부 */
 	/////////////////////////////////////////////////////
 	String imgPath	= "D:\\java_study\\workspace_java\\kh_javaAC\\Messenger_jababaFamily\\src\\img\\";	// 이미지 경로를 문자열로..지정??
-	JLabel jlb_id 	= new JLabel("아이디");								// "[입력]" : 문자열을 화면에 그림
-	JLabel jlb_pw 	= new JLabel("비밀번호");							// "[입력]" : 문자열을 화면에 그림
+	JLabel jlb_id 	= new JLabel("아이디");						// "[입력]" : 문자열을 화면에 그림
+	JLabel jlb_pw 	= new JLabel("비밀번호");						// "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_repw = new JLabel("비밀번호 재확인");					// "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_name = new JLabel("이름");							// "[입력]" : 문자열을 화면에 그림
 	
-	Font			jl_font 	= new Font("맑은고딕체", Font.BOLD, 17);				// ID와 PW의 (글씨체, 폰트굵기, 크기)를 파라미터 값으로 호출한다?
+	Font			jl_font 	= new Font("맑은고딕체", Font.BOLD, 17);	// ID와 PW의 (글씨체, 폰트굵기, 크기)를 파라미터 값으로 호출한다?
 	JTextField 		jtf_id 		= new JTextField("");						
 	JPasswordField 	jpf_pw		= new JPasswordField("");				// PW는 숨겨진다
 	JPasswordField 	jpf_repw 	= new JPasswordField("");			
@@ -41,14 +41,10 @@ public class Sign extends JFrame implements ActionListener {
 	ImageIcon ig = new ImageIcon(imgPath+"main4.png");
 	
 	boolean	isIDCheck = false;
-	int		result;
-	
 	
 	/////////////////////////////////////////////////////
 	/* 생성자 */
 	/////////////////////////////////////////////////////
-
-
 	public Sign(){
 		initDisplay();
 //		jbtn_ok.setEnabled(false);			// 생성자 위치에 있으면 안됌 why?
@@ -56,10 +52,9 @@ public class Sign extends JFrame implements ActionListener {
 		jbtn_but.addActionListener(this);
 	}
 	/////////////////////////////////////////////////////
-	/* jpanal 오버라이드 */
-	/////////////////////////////////////////////////////
-
 	/* 배경이미지 */
+	// jpanal 오버라이드 //
+	/////////////////////////////////////////////////////
 	class mypanal extends JPanel {
 		public void paintComponent(Graphics g) {
 			g.drawImage(ig.getImage(), 0, 0, null);
@@ -130,10 +125,7 @@ public class Sign extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// 회원가입 버튼
 		Object obj = e.getSource();
-		if(obj == jbtn_ok) {
-			new Login();
-			dispose();
-		}
+		
 		// 중복확인 버튼
 		if (obj == jbtn_but) {						// '아이디체크 버튼' 눌리면
 			MemberDAO mDao = new MemberDAO();		// DAO 인스턴스화
@@ -148,7 +140,7 @@ public class Sign extends JFrame implements ActionListener {
 				jbtn_ok.setEnabled(isIDCheck);		// isIDCheck의 값을 받아서 '가입하기' 버튼 상태변화
 			}
 			
-			}
+		}
         
 		else if (obj == jbtn_ok) {					// '가입하기 버튼'이 눌리면
 			MemberDAO mDao = new MemberDAO();		// DAO 인스턴스화
@@ -156,7 +148,9 @@ public class Sign extends JFrame implements ActionListener {
 			String user_pw = jpf_pw.getText();		// user_pw에 입력받은 텍스트를 넣음 
 			String user_name = jtf_name.getText();	// user_name에 입력받은 텍스트를 담음
         	int result = mDao.signUp(user_ID,user_pw,user_name); // 위에서 담은 3가지 변수값을 Dao클래스 아래 signUp메소드로 던져서 DB 대조후에 리턴값 받음
-        	if(result == 1) {					
+        	if(result == 1) {	
+    			new Login();
+    			dispose();
         		//회원가입 성공
         	}
         	else if(result == -1) {

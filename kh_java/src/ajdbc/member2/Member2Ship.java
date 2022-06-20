@@ -49,8 +49,8 @@ public class Member2Ship extends JFrame implements ActionListener, MouseListener
 	public Member2Ship() {
 		//initDisplay();
 	}
-	public Member2Ship(Member2App memberApp) {
-		this.memberApp = memberApp;
+	public Member2Ship(Member2App member2App) {
+		this.memberApp = member2App;
 	}
 	public int memberInsert(MemberVO pmVO) {
 		int result = 0;
