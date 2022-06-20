@@ -1,10 +1,10 @@
-package chat.step1;
+package step1;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
 
 public class TalkClientThread extends Thread {
-	TalkClient tc = null;
+	TalkClient tc = null;	// TalkClinet변수를 비워둔다 -> 
 	public TalkClientThread(TalkClient tc) {
 		this.tc = tc;
 	}

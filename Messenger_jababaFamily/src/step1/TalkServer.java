@@ -1,4 +1,4 @@
-package chat.step1;
+package step1;
 
 import java.awt.Color;
 import java.awt.FlowLayout;

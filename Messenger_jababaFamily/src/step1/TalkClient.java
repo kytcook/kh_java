@@ -1,4 +1,4 @@
-package chat.step1;
+package step1;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -25,26 +25,26 @@ import javax.swing.table.DefaultTableModel;
 public class TalkClient extends JFrame implements ActionListener {
 	////////////////통신과 관련한 전역변수 추가 시작//////////////
 	Socket 				socket 	= null;
-	ObjectOutputStream 	oos 	= null;//말 하고 싶을 때
-	ObjectInputStream 	ois		= null;//듣기 할 때
-	String 				nickName= null;//닉네임 등록
+	ObjectOutputStream 	oos 	= null;		// 말 하고 싶을 때
+	ObjectInputStream 	ois		= null;		// 듣기 할 때
+	String 				nickName= null;		// 닉네임 등록
 	////////////////통신과 관련한 전역변수 추가  끝  //////////////
-	JPanel jp_second	  = new JPanel();
-	JPanel jp_second_south = new JPanel();
-	JButton jbtn_one	  = new JButton("1:1");
-	JButton jbtn_change	  = new JButton("대화명변경");
-	JButton jbtn_font	  = new JButton("글자색");
-	JButton jbtn_exit	  = new JButton("나가기");
-	String cols[] 		  = {"대화명"};
-	String data[][] 	  = new String[0][1];
-	DefaultTableModel dtm = new DefaultTableModel(data,cols);
-	JTable			  jtb = new JTable(dtm);
-	JScrollPane       jsp = new JScrollPane(jtb);
+	JPanel jp_second	  	= new JPanel();	
+	JPanel jp_second_south 	= new JPanel();
+	JButton jbtn_one	  	= new JButton("1:1");
+	JButton jbtn_change	  	= new JButton("대화명변경");
+	JButton jbtn_font	  	= new JButton("글자색");
+	JButton jbtn_exit	  	= new JButton("나가기");
+	String cols[] 		  	= {"대화명"};
+	String data[][] 	  	= new String[0][1];
+	DefaultTableModel dtm 	= new DefaultTableModel(data,cols);
+	JTable			  jtb 	= new JTable(dtm);
+	JScrollPane       jsp 	= new JScrollPane(jtb);
 	JPanel jp_first 		= new JPanel();
 	JPanel jp_first_south 	= new JPanel();
-	JTextField jtf_msg = new JTextField(20);//south속지 center
-	JButton jbtn_send  = new JButton("전송");//south속지 east
-	JTextArea jta_display = null;
+	JTextField jtf_msg 		= new JTextField(20);//south속지 center
+	JButton jbtn_send  		= new JButton("전송");//south속지 east
+	JTextArea jta_display 	= null;
 	JScrollPane jsp_display = null;
 	//배경 이미지에 사용될 객체 선언-JTextArea에 페인팅
 	Image back = null;
@@ -102,8 +102,10 @@ public class TalkClient extends JFrame implements ActionListener {
 	public void init() {
 		try {
 			//서버측의 ip주소 작성하기
-			socket = new Socket("127.0.0.1",3002);
-			oos = new ObjectOutputStream(socket.getOutputStream());
+			socket = new Socket("127.0.0.1",3002);	// 소켓정보(자기자신아이피, 포트넘버)를 socket변수에 담는다.
+			// 위에서 받은 소캣정보중 아웃풋스트림에 대한 정보를 받아서 오브젝트아웃풋스트림의 파라미터로 전달하고 oos변수에 저장한다 
+			oos = new ObjectOutputStream(socket.getOutputStream());	 
+			// 위에서 받은 소캣정보중 인풋스트림에 대한 정보를 받아서 오브젝트아웃풋스트림의 파라미터로 전달하고 oos변수에 저장한다.
 			ois = new ObjectInputStream(socket.getInputStream());
 			//initDisplay에서 닉네임이 결정된 후 init메소드가 호출되므로
 			//서버에게 내가 입장한 사실을 알린다.(말하기)
