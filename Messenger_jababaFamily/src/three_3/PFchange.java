@@ -42,7 +42,9 @@ public class PFchange extends JFrame implements ActionListener {
 	public PFchange() {
 		initDisplay(); 
 		}
-	
+	public PFchange() {
+		initDisplay(); 
+		}
 	
 	/* 배경이미지 */
 	

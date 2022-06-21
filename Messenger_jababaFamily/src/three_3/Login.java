@@ -79,7 +79,7 @@ public class Login extends JFrame implements ActionListener{
 	        jtf_id.setBounds(110, 200, 185, 40);
 	        this.add(jtf_id);
 	        
-	        // pw 라인
+	  ////      // pw 라인
 	        jlb_pw.setBounds(45, 240, 80, 40);
 	        jlb_pw.setFont(jl_font);
 	        this.add(jlb_pw);
@@ -113,16 +113,16 @@ public class Login extends JFrame implements ActionListener{
 		// 로그인 버튼
 		else if(obj == jbtn_login) {
 			MemberDAO mDao = new MemberDAO();
+			MemberVO mVO = new MemberVO(this)
 			user_ID = jtf_id.getText();
 			String user_pw = jpf_pw.getText();
 			//////////////////////////////////
-			Confirm pfc = new Confirm(this); 
 			//////////////////////////////////
-        	int result = mDao.signIn(user_ID,user_pw);
-        	if(result == 1) {
+        	int result = reulst(user_ID,user_pw);
+    //    	
+  //      	if(result == 1) {
         		// 로그인성공
         		this.dispose();
-        		new TalkClient();
         		System.out.println("아이디 : " + user_ID);
         	}
         	else if(result == 0) {
