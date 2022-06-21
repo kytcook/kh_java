@@ -11,7 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -20,7 +19,7 @@ public class Sign extends JFrame implements ActionListener {
 	/////////////////////////////////////////////////////
 	/* 선언부 */
 	/////////////////////////////////////////////////////
-	String imgPath	= "D:\\java_study\\workspace_java\\kh_javaAC\\Messenger_jababaFamily\\src\\img\\";	// 이미지 경로를 문자열로..지정??
+	String imgPath	= "D:\\java_study\\workspace_java\\kh\\Messenger_jababaFamily\\src\\img\\";	// 이미지 경로를 문자열로..지정??
 	JLabel jlb_id 	= new JLabel("아이디");						// "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_pw 	= new JLabel("비밀번호");						// "[입력]" : 문자열을 화면에 그림
 	JLabel jlb_repw = new JLabel("비밀번호 재확인");					// "[입력]" : 문자열을 화면에 그림
@@ -119,7 +118,9 @@ public class Sign extends JFrame implements ActionListener {
 		jbtn_but.setBounds(295, 135, 25, 25);
 		this.add(jbtn_but);  
 	}
-
+	public static void main(String[] args) {
+		new Sign();
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {

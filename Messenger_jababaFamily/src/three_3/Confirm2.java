@@ -16,7 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
-public class Confirm extends JFrame implements ActionListener{
+public class Confirm2 extends JFrame implements ActionListener{
 	MemberVO lgmv = null;
 	boolean box_onoff = false;
 	// 이미지 경로
@@ -27,19 +27,22 @@ public class Confirm extends JFrame implements ActionListener{
 	Font jl_font = new Font("맑은고딕체", Font.BOLD, 20);
 	// 아이디
 	JLabel jlb_id = new JLabel("아이디");
-	JTextField jtf_id = new JTextField(lgmv.getId()); // id 입력창
+	JTextField jtf_id = new JTextField(""); // id 입력창
     // 패스워드
 	JLabel jlb_pw = new JLabel("패스워드");
     JPasswordField jpf_pw = new JPasswordField(""); // pw 입력창
     // 확인버튼
     JButton jb_ok = new JButton(
     		new ImageIcon(imgPath+"확인.png"));
+    Login2 login = new Login2();
+    String user_id = null;
     
-	public Confirm() {
+	public Confirm2() {
 		initDisplay();
 	}
-	public Confirm(MemberVO lgmv) {
-		this.lgmv = lgmv;
+	public Confirm2(Login2 login) {
+		this.login 	 = login;
+		this.user_id = login.user_ID;
 	}
 	
 	/* 배경이미지 */
@@ -86,7 +89,10 @@ public class Confirm extends JFrame implements ActionListener{
 	}
 	
 	public static void main(String[] args) {
-		new Confirm();
+		Login2 login = new Login2();
+		Confirm2 c = new Confirm2(login);
+		
+		System.out.println("confirm창에서 출력한 아이디:" + c.user_id);
 	}
 
 	@Override

@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class Login extends JFrame implements ActionListener{
+public class Login2 extends JFrame implements ActionListener{
 	/****************************************
 	 * 				   선언부					*	
 	 ****************************************/
@@ -33,10 +33,14 @@ public class Login extends JFrame implements ActionListener{
     		new ImageIcon(imgPath+"회원가입2.png"));
     // JPanel에 쓰일 이미지아이콘
     ImageIcon ig = new ImageIcon(imgPath+"main2.png");
+    MemberVO mVO = new MemberVO();
+    String user_ID = jtf_id.getText();
+    String user_pw = jpf_pw.getText();
+    
 	/****************************************
 	 * 				   생성자					*	
 	 ****************************************/
-    public Login(){
+    public Login2(){
         initDisplay();
     }
     /* 배경이미지 */ 
@@ -97,7 +101,7 @@ public class Login extends JFrame implements ActionListener{
         }
     
 	public static void main(String[] args) {
-		new Login();
+		new Login2();
 	}
 
 	@Override
@@ -112,9 +116,6 @@ public class Login extends JFrame implements ActionListener{
 		// 로그인 버튼
 		else if(obj == jbtn_login) {
 			MemberDAO mDao = new MemberDAO();
-			MemberVO mVO = new MemberVO();
-			String user_ID = jtf_id.getText();
-			String user_pw = jpf_pw.getText();
 			mVO.setId(user_ID);
 			mVO.setPw(user_pw);
 			//////////////////////////////////

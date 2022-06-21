@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 public class MemberDAO {
 	// 선언부
 	/////////////////////////// DB 연동 ///////////////////////////

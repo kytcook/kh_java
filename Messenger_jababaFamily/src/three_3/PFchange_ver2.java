@@ -32,8 +32,7 @@ public class PFchange extends JFrame implements ActionListener {
 	JTextField 		jtf_nickname	= new JTextField("");			// 닉네임 텍스트필드
 	JButton 		jbtn_update 	= new JButton(new ImageIcon(imgPath+"변경하기.png"));		// 업데이트 버튼
 	JButton 		jlb_del 		= new JButton("아이디 삭제");		// 아이디 삭제 버튼
-	JButton 		jbtn_pwok 		= new JButton(new ImageIcon(imgPath+"버튼.png")); 	// 비번체크 버튼	
-	JButton 		jbtn_nickok 	= new JButton(new ImageIcon(imgPath+"버튼.png")); 	// 비번체크 버튼	
+	JButton 		jbtn_ok 		= new JButton(new ImageIcon(imgPath+"버튼.png")); 	// 비번체크 버튼	
 	// 폰트설정
 	Font			jl_font 		= new Font("맑은고딕체", Font.BOLD, 17);	// 폰트를 파라미터 값(글씨체, 폰트굵기, 크기)으로  생성한다.
 	
@@ -59,13 +58,13 @@ public class PFchange extends JFrame implements ActionListener {
 	   	 public void windowClosing(WindowEvent e) {
 	            System.exit(0);
 	   	 }});
-	    jbtn_pwok.addActionListener(this);
+	    jbtn_ok.addActionListener(this);
 	    jbtn_update.addActionListener(this);
 	    
 	    
         // 비밀번호 확인버튼
-        jbtn_pwok.setBounds(355, 45, 28, 28);
-        this.add(jbtn_pwok);
+        jbtn_ok.setBounds(355, 45, 28, 28);
+        this.add(jbtn_ok);
         
         // 비밀번호 변경
         jlb_changepw.setBounds(40, 40, 130, 40);	// 비밀번호
@@ -91,10 +90,6 @@ public class PFchange extends JFrame implements ActionListener {
         jtf_nickname.setEnabled(box_toggle);	
         this.add(jtf_nickname);
         
-        // nickok 버튼
-        jbtn_pwok.setBounds(355, 160, 28, 28);
-        this.add(jbtn_nickok);
-        
         // 변경하기 버튼
         jbtn_update.setBounds(140, 280, 140, 40);
         jbtn_update.setEnabled(box_toggle);	
@@ -113,7 +108,7 @@ public class PFchange extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
 		// 중복확인 버튼
-		if (obj == jbtn_pwok) {						// '비밀번호체크 버튼' 눌리면
+		if (obj == jbtn_ok) {						// '비밀번호체크 버튼' 눌리면
 //			System.out.println("버튼눌림");
 //			MemberDAO mDao = new MemberDAO();			// DAO 인스턴스화
 //			String user_pw = jpf_pw.getText();			// user_pw에 입력한 값을 저장한다.
@@ -121,14 +116,14 @@ public class PFchange extends JFrame implements ActionListener {
 //			if(result == -1) {							// 만약 result가 -1이면 중복된 아이디가 있다.
 //				// Dao에 있는 메시지 출력
 //			}else if(result == 1) {						// 사용가능한 아이디라면
-				jbtn_pwok.setEnabled(box_toggle);			// '중복체크버튼' 비활성화
+				jbtn_ok.setEnabled(box_toggle);			// '중복체크버튼' 비활성화
 				box_toggle = true;						
 				jpf_changepw.setEnabled(box_toggle);		
 				jpf_repw.setEnabled(box_toggle);			
 				jbtn_update.setEnabled(box_toggle);		
 				jlb_del.setEnabled(box_toggle);			
 				}
-//			else if (obj == jbtn)
+				
 		//	}
 			else if (obj == jbtn_update) {			// '변경하기 버튼'이 눌리면
 //			MemberDAO mDao = new MemberDAO();		// DAO 인스턴스화
