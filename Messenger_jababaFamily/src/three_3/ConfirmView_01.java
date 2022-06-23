@@ -16,7 +16,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
-public class Confirm extends JFrame implements ActionListener{
+public class ConfirmView_01 extends JFrame implements ActionListener{
 	MemberVO lgmv = null;
 	// 이미지 경로
 	String imgPath="C:\\java\\workspace_java\\project\\이미지\\";
@@ -34,10 +34,10 @@ public class Confirm extends JFrame implements ActionListener{
     JButton jb_ok = new JButton(
     		new ImageIcon(imgPath+"확인.png"));
     
-	public Confirm() {
+	public ConfirmView_01() {
 		initDisplay();
 	}
-	public Confirm(MemberVO lgmv) {
+	public ConfirmView_01(MemberVO lgmv) {
 		this.lgmv = lgmv;
 	}
 	
@@ -85,7 +85,7 @@ public class Confirm extends JFrame implements ActionListener{
 	}
 	
 	public static void main(String[] args) {
-		new Confirm();
+		new ConfirmView_01();
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class Confirm extends JFrame implements ActionListener{
 		// 확인버튼 누르면..
 		if (obj == jb_ok) {
 		this.dispose();
-		new PFchange();
+		new PFchangeView_01();
 		}
 
 	}
