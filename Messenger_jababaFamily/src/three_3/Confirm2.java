@@ -20,7 +20,7 @@ public class Confirm2 extends JFrame implements ActionListener{
 	MemberVO lgmv = null;
 	boolean box_onoff = false;
 	// 이미지 경로
-	String imgPath="C:\\java\\workspace_java\\project\\이미지\\";
+	String imgPath="D:\\java_study\\workspace_java\\kh\\Messenger_jababaFamily\\src\\img\\";
 	// 배경화면
 	ImageIcon ig = new ImageIcon(imgPath+"대화방배경.png");
 	// 상단 "채팅" 폰트
@@ -41,8 +41,7 @@ public class Confirm2 extends JFrame implements ActionListener{
 		initDisplay();
 	}
 	public Confirm2(Login2 login) {
-		this.login 	 = login;
-		this.user_id = login.user_ID;
+		user_id = login.user_ID;
 	}
 	
 	/* 배경이미지 */

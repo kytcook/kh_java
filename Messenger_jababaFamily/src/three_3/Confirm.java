@@ -18,7 +18,6 @@ import javax.swing.JTextField;
 
 public class Confirm extends JFrame implements ActionListener{
 	MemberVO lgmv = null;
-	boolean box_onoff = false;
 	// 이미지 경로
 	String imgPath="C:\\java\\workspace_java\\project\\이미지\\";
 	// 배경화면
@@ -27,7 +26,7 @@ public class Confirm extends JFrame implements ActionListener{
 	Font jl_font = new Font("맑은고딕체", Font.BOLD, 20);
 	// 아이디
 	JLabel jlb_id = new JLabel("아이디");
-	JTextField jtf_id = new JTextField(lgmv.getId()); // id 입력창
+	JTextField jtf_id = new JTextField(""); // id 입력창
     // 패스워드
 	JLabel jlb_pw = new JLabel("패스워드");
     JPasswordField jpf_pw = new JPasswordField(""); // pw 입력창
@@ -69,8 +68,8 @@ public class Confirm extends JFrame implements ActionListener{
         
         //아이디 입력창
         jtf_id.setBounds(150, 40, 130, 40);
+        jtf_id.setEnabled(false);
         this.add(jtf_id);
-        jtf_id.setEnabled(box_onoff);	
         
         // pw 라인
         jlb_pw.setBounds(45, 90, 130, 40);

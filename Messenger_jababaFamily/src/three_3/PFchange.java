@@ -1,18 +1,21 @@
 package three_3;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 
 public class PFchange extends JFrame implements ActionListener {
@@ -20,18 +23,24 @@ public class PFchange extends JFrame implements ActionListener {
 	 * 				   선언부					*	
 	 ****************************************/
 	// 이미지 경로를 담는 변수 imgPath
-	String imgPath		= "D:\\java_study\\workspace_java\\kh_javaAC\\Messenger_jababaFamily\\src\\img\\";	
-	boolean box_toggle = false;
+	String imgPath		= "D:\\java_study\\workspace_java\\kh\\Messenger_jababaFamily\\src\\img\\";
+	// 토글연습
+	JToggleButton tb1	= new JToggleButton("1버튼", true); 
+	JToggleButton tb2	= new JToggleButton("2버튼", false); 
+	ButtonGroup tb_btn 	= new ButtonGroup(); 
+	Container con;
+	
+	boolean box_toggle 	= false;
 	
 	JLabel jlb_changepw	= new JLabel("PW 변경");	
 	JLabel jlb_repw 	= new JLabel("PW 확인");	
-	JLabel jlb_nickname	= new JLabel("닉네임 변경");					// "[입력]" : 문자열을 화면에 그림
-	
+	JLabel jlb_nick		= new JLabel("닉네임 변경");					// "[입력]" : 문자열을 화면에 그림
 	JPasswordField 	jpf_changepw	= new JPasswordField("");		// 비밀번호 입력칸
 	JPasswordField 	jpf_repw		= new JPasswordField("");		// 비밀번호 확인 입력칸
-	JTextField 		jtf_nickname	= new JTextField("");			// 닉네임 텍스트필드
+	JTextField 		jtf_nick		= new JTextField("");			// 닉네임 텍스트필드
+	
 	JButton 		jbtn_update 	= new JButton(new ImageIcon(imgPath+"변경하기.png"));		// 업데이트 버튼
-	JButton 		jlb_del 		= new JButton("아이디 삭제");		// 아이디 삭제 버튼
+	JButton 		jbtn_del 		= new JButton("아이디 삭제");		// 아이디 삭제 버튼
 	JButton 		jbtn_pwok 		= new JButton(new ImageIcon(imgPath+"버튼.png")); 	// 비번체크 버튼	
 	JButton 		jbtn_nickok 	= new JButton(new ImageIcon(imgPath+"버튼.png")); 	// 비번체크 버튼	
 	// 폰트설정
@@ -49,6 +58,7 @@ public class PFchange extends JFrame implements ActionListener {
 	 * 				   화면처리				*	
 	 ****************************************/
 	public void initDisplay() {
+		
 	    this.setLayout(null);
 	    this.setTitle("꽉자바 ver.1");
 	    this.setSize(450, 470);
@@ -60,8 +70,13 @@ public class PFchange extends JFrame implements ActionListener {
 	            System.exit(0);
 	   	 }});
 	    jbtn_pwok.addActionListener(this);
+	    jbtn_nickok.addActionListener(this);
 	    jbtn_update.addActionListener(this);
 	    
+	    
+	    // 토글버튼추가중..어떻게하나
+	    this.tb_btn.add(tb1);
+	    this.tb_btn.add(tb2);
 	    
         // 비밀번호 확인버튼
         jbtn_pwok.setBounds(355, 45, 28, 28);
@@ -83,17 +98,18 @@ public class PFchange extends JFrame implements ActionListener {
         jpf_repw.setEnabled(box_toggle);	
         this.add(jpf_repw);
         
-        // 닉네임
-        jlb_nickname.setBounds(40, 160, 130, 40);	
-        jlb_nickname.setFont(jl_font);
-        this.add(jlb_nickname);
-        jtf_nickname.setBounds(140, 160, 200, 40);	
-        jtf_nickname.setEnabled(box_toggle);	
-        this.add(jtf_nickname);
-        
-        // nickok 버튼
-        jbtn_pwok.setBounds(355, 160, 28, 28);
+        // 닉네임 확인 버튼
+        jbtn_nickok.setBounds(355, 160, 28, 28);
         this.add(jbtn_nickok);
+        
+        // 닉네임
+        jlb_nick.setBounds(40, 160, 130, 40);	
+        jlb_nick.setFont(jl_font);
+        this.add(jlb_nick);
+        jtf_nick.setBounds(140, 160, 200, 40);	
+        jtf_nick.setEnabled(box_toggle);	
+        this.add(jtf_nick);
+        
         
         // 변경하기 버튼
         jbtn_update.setBounds(140, 280, 140, 40);
@@ -101,12 +117,12 @@ public class PFchange extends JFrame implements ActionListener {
         this.add(jbtn_update);
         
         // 아이디 삭제 버튼
-        jlb_del.setBounds(140, 350, 140, 40);
-        jlb_del.setFont(jl_font);
-        jlb_del.setBackground(new Color(158,9,9));
-		jlb_del.setForeground(new Color(212,212,212));
-		jlb_del.setEnabled(box_toggle);	
-        this.add(jlb_del);
+        jbtn_del.setBounds(140, 350, 140, 40);
+        jbtn_del.setFont(jl_font);
+        jbtn_del.setBackground(new Color(158,9,9));
+		jbtn_del.setForeground(new Color(212,212,212));
+		jbtn_del.setEnabled(box_toggle);	
+        this.add(jbtn_del);
 	}/////////////////[end of initDisplay]////////////////
 	
 	@Override
@@ -121,21 +137,32 @@ public class PFchange extends JFrame implements ActionListener {
 //			if(result == -1) {							// 만약 result가 -1이면 중복된 아이디가 있다.
 //				// Dao에 있는 메시지 출력
 //			}else if(result == 1) {						// 사용가능한 아이디라면
-				jbtn_pwok.setEnabled(box_toggle);			// '중복체크버튼' 비활성화
+				box_toggle = false;						
+				jtf_nick.setEnabled(box_toggle);		
 				box_toggle = true;						
 				jpf_changepw.setEnabled(box_toggle);		
 				jpf_repw.setEnabled(box_toggle);			
 				jbtn_update.setEnabled(box_toggle);		
-				jlb_del.setEnabled(box_toggle);			
+				jbtn_del.setEnabled(box_toggle);			
 				}
 //			else if (obj == jbtn)
 		//	}
+			else if (obj == jbtn_nickok) {
+				box_toggle = false;						
+				jpf_changepw.setEnabled(box_toggle);		
+				jpf_repw.setEnabled(box_toggle);			
+				box_toggle = true;						
+				jtf_nick.setEnabled(box_toggle);		
+				jbtn_update.setEnabled(box_toggle);		
+				jbtn_del.setEnabled(box_toggle);			
+				}
+		
 			else if (obj == jbtn_update) {			// '변경하기 버튼'이 눌리면
 //			MemberDAO mDao = new MemberDAO();		// DAO 인스턴스화
 //			String user_ID = jtf_id.getText();		// user_ID는 미리 입력받아져 있어야한다.
 //			String user_pw = jpf_pw.getText();		// user_pw에 입력받은 텍스트를 넣음 
-//			String user_nickname = jtf_nickname.getText();	// user_name에 입력받은 텍스트를 담음
-//	    	int result = mDao.signUp(user_ID,user_pw,user_nickname); // 위에서 담은 3가지 변수값을 Dao클래스 아래 signUp메소드로 던져서 DB 대조후에 리턴값 받음
+//			String user_nick = jtf_nick.getText();	// user_name에 입력받은 텍스트를 담음
+//	    	int result = mDao.signUp(user_ID,user_pw,user_nick); // 위에서 담은 3가지 변수값을 Dao클래스 아래 signUp메소드로 던져서 DB 대조후에 리턴값 받음
 //	    	if(result == 1) {	//회원가입 성공				
     			new TalkClient();
     			dispose();

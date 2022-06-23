@@ -15,7 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
-public class PFchange extends JFrame implements ActionListener {
+public class PFchange_ver2 extends JFrame implements ActionListener {
 	/****************************************
 	 * 				   선언부					*	
 	 ****************************************/
@@ -39,7 +39,7 @@ public class PFchange extends JFrame implements ActionListener {
 	/****************************************
 	 * 				   생성자					*	
 	 ****************************************/
-	public PFchange() {
+	public PFchange_ver2() {
 		initDisplay(); 
 		}
 	/* 배경이미지 */
@@ -108,33 +108,40 @@ public class PFchange extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
 		// 중복확인 버튼
-		if (obj == jbtn_ok) {						// '비밀번호체크 버튼' 눌리면
-//			System.out.println("버튼눌림");
-//			MemberDAO mDao = new MemberDAO();			// DAO 인스턴스화
-//			String user_pw = jpf_pw.getText();			// user_pw에 입력한 값을 저장한다.
-//			int result = mDao.signIn(user_id ,user_pw);	// 위에서 입력한 pw를 dao클래스의 아이디체크메소드 파라미터로 던져주고 반환받은 값을 result에 저장
-//			if(result == -1) {							// 만약 result가 -1이면 중복된 아이디가 있다.
-//				// Dao에 있는 메시지 출력
-//			}else if(result == 1) {						// 사용가능한 아이디라면
-				jbtn_ok.setEnabled(box_toggle);			// '중복체크버튼' 비활성화
-				box_toggle = true;						
-				jpf_changepw.setEnabled(box_toggle);		
-				jpf_repw.setEnabled(box_toggle);			
-				jbtn_update.setEnabled(box_toggle);		
-				jlb_del.setEnabled(box_toggle);			
-				}
+		while( ) {
+		switch(1) {
+		case 1: 
+			if (obj == jbtn_ok) {						// '비밀번호체크 버튼' 눌리면
+//				System.out.println("버튼눌림");
+//				MemberDAO mDao = new MemberDAO();			// DAO 인스턴스화
+//				String user_pw = jpf_pw.getText();			// user_pw에 입력한 값을 저장한다.
+//				int result = mDao.signIn(user_id ,user_pw);	// 위에서 입력한 pw를 dao클래스의 아이디체크메소드 파라미터로 던져주고 반환받은 값을 result에 저장
+//				if(result == -1) {							// 만약 result가 -1이면 중복된 아이디가 있다.
+//					// Dao에 있는 메시지 출력
+//				}else if(result == 1) {						// 사용가능한 아이디라면
+					jbtn_ok.setEnabled(box_toggle);			// '중복체크버튼' 비활성화
+					box_toggle = true;						
+					jpf_changepw.setEnabled(box_toggle);		
+					jpf_repw.setEnabled(box_toggle);			
+					jbtn_update.setEnabled(box_toggle);		
+					jlb_del.setEnabled(box_toggle);			
+					}
+		case 2: 
+			 if (obj == jbtn_update) {			// '변경하기 버튼'이 눌리면
+//				MemberDAO mDao = new MemberDAO();		// DAO 인스턴스화
+//				String user_ID = jtf_id.getText();		// user_ID는 미리 입력받아져 있어야한다.
+//				String user_pw = jpf_pw.getText();		// user_pw에 입력받은 텍스트를 넣음 
+//				String user_nickname = jtf_nickname.getText();	// user_name에 입력받은 텍스트를 담음
+//		    	int result = mDao.signUp(user_ID,user_pw,user_nickname); // 위에서 담은 3가지 변수값을 Dao클래스 아래 signUp메소드로 던져서 DB 대조후에 리턴값 받음
+//		    	if(result == 1) {	//회원가입 성공				
+	    			new TalkClient();
+//	    			dispose();
+		    	}
+			}
+		}
 				
 		//	}
-			else if (obj == jbtn_update) {			// '변경하기 버튼'이 눌리면
-//			MemberDAO mDao = new MemberDAO();		// DAO 인스턴스화
-//			String user_ID = jtf_id.getText();		// user_ID는 미리 입력받아져 있어야한다.
-//			String user_pw = jpf_pw.getText();		// user_pw에 입력받은 텍스트를 넣음 
-//			String user_nickname = jtf_nickname.getText();	// user_name에 입력받은 텍스트를 담음
-//	    	int result = mDao.signUp(user_ID,user_pw,user_nickname); // 위에서 담은 3가지 변수값을 Dao클래스 아래 signUp메소드로 던져서 DB 대조후에 리턴값 받음
-//	    	if(result == 1) {	//회원가입 성공				
-    			new TalkClient();
-    			dispose();
-	    	}
+
 		}
 //	}
 	
