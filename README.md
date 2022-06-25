@@ -12,6 +12,8 @@ _check  : 확인•검사 해주세요
 
 _study  : 공부
 
+_update : 업글 or 업로드
+
 _end    : 최종 작업
 
 
