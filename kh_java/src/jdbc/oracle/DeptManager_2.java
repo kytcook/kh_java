@@ -11,13 +11,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;​
+import java.util.Vector;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;​
+import javax.swing.table.DefaultTableModel;
 
 public class DeptManager_2 extends JFrame implements ActionListener{
 	public final String _DRIVER = "oracle.jdbc.driver.OracleDriver";
