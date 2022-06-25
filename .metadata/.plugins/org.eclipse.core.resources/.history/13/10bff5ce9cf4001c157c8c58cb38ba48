@@ -1,9 +1,9 @@
-<%@ page language = "java" contentType="application/json; charset=UTF-8" pageEncoding  = "UTF-8" %>
-<%@ page import   = "java.util.List, java.util.Map, java.util.ArrayList" %>
-<%@ page import   = "java.util.HashMap" %>
-<%@ page import   = "com.util.DBConnectionMgr, java.sql.Connection" %>
-<%@ page import   = "java.sql.PreparedStatement, java.sql.ResultSet" %>
-<%@ page import   = "com.google.gson.Gson" %>
+<%@ page language="java" contentType="application/json; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, java.util.Map, java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="com.util.DBConnectionMgr, java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement, java.sql.ResultSet" %>
 <%
 		//스크립트
 		Connection con = null;
