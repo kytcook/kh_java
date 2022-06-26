@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-D:\java_study\workspace_java\kh_javaAC\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3909842869.index
-\taek_web\src\main\java
-D:\java_study\workspace_java\kh_javaAC\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3701774219.index
-\taek_web\src\main\java

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;DBConnectionMgr.java&apos; to &apos;taek_web/src/main/java/com.util&apos;&#x0D;&#x0A;- Original project: &apos;kh_java&apos;&#x0D;&#x0A;- Destination element: &apos;taek_web/src/main/java/com.util&apos;&#x0D;&#x0A;- Original element: &apos;jdbc.oracle.DBConnectionMgr.java&apos;" description="Copy compilation unit" destination="=taek_web/src\/main\/java&lt;com.util" element1="/src&lt;jdbc.oracle{DBConnectionMgr.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1656164586674" units="1" version="1.0"/>
-</session>

@@ -4,7 +4,7 @@ public class MemberVO {
 	private String id		 = null;
 	private String pw 	 	 = null;
 	private String nickname  = null;
-	
+
 	public MemberVO() {
 		
 	}
@@ -32,4 +32,5 @@ public class MemberVO {
 	public void setNickName(String nickname) {
 		this.nickname = nickname;
 	}
+	
 }
