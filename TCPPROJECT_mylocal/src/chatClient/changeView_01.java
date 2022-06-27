@@ -15,7 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
-public class changeView extends JFrame implements ActionListener {
+public class changeView_01 extends JFrame implements ActionListener {
 	/****************************************
 	 * 				   선언부					*	
 	 ****************************************/
@@ -52,7 +52,7 @@ public class changeView extends JFrame implements ActionListener {
 	/****************************************
 	 * 				   생성자					*	
 	 ****************************************/
-	public changeView() {
+	public changeView_01() {
 		initDisplay(); 
 		}
 	
@@ -206,7 +206,7 @@ public class changeView extends JFrame implements ActionListener {
 //	}
 	
 	public static void main(String[] args) {
-		new changeView();
+		new changeView_01();
 	}
 
-}/////////////////[end of class PFchangeView_01]////////////////
+}/////////////////[end of class PFchangeView_01_01]////////////////

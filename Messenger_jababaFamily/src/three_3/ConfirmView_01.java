@@ -94,7 +94,7 @@ public class ConfirmView_01 extends JFrame implements ActionListener{
 		// 확인버튼 누르면..
 		if (obj == jb_ok) {
 		this.dispose();
-		new PFchangeView_01();
+		new changeView_02();
 		}
 
 	}
