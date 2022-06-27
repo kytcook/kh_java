@@ -6,15 +6,29 @@
 <%@ page import   = "com.google.gson.Gson" %>
 <%
 		//스크립트
+		// query string or query parameter -> GET방식이다, 가능, POST는 불가능하다.
+		// 전송방식 - GET(단위테스트 가능), POST 방식은 반드시 javascript의 도움이 필요함
+		String deptno = request.getParameter("deptno");
+		// out.print("요청 파마미터에서 입력 받은 값 => "+deptno); 
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		DBConnectionMgr dbMgr = new DBConnectionMgr();
 		List<Map<String,Object>> deptList = null;
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT deptno, dname,loc FROM dept");
+		if(deptno !=null) {
+			sql.append(" WHERE deptno = ?");
+		} 
+
 		try {
 			con = dbMgr.getConnection();
 			// 파라미터로 받은 select문을 전달
 			pstmt = con.prepareStatement("SELECT deptno, dname, loc FROM dept");
+			if(deptno !=null) {
+				pstmt.setString(1, deptno);
+			}
+			
 			// 전달 된 select문에 대한 처리를 요청하고 커서 받아내기
 			rs = pstmt.executeQuery();
 			deptList = new ArrayList<>();
