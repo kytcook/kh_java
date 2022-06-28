@@ -1,4 +1,4 @@
-package chatClient;
+package chatClient_VOconstructor;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -19,10 +19,11 @@ public class changeView_02 extends JFrame implements ActionListener {
 	 * 				   선언부					*	
 	 ****************************************/
 	boolean box_toggle 	= false;	// 일종의 토글박스 기능 - 클릭시 입력칸들 활성화/비활성화
+	MemberVO mv = null;
 	
 	
 	// J입력
-	JLabel jlb_id		= new JLabel("id");		   				// 아이디 라벨
+	JLabel jlb_id		= new JLabel(mv.getMem_id());		   				// 아이디 라벨
 	JLabel jlb_pw 		= new JLabel("현재 PW");	 				// 현재 비밀번호 라벨
 	JLabel jlb_changepw	= new JLabel("PW 변경");	   				// 비번변경  라벨
 	JLabel jlb_repw 	= new JLabel("PW 확인");	 				// 비번변경  라벨
@@ -46,18 +47,19 @@ public class changeView_02 extends JFrame implements ActionListener {
 	/****************************************
 	 * 				   생성자					*	
 	 ****************************************/
-	ChatView lv = null;
-	public changeView_02(ChatView lv) {
-		this.lv = lv; 
+	public changeView_02() {
+		
 	}
+	public changeView_02(MemberVO mv) {
+		this.mv = mv; 
+	}
+	
 	
 	/****************************************
 	 * 				   화면처리				*	
 	 ****************************************/
 	public void initDisplay() {
-		////////////////////////////////////////////////////////////
-		JTextField 		jtf_id			= new JTextField(lv.get);///// 로그인에서 받아오는 아이디
-		////////////////////////////////////////////////////////////
+		JTextField 		jtf_id			= new JTextField();		// 로그인에서 받아오는 아이디
 		
 	    this.setLayout(null);									// 레이아웃
 	    this.setTitle("꽉자바 ver.1");							// 타이틀 붙이기
@@ -152,7 +154,7 @@ public class changeView_02 extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
 		// 비밀번호 확인 버튼
-		if (obj == jbtn_pwok) {							// '비밀번호체크 버튼' 눌리면
+		if (obj == jbtn_pwok) {						// '비밀번호체크 버튼' 눌리면
 			System.out.println("현재pw버튼 눌림");
 //			MemberDAO mDao = new MemberDAO();			// DAO 인스턴스화
 //			String user_pw = jpf_changepw.getText();	// user_changepw에 입력한 값을 저장한다.
@@ -195,8 +197,5 @@ public class changeView_02 extends JFrame implements ActionListener {
 	    	}
 		}
 //	}
-	
-	public static void main(String[] args) {
-	}
 
 }/////////////////[end of class changeView_02]////////////////

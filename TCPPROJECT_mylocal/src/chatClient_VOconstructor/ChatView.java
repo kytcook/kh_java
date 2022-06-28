@@ -1,4 +1,4 @@
-package chatClient;
+package chatClient_VOconstructor;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -56,14 +56,6 @@ public class ChatView extends JFrame implements ActionListener {
 	JTable jtb = new JTable(dtm);
 	JScrollPane jsp = new JScrollPane(jtb);
 	JSplitPane jspp = new JSplitPane(SwingConstants.VERTICAL, jp_first,jp_second);
-	
-	///////////////////////////////////
-	LoginView lv = null;			 //
-	//↑								 //
-	public ChatView(LoginView lv) {	 //
-		this.lv = lv;				 //
-	}								 //
-	///////////////////////////////////
 	
 	// ChatView가 실행되면서 동시에 TalkClienThread가 생성되고
 	// run()메소드로 쓰레드가 실행됩니다.
@@ -164,10 +156,8 @@ public class ChatView extends JFrame implements ActionListener {
 		
 		// NICKNAME_CHANGE
 		} else if (jbtn_change == obj) {
-			/////////////////////////////////////////////
-			changeView_02 cv = new changeView_02(this);//
-			cv.initDisplay();                          //
-			/////////////////////////////////////////////
+			changeView_02 cv = new changeView_02();
+			cv.initDisplay();
 			}
 		}
 	}////////////////////// end of class

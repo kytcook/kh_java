@@ -1,4 +1,4 @@
-package chatClient;
+package chatClient_VOconstructor;
 
 import java.awt.Font;
 import java.awt.Graphics;
@@ -113,19 +113,11 @@ public class LoginView extends JFrame implements ActionListener {
 		if (jtf_id == e.getSource() || jpf_pw == e.getSource() || jbtn_login == e.getSource()) {
 			if (!(jtf_id.getText().equals("")) && !(jpf_pw.getText().equals(""))) {
 				System.out.println("로그인 호출 성공");
-//				MemberVO pmVO = new MemberVO(this);
 				MemberVO pmVO = new MemberVO();
 				pmVO.setMem_id(getId());
 				pmVO.setMem_pw(getPw());
 				pmVO.setCommand("login");
-				
-				
-				///////////////////////////////////
-				ChatView cv = new ChatView(this);// 
-				///////////////////////////////////
-				
-				
-				MemberVO rsVO = new MemberVO(); // 리턴받을 rsVO생성
+				MemberVO rsVO = new MemberVO(this); // 리턴받을 rsVO생성
 				rsVO = controller.action(pmVO); // return값 rsVO
 				String nickName = rsVO.getMem_name();
 				System.out.println("result : " + nickName);

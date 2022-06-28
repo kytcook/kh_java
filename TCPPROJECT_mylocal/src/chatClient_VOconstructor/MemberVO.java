@@ -1,15 +1,25 @@
-package chatClient;
+package chatClient_VOconstructor;
 
 import java.io.Serializable;
 
 public class MemberVO implements Serializable{
-	LoginView lv = null;
 	private String mem_id       = null;
 	private String mem_pw       = null;
 	private String mem_name     = null;
 	private String mem_phone	= null;
 	private String command 	    = null;	
 	private int	   result		= 0;
+	
+	public MemberVO() {
+		
+	}
+	///////////////////////////////////////////////
+	LoginView lv = null;                         //
+	changeView_02 cv = new changeView_02(this);  //
+	                                             //
+	public MemberVO(LoginView lv) {              //
+		this.lv = lv;                            //
+	}//////////////////////////////////////////////
 	
 	public String getMem_id() {
 		return mem_id;
