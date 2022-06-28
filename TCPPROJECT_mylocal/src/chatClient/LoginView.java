@@ -31,6 +31,7 @@ public class LoginView extends JFrame implements ActionListener {
 	// JPanel에 쓰일 이미지아이콘
 	ImageIcon ig = new ImageIcon(imgPath + "main4.png");
 	// 컨트롤러 싱긍톤으로 생성
+	String getid = null;
 	
 	Controller controller = Controller.getInstance();
 	public LoginView() {
@@ -113,17 +114,10 @@ public class LoginView extends JFrame implements ActionListener {
 		if (jtf_id == e.getSource() || jpf_pw == e.getSource() || jbtn_login == e.getSource()) {
 			if (!(jtf_id.getText().equals("")) && !(jpf_pw.getText().equals(""))) {
 				System.out.println("로그인 호출 성공");
-//				MemberVO pmVO = new MemberVO(this);
 				MemberVO pmVO = new MemberVO();
 				pmVO.setMem_id(getId());
 				pmVO.setMem_pw(getPw());
 				pmVO.setCommand("login");
-				
-				
-				///////////////////////////////////
-				ChatView cv = new ChatView(this);// 
-				///////////////////////////////////
-				
 				
 				MemberVO rsVO = new MemberVO(); // 리턴받을 rsVO생성
 				rsVO = controller.action(pmVO); // return값 rsVO
@@ -138,6 +132,9 @@ public class LoginView extends JFrame implements ActionListener {
 					}else {
 						TalkClient tc = new TalkClient(nickName);
 						new ChatView(tc);
+						getid = pmVO.getMem_id();
+						System.out.println( "아이디줍줍성공" + getid );
+						new ChatView(this);
 						tc.init();
 						dispose();
 					}

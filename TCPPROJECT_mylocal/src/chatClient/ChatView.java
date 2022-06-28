@@ -24,6 +24,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 public class ChatView extends JFrame implements ActionListener {
+
 	
 	JTextField jtf_name = new JTextField("대화명을 입력하세요",20);
 	JButton jbtn_search = new JButton("찾기");
@@ -58,10 +59,11 @@ public class ChatView extends JFrame implements ActionListener {
 	JSplitPane jspp = new JSplitPane(SwingConstants.VERTICAL, jp_first,jp_second);
 	
 	///////////////////////////////////
-	LoginView lv = null;			 //
+	String getid = null;			 //
 	//↑								 //
 	public ChatView(LoginView lv) {	 //
-		this.lv = lv;				 //
+		this.getid = lv.getid;		 //
+		System.out.println("아이디 잘받았습니다~ : "+  getid);	 //
 	}								 //
 	///////////////////////////////////
 	
@@ -165,7 +167,8 @@ public class ChatView extends JFrame implements ActionListener {
 		// NICKNAME_CHANGE
 		} else if (jbtn_change == obj) {
 			/////////////////////////////////////////////
-			changeView_02 cv = new changeView_02(this);//
+			System.out.println(getid); // null이 찍힌다.
+			changeView_02 cv = new changeView_02(this);////
 			cv.initDisplay();                          //
 			/////////////////////////////////////////////
 			}

@@ -20,14 +20,16 @@ public class changeView_02 extends JFrame implements ActionListener {
 	 ****************************************/
 	boolean box_toggle 	= false;	// 일종의 토글박스 기능 - 클릭시 입력칸들 활성화/비활성화
 	
+	String id = null;
 	
 	// J입력
-	JLabel jlb_id		= new JLabel("id");		   				// 아이디 라벨
+	JLabel jlb_id		= new JLabel("아이디");		   			// 아이디 라벨
 	JLabel jlb_pw 		= new JLabel("현재 PW");	 				// 현재 비밀번호 라벨
 	JLabel jlb_changepw	= new JLabel("PW 변경");	   				// 비번변경  라벨
 	JLabel jlb_repw 	= new JLabel("PW 확인");	 				// 비번변경  라벨
 	JLabel jlb_nick		= new JLabel("닉네임 변경");				// 닉네임변경 라벨
 
+	JTextField 		jtf_id			= new JTextField(id);///// 로그인에서 받아오는 아이디
 	JPasswordField 	jpf_pw			= new JPasswordField("");	// 현재 비밀번호 입력칸
 	JPasswordField 	jpf_changepw	= new JPasswordField("");	// 변경 비밀번호 입력칸
 	JPasswordField 	jpf_repw		= new JPasswordField("");	// 재확인	 입력칸
@@ -46,9 +48,8 @@ public class changeView_02 extends JFrame implements ActionListener {
 	/****************************************
 	 * 				   생성자					*	
 	 ****************************************/
-	ChatView lv = null;
-	public changeView_02(ChatView lv) {
-		this.lv = lv; 
+	public changeView_02(ChatView cv) {
+		this.id = cv.getid; 
 	}
 	
 	/****************************************
@@ -56,7 +57,6 @@ public class changeView_02 extends JFrame implements ActionListener {
 	 ****************************************/
 	public void initDisplay() {
 		////////////////////////////////////////////////////////////
-		JTextField 		jtf_id			= new JTextField(lv.get);///// 로그인에서 받아오는 아이디
 		////////////////////////////////////////////////////////////
 		
 	    this.setLayout(null);									// 레이아웃
