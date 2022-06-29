@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Member.DBConnectionMgr;
 /************************************************************
  * 수정해야 할 부분
  * id를 로그인 view에서 받아오기

@@ -11,16 +11,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 
 public class changeView_02 extends JFrame implements ActionListener {
 	/****************************************
 	 * 				   선언부					*	
 	 ****************************************/
 	boolean box_toggle 	= false;	// 일종의 토글박스 기능 - 클릭시 입력칸들 활성화/비활성화
-	
-	String id = null;
+	MemberDAO mDao = new MemberDAO();	
+//	String myid = null;
+	String myid = "123";
 	
 	// J입력
 	JLabel jlb_id		= new JLabel("아이디");		   			// 아이디 라벨
@@ -29,7 +32,7 @@ public class changeView_02 extends JFrame implements ActionListener {
 	JLabel jlb_repw 	= new JLabel("PW 확인");	 				// 비번변경  라벨
 	JLabel jlb_nick		= new JLabel("닉네임 변경");				// 닉네임변경 라벨
 
-	JTextField 		jtf_id			= new JTextField(id);///// 로그인에서 받아오는 아이디
+	JTextField 		jtf_id			= new JTextField(myid);		// 로그인에서 받아오는 아이디
 	JPasswordField 	jpf_pw			= new JPasswordField("");	// 현재 비밀번호 입력칸
 	JPasswordField 	jpf_changepw	= new JPasswordField("");	// 변경 비밀번호 입력칸
 	JPasswordField 	jpf_repw		= new JPasswordField("");	// 재확인	 입력칸
@@ -45,11 +48,19 @@ public class changeView_02 extends JFrame implements ActionListener {
 	// 폰트설정
 	Font			jl_font 		= new Font("맑은고딕체", Font.BOLD, 17);				// 폰트를 파라미터 값(글씨체, 폰트굵기, 크기)으로  생성한다.
 	
+	
+	String user_pw = jpf_pw.getText();			// user_pw 	에 사용자가 입력한 텍스트를 담음
+	String user_repw = jpf_repw.getText();		// user_repw에 사용자가 입력한 텍스트를 담음
+	String user_nickname = jtf_nick.getText();	// user_name에 사용자가 입력한 텍스트를 담음
+	
 	/****************************************
 	 * 				   생성자					*	
 	 ****************************************/
+	public changeView_02() {
+		
+	}
 	public changeView_02(ChatView cv) {
-		this.id = cv.getid; 
+		this.myid = cv.myid; 
 	}
 	
 	/****************************************
@@ -72,6 +83,7 @@ public class changeView_02 extends JFrame implements ActionListener {
 	    jbtn_pwok.addActionListener(this);		// 비번확인버튼의 이벤트를 듣는다.
 	    jbtn_nickok.addActionListener(this);	// 닉네임확인 버튼 
 	    jbtn_update.addActionListener(this);	// 변경하기 버튼
+	    jbtn_del.addActionListener(this);
 	    
         //////////////////////////// 아이디 /////////////////////////////////
 	    // 아이디
@@ -153,13 +165,10 @@ public class changeView_02 extends JFrame implements ActionListener {
 		Object obj = e.getSource();
 		// 비밀번호 확인 버튼
 		if (obj == jbtn_pwok) {							// '비밀번호체크 버튼' 눌리면
-			System.out.println("현재pw버튼 눌림");
-//			MemberDAO mDao = new MemberDAO();			// DAO 인스턴스화
-//			String user_pw = jpf_changepw.getText();	// user_changepw에 입력한 값을 저장한다.
-//			int result = mDao.signIn(user_id ,user_pw);	// 위에서 입력한 pw를 dao클래스의 아이디체크메소드 파라미터로 던져주고 반환받은 값을 result에 저장
-//			if(result == -1) {							// 만약 result가 -1이면 중복된 아이디가 있다.
-//				// Dao에 있는 메시지 출력
-//			}else if(result == 1) {						// 사용가능한 아이디라면
+			int result = mDao.signIn(myid, user_pw);	// *회원확인 - 로그인 다오 대체
+			if(result == -1) {							// 만약 result가 -1이면 중복된 아이디가 있다.
+			} else if (result == 0) {					// 비밀번호가 일치하지 않습니다.
+			} else if (result == 1) {					// 로그인 성공(비번체크)		
 				box_toggle = false;						
 				jpf_pw.setEnabled(box_toggle);		
 				jtf_nick.setEnabled(box_toggle);		
@@ -167,36 +176,40 @@ public class changeView_02 extends JFrame implements ActionListener {
 				jpf_changepw.setEnabled(box_toggle);		
 				jpf_repw.setEnabled(box_toggle);			
 				jbtn_update.setEnabled(box_toggle);		
-				jbtn_del.setEnabled(box_toggle);			
-				} 
-//			else if (obj == jbtn)
-		//	}
-			else if (obj == jbtn_nickok) {
-				box_toggle = false;						
-				jpf_changepw.setEnabled(box_toggle);		
-				jpf_repw.setEnabled(box_toggle);			
-				box_toggle = true;						
-				jtf_nick.setEnabled(box_toggle);		
-				jbtn_update.setEnabled(box_toggle);		
-				jbtn_del.setEnabled(box_toggle);			
-				}
+				jbtn_del.setEnabled(box_toggle);
+			} 
+		}	
 		
-			else if (obj == jbtn_update) {			// '변경하기 버튼'이 눌리면
-//			MemberDAO mDao = new MemberDAO();		// DAO 인스턴스화
-//			String user_ID = jtf_id.getText();		// user_ID는 미리 입력받아져 있어야한다.
-//			String user_pw = jpf_pw.getText();		// user_pw에 입력받은 텍스트를 넣음 
-//			String user_nick = jtf_nick.getText();	// user_name에 입력받은 텍스트를 담음
-//	    	int result = mDao.signUp(user_ID,user_pw,user_nick); // 위에서 담은 3가지 변수값을 Dao클래스 아래 signUp메소드로 던져서 DB 대조후에 리턴값 받음
-//	    	if(result == 1) {	//회원가입 성공		
-				
-//    			new TalkClient();
-//    			dispose();
-				
-	    	}
-		}
-//	}
+		if (obj == jbtn_nickok) {						// '닉네임체크 버튼' 눌리면
+			box_toggle = false;							// 
+			jpf_changepw.setEnabled(box_toggle);		
+			jpf_repw.setEnabled(box_toggle);			
+			box_toggle = true;						
+			jtf_nick.setEnabled(box_toggle);		
+			jbtn_update.setEnabled(box_toggle);		
+			jbtn_del.setEnabled(box_toggle);			
+			}
+		
+		if (obj == jbtn_update) {						// '변경하기 버튼'이 눌리면
+	// user_pw에 입력받은 텍스트를 넣음 
+			int result = mDao.editMember(user_nickname,user_repw,myid); 
+		    if(result == -1) {
+		    	//회원정보 수정 실패
+		    	}else {
+	    		// 회원정보 수정 성공
+	    		dispose();
+		    	}					
+			}
+		
+		if (obj == jbtn_del) {							// '삭제하기 버튼'이 눌리면
+			int result = mDao.withdrawal(myid, user_repw); 
+			}
+		}//////////////////[end of actionPerformed]//////////////////////
+	
 	
 	public static void main(String[] args) {
+		changeView_02 cv = new changeView_02();
+		cv.initDisplay();
 	}
 
 }/////////////////[end of class changeView_02]////////////////

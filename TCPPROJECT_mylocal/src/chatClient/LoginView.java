@@ -31,7 +31,7 @@ public class LoginView extends JFrame implements ActionListener {
 	// JPanel에 쓰일 이미지아이콘
 	ImageIcon ig = new ImageIcon(imgPath + "main4.png");
 	// 컨트롤러 싱긍톤으로 생성
-	String getid = null;
+	String myid = null;
 	
 	Controller controller = Controller.getInstance();
 	public LoginView() {
@@ -39,7 +39,7 @@ public class LoginView extends JFrame implements ActionListener {
 	}
 
 	/* 배경이미지 */
-	class mypanal extends JPanel {
+	class user_panal extends JPanel {
 		private static final long serialVersionUID = 1L;
 		
 		public void paintComponent(Graphics g) {
@@ -51,7 +51,7 @@ public class LoginView extends JFrame implements ActionListener {
 
 	// 화면처리
 	public void initDisplay() {
-		setContentPane(new mypanal());
+		setContentPane(new user_panal());
 		/* 버튼과 텍스트필드 구성 */
 		/* 회원가입 버튼 */
 		jbtn_join.addActionListener(new ActionListener() {
@@ -132,8 +132,7 @@ public class LoginView extends JFrame implements ActionListener {
 					}else {
 						TalkClient tc = new TalkClient(nickName);
 						new ChatView(tc);
-						getid = pmVO.getMem_id();
-						System.out.println( "아이디줍줍성공" + getid );
+						myid = pmVO.getMem_id();
 						new ChatView(this);
 						tc.init();
 						dispose();

@@ -61,11 +61,11 @@ public class ChatView extends JFrame implements ActionListener {
 	//추가
 	LoginView lv = null;
 	///////////////////////////////////
-	String getid = null;			 //
+	String myid = null;			 //
 	//↑								 //
 	public ChatView(LoginView lv) {	 //
-		this.getid = lv.getid;		 //
-		System.out.println("아이디 잘받았습니다~ : "+  getid);	 //
+		this.myid = lv.myid;		 //
+		System.out.println("아이디넘어감 : "+  myid);	 //
 	}								 //
 	///////////////////////////////////
 	
@@ -170,8 +170,7 @@ public class ChatView extends JFrame implements ActionListener {
 		} else if (jbtn_change == obj) {
 			/////////////////////////////////////////////
 			lv = new LoginView();
-			getid = lv.getid;
-			System.out.println(getid); // null이 찍힌다.
+			System.out.println(myid); // null이 찍힌다.
 			changeView_02 cv = new changeView_02(this);////
 			cv.initDisplay();                          //
 			/////////////////////////////////////////////
