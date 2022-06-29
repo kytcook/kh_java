@@ -35,7 +35,7 @@ public class LoginView extends JFrame implements ActionListener {
 	
 	Controller controller = Controller.getInstance();
 	public LoginView() {
-		initDisplay();
+//		initDisplay();
 	}
 
 	/* 배경이미지 */
@@ -163,7 +163,8 @@ public class LoginView extends JFrame implements ActionListener {
 	}
 	
 	public static void main(String[] args) {
-		new LoginView();
+		LoginView lv = new LoginView();
+		lv.initDisplay();
 		
 	}
 }

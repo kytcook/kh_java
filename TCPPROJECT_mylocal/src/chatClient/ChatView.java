@@ -58,6 +58,8 @@ public class ChatView extends JFrame implements ActionListener {
 	JScrollPane jsp = new JScrollPane(jtb);
 	JSplitPane jspp = new JSplitPane(SwingConstants.VERTICAL, jp_first,jp_second);
 	
+	//추가
+	LoginView lv = null;
 	///////////////////////////////////
 	String getid = null;			 //
 	//↑								 //
@@ -167,6 +169,8 @@ public class ChatView extends JFrame implements ActionListener {
 		// NICKNAME_CHANGE
 		} else if (jbtn_change == obj) {
 			/////////////////////////////////////////////
+			lv = new LoginView();
+			getid = lv.getid;
 			System.out.println(getid); // null이 찍힌다.
 			changeView_02 cv = new changeView_02(this);////
 			cv.initDisplay();                          //
