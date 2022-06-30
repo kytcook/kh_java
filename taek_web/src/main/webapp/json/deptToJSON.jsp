@@ -1,3 +1,6 @@
+// 확장자가 결정하는게 아니다. 웹에서는 mine type에 의해 결정된다.
+// text/html
+// application은 word(브라우저)
 <%@ page language = "java" contentType="application/json; charset=UTF-8" pageEncoding  = "UTF-8" %>
 <%@ page import   = "java.util.List, java.util.Map, java.util.ArrayList" %>
 <%@ page import   = "java.util.HashMap" %>
