@@ -1,6 +1,4 @@
-// 확장자가 결정하는게 아니다. 웹에서는 mine type에 의해 결정된다.
-// text/html
-// application은 word(브라우저)
+
 <%@ page language = "java" contentType="application/json; charset=UTF-8" pageEncoding  = "UTF-8" %>
 <%@ page import   = "java.util.List, java.util.Map, java.util.ArrayList" %>
 <%@ page import   = "java.util.HashMap" %>
@@ -8,6 +6,10 @@
 <%@ page import   = "java.sql.PreparedStatement, java.sql.ResultSet" %>
 <%@ page import   = "com.google.gson.Gson" %>
 <%
+		//확장자가 결정하는게 아니다. 웹에서는 mine type에 의해 결정된다.
+		//text/html
+		//application은 word(브라우저)	
+		
 		//스크립트
 		// query string or query parameter -> GET방식이다, 가능, POST는 불가능하다.
 		// 전송방식 - GET(단위테스트 가능), POST 방식은 반드시 javascript의 도움이 필요함

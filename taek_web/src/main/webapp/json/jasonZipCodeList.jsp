@@ -6,6 +6,7 @@
 <%@ page import="java.util.Map, java.util.HashMap" %>
 <%@ page import="com.google.gson.Gson" %>
 <%
+
    // 스크립틀릿
    // get 방식으로 url 전송한다. (get은 파라미터를 사용하여 단위테스트가 가능하다.)
    String dong = request.getParameter("dong"); // 사용자가 입력한 동 정보를 가져오기
