@@ -10,18 +10,19 @@ import chatServer.Protocol;
 // 로그인 후 단톡 채팅방 UI 및 클라이언트 소켓 생성클래스
 // 클라이언트와 서버와의 통신용만으로 쓸 것임
 // 통신용 컨트롤러 역할
-public class TalkClient {
+public class TalkClient  {
 	//////////////// 통신과 관련한 전역변수 추가 시작//////////////
 	Socket socket = null;
 	ObjectOutputStream oos = null;// 말 하고 싶을 때
 	ObjectInputStream ois = null;// 듣기 할 때
 	String nickName = null;// 닉네임 등록
-	String myid = null;
+	ChatView chatView = null;
 	//////////////// 통신과 관련한 전역변수 추가 끝 //////////////
-
-	public TalkClient(String nickName) {
+	TalkClientThread tct = null;
+	
+	public TalkClient(ChatView chatView, String nickName) {
+		this.chatView = chatView;
 		this.nickName = nickName;
-		this.myid = nickName;
 	}
 
 	/***********************************************************************************
@@ -40,6 +41,8 @@ public class TalkClient {
 			mvo.setProtocol(Protocol.ADMISSION);
 			mvo.setNickname(nickName);
 			oos.writeObject(mvo);
+			this.tct = new TalkClientThread(this);
+			this.tct.start();
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
@@ -53,7 +56,7 @@ public class TalkClient {
 	 * @param msg : ChatView에서 사용자가 텍스트에 입력한 메시지
 	 **************************************************************************/
 
-	// 단체톡방 메시지 보내기
+	// 단체 톡방 메시지 보내기
 	public void groupMsg(String msg) {
 		try {
 			MsgVO mvo = new MsgVO();
@@ -65,14 +68,77 @@ public class TalkClient {
 			e.toString();
 		}
 	}
-
-	// 대화방 나가기 (Protocol.ROOM_OUT)
-	public void roomOut() {
+	
+	// 개인 톡방 메시지 보내기
+	public void privateMsg(String msg, int roomNum, String otNickname) {
 		try {
 			MsgVO mvo = new MsgVO();
-			mvo.setProtocol(Protocol.ROOM_OUT);
+			mvo.setMsg(msg);
+			mvo.setRoomNum(roomNum);
 			mvo.setNickname(nickName);
-			mvo.setMsg(nickName + "님이 퇴장하였습니다.");
+			mvo.setOtNickName(otNickname); // 받는사람
+			mvo.setProtocol(Protocol.MESSAGE);
+			oos.writeObject(mvo);
+		} catch (Exception e) {
+			e.toString();
+		}
+	}
+
+	// 단체 대화방 퇴장 시(Protocol.ROOM_OUT)
+	public void roomOut() {
+		// 현재 대화중인 개인 대화방 종료
+		if(tct.prlist.size() != 0) {
+			for(PrivateChat pc : tct.prlist) {
+				String otnickName= pc.otNickName;
+				int roomnum = pc.getRoomNum();
+				prRoomOut(otnickName, roomnum);
+			}
+		}
+		try {
+			MsgVO mvo = new MsgVO();
+			mvo.setNickname(nickName);
+			mvo.setProtocol(Protocol.ROOM_OUT);
+			mvo.setMsg(nickName + "님이 퇴장하셨습니다.");
+			oos.writeObject(mvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		tct.isStop = true; // 쓰레드 종료되도록( ★자원 반납★ ) /////////테스트중
+	}
+	// 개인 대화방 퇴장 시
+	public void prRoomOut(String otnickName, int roomnum) {
+		try {
+			MsgVO mvo = new MsgVO();
+			mvo.setNickname(nickName);
+			mvo.setOtNickName(otnickName);
+			mvo.setRoomNum(roomnum);
+			mvo.setMsg(nickName + "님이 퇴장하셨습니다");
+			mvo.setProtocol(Protocol.PRROOM_OUT);
+			oos.writeObject(mvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 대화방 생성
+	public void roomCreate(String nickName) {
+		try {
+			MsgVO mvo = new MsgVO();
+			mvo.setNickname(nickName); // 받는 사람 이름 세팅
+			mvo.setProtocol(Protocol.ROOM_CREATE);
+			oos.writeObject(mvo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 강퇴 시 개인 화면 닫기
+	public void expulsion() {
+		try {
+			MsgVO mvo = new MsgVO();
+			mvo.setNickname(nickName);
+			mvo.setMsg("운영자가 " +nickName + "님을 강퇴하였습니다");
+			mvo.setProtocol(Protocol.EXPULSION_RESPONSE);
 			oos.writeObject(mvo);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,6 +158,30 @@ public class TalkClient {
 			e.printStackTrace();
 		}
 
+	}
+	//  대화방 요청에 대한 응답
+	public void roomCreate_response(String nickName, String msg) {
+		try {
+			MsgVO mvo = new MsgVO();
+			mvo.setOtNickName(nickName); // 대화 요청한 사람의 닉네임
+			mvo.setMsg(msg);		     // 수락 || 거절
+			mvo.setProtocol(Protocol.ROOM_ACCEPT);
+			oos.writeObject(mvo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	// 개인 대화방 열려 있는지 체크
+	public boolean isRoom(String otnickName) {
+		boolean isRoom = true;
+		
+		for(PrivateChat pr :tct.prlist) {
+			if(otnickName.equals(pr.otNickName)) {
+				return false;
+			} 
+		}
+		return isRoom;
 	}
 
 }

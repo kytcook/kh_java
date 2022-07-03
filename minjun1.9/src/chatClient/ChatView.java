@@ -9,9 +9,10 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,14 +24,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-public class ChatView extends JFrame implements ActionListener {
-
-	
+public class ChatView extends JFrame implements ActionListener, FocusListener {
+	private static final long serialVersionUID = 1L;
 	JTextField jtf_name = new JTextField("대화명을 입력하세요",20);
 	JButton jbtn_search = new JButton("찾기");
-	String zdos[] = {"닉네임"};
-	JComboBox jcb = new JComboBox(zdos);
-
 	JPanel jp_first 			=	new JPanel();
 	JPanel jp_first_south 		= 	new JPanel();
 	JPanel jp_first_east		= 	new JPanel();
@@ -39,7 +36,7 @@ public class ChatView extends JFrame implements ActionListener {
 	JPanel jp_second_north      =   new JPanel();
 	JPanel jp_second_south 		= 	new JPanel();
 	
-	JButton jbtn_whisper 		= 	new JButton("1:1");
+	JButton jbtn_whisper 		= 	new JButton("1:1대화 신청");
 	JButton jbtn_change 		= 	new JButton("회원수정");
 	JButton jbtn_exit 			= 	new JButton("나가기");
 	JButton jbtn_send 			= 	new JButton("전송");
@@ -51,49 +48,33 @@ public class ChatView extends JFrame implements ActionListener {
 	Image back					= 	null;
 	String nickName			    = 	null;
 	
-	String cols[] = {"접속자"};
+	String cols[] = {"현재 접속자"};
 	String data[][] = new String[0][1];
 	DefaultTableModel dtm = new DefaultTableModel(data,cols);
 	JTable jtb = new JTable(dtm);
 	JScrollPane jsp = new JScrollPane(jtb);
 	JSplitPane jspp = new JSplitPane(SwingConstants.VERTICAL, jp_first,jp_second);
 	
-	///////////////////////////////////
-	String myid = null;			 //
-	//↑								 //
-//	public ChatView(LoginView lv) {	 //
-//		this.myid = lv.myid;		 //
-//		System.out.println("아이디넘어감 : "+  myid);	 //
-//		initDisplay(true);
-//	
-//	}								 //
-	///////////////////////////////////
 	
 	// ChatView가 실행되면서 동시에 TalkClienThread가 생성되고
 	// run()메소드로 쓰레드가 실행됩니다.
-	public ChatView(TalkClient tc) {
+	public ChatView(String nickName) {
+		this.nickName = nickName;
 		JFrame.setDefaultLookAndFeelDecorated(true);
+		TalkClient tc = new TalkClient(this, nickName);
 		this.tc = tc;
-		this.myid = tc.myid;
-		this.nickName =tc.nickName;
-		TalkClientThread tct = new TalkClientThread(this);
-		tct.start();
 		initDisplay(true);
+		tc.init();
 	}
-/*
- 	생성자 위치의 순서에 따라서 초기화 되는 순서가 달리진다. 이 생성자가
-  	아래로 오게되면 위의 TalkClient에 대한 정보들이 초기화 되므로 틀린 방법이다.
- *	public ChatView(LoginView lv) {	 
- *		this.myid = lv.myid;		
- *		System.out.println("아이디넘어감 : "+  myid);	
- *		initDisplay(true);
-	} 
- */	
+	
+	
+	
 	public void initDisplay(boolean is) {
 		/////////////////////////배경 이미지/////////////////////////////
 		back = getToolkit().getImage("C:\\java\\workspace_java\\이미지\\채팅창 배경.png");
 		jta_display = new JTextArea() {
 			private static final long serialVersionUID = 1L;
+			
 			public void paint(Graphics g) {
 				g.drawImage(back, 0, 0, this);
 				Point p = jsp_display.getViewport().getViewPosition();
@@ -102,7 +83,6 @@ public class ChatView extends JFrame implements ActionListener {
 			}
 		};
 		jp_second_north.setLayout(new BorderLayout());
-		jp_second_north.add("West",jcb);
 		jp_second_north.add("Center",jtf_name);
 		jp_second_north.add("East",jbtn_search);
 		
@@ -132,17 +112,19 @@ public class ChatView extends JFrame implements ActionListener {
 		jta_display.setOpaque(false);
 		Font font = new Font("나눔고딕", Font.BOLD, 15);
 		jta_display.setFont(font);
-		this.add(jspp);
-		this.setTitle(nickName);
-		this.setSize(800, 550);
-		this.setVisible(is);
+		this.add(jspp);          
+		this.setTitle(nickName);  
+		this.setSize(800, 550); 
+		this.setVisible(is); 
 		this.setLocation(600, 150);
-		setResizable(false); // 창이 가운데 나오도록
+		setResizable(false); 
 		
 		///////// 이벤트 처리 ////////////
 		jtf_msg.addActionListener(this);
 		jbtn_change.addActionListener(this);
 		jbtn_exit.addActionListener(this);
+		jtf_name.addFocusListener(this);
+		jbtn_whisper.addActionListener(this);
 	}
 
 	public String getMsg() {
@@ -156,6 +138,17 @@ public class ChatView extends JFrame implements ActionListener {
 	}
 	public void errorMsg(String msg) {
 		JOptionPane.showMessageDialog(this, msg, "Error!", JOptionPane.ERROR_MESSAGE);
+	}
+	public int private_chat(String nickname) {
+		int result= JOptionPane.showConfirmDialog (this, nickname + "님이 대화를 신청하셨습니다","Invite", JOptionPane.YES_NO_OPTION);
+		 if(result == JOptionPane.YES_OPTION) {
+	            System.out.println("yes");
+	            result = 1;
+		 } else if(result == JOptionPane.NO_OPTION) {
+	              System.out.println("no");
+	              result = 0;
+	     }
+		 return result;
 	}
 	
 	// UI와 서버의 작업 분담을 위해 UI쪽에서는 서버에서 작성한 메소드 호출만 하도록 작성
@@ -173,16 +166,46 @@ public class ChatView extends JFrame implements ActionListener {
 		// ROOM_OUT
 		} else if (jbtn_exit == obj) {
 		tc.roomOut();
-		System.exit(0);
 		
+		System.exit(0);
 		// NICKNAME_CHANGE
 		} else if (jbtn_change == obj) {
-			/////////////////////////////////////////////
-			System.out.println("회원수정 누르는 시점의 myid : " + myid); // 해결완료 ><
-			changeView_02 chv = new changeView_02(this);
-			chv.initDisplay();
-			/////////////////////////////////////////////
+			String afterName = JOptionPane.showInputDialog("변경할 대화명을 입력하세요.");
+			if (afterName == null || afterName.trim().length() < 1) {
+				errorMsg("변경할 대화명을 입력해주세요.");
+				return;
+			}else {
+				tc.changeNickName(afterName);
 			}
+		// ROOM_CREATE
+		} else if (jbtn_whisper == obj) { // 1대1 대화 신청
+			if(jtb.getSelectedRow() > -1) {
+				int select = jtb.getSelectedRow();
+				String otnickName = (String)jtb.getValueAt(select, 0);
+				boolean isRoom = tc.isRoom(otnickName); // 대화방 유무 체크(있으면 flase)
+				if(isRoom) {
+					if(nickName.equals(otnickName)) {
+						errorMsg("본인에게는 신청할 수 없습니다");
+					} else {
+						tc.roomCreate(otnickName);
+					}
+				}else if(!isRoom) // 대화방이 이미 존재할 경우
+					errorMsg("이미 대화중입니다");
+				}else 			 
+					errorMsg("대화상대를 선택해 주세요");
 		}
-	}////////////////////// end of class
+	}////////////////////// end of actionPerformed
 
+	@Override
+	public void focusGained(FocusEvent e) {
+		if(e.getSource() ==jtf_name) {
+			jtf_name.setText("");
+		}
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

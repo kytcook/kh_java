@@ -17,29 +17,31 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 // LoginView
 public class LoginView extends JFrame implements ActionListener {
+	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	//선언부
-
-	String imgPath = "D:\\java_study\\workspace_java\\kh_javaAC\\TCPPROJECT_mylocal\\src\\이미지\\";
+	String imgPath = "D:\\java_study\\workspace_java\\kh_javaAC\\minjun1.9\\img\\";
 	JLabel jlb_id = new JLabel("아이디");
 	JLabel jlb_pw = new JLabel("패스워드");
-	Font jl_font = new Font("맑은고딕체", Font.BOLD, 14);
+	Font jl_font = new Font("나눔고딕", Font.BOLD, 14);
 	JTextField jtf_id = new JTextField("");
 	JPasswordField jpf_pw = new JPasswordField("");
 	JButton jbtn_login = new JButton(new ImageIcon(imgPath + "로그인2.png"));
 	JButton jbtn_join = new JButton(new ImageIcon(imgPath + "회원가입2.png"));
 	// JPanel에 쓰일 이미지아이콘
-	ImageIcon ig = new ImageIcon(imgPath + "main4.png");
+	ImageIcon ig = new ImageIcon(imgPath + "둥이.png");
 	// 컨트롤러 싱긍톤으로 생성
-	String myid = null;
 	
 	Controller controller = Controller.getInstance();
 	public LoginView() {
-//		initDisplay();
+		initDisplay();
 	}
 
 	/* 배경이미지 */
-	class user_panal extends JPanel {
+	class mypanal extends JPanel {
 		private static final long serialVersionUID = 1L;
 		
 		public void paintComponent(Graphics g) {
@@ -51,7 +53,7 @@ public class LoginView extends JFrame implements ActionListener {
 
 	// 화면처리
 	public void initDisplay() {
-		setContentPane(new user_panal());
+		setContentPane(new mypanal());
 		/* 버튼과 텍스트필드 구성 */
 		/* 회원가입 버튼 */
 		jbtn_join.addActionListener(new ActionListener() {
@@ -70,7 +72,7 @@ public class LoginView extends JFrame implements ActionListener {
 
 		this.setLayout(null);
 		this.setTitle("꽉자바 ver.1");
-		this.setSize(350, 600);
+		this.setSize(413, 443);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setLocation(600, 150);
@@ -108,6 +110,7 @@ public class LoginView extends JFrame implements ActionListener {
 	}
 
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// JTextField 엔터 이벤트 처리
@@ -115,10 +118,9 @@ public class LoginView extends JFrame implements ActionListener {
 			if (!(jtf_id.getText().equals("")) && !(jpf_pw.getText().equals(""))) {
 				System.out.println("로그인 호출 성공");
 				MemberVO pmVO = new MemberVO();
+				pmVO.setCommand("login");
 				pmVO.setMem_id(getId());
 				pmVO.setMem_pw(getPw());
-				pmVO.setCommand("login");
-				
 				MemberVO rsVO = new MemberVO(); // 리턴받을 rsVO생성
 				rsVO = controller.action(pmVO); // return값 rsVO
 				String nickName = rsVO.getMem_name();
@@ -130,11 +132,7 @@ public class LoginView extends JFrame implements ActionListener {
 						errorMsg("존재하지 않는 아이디입니다.");
 						return;
 					}else {
-						myid = pmVO.getMem_id();
-						TalkClient tc = new TalkClient(nickName);
-						new ChatView(tc);
-//						new ChatView(this);
-						tc.init();
+						new ChatView(nickName);
 						dispose();
 					}
 			} else if (jtf_id.getText().equals("")) {
@@ -157,13 +155,13 @@ public class LoginView extends JFrame implements ActionListener {
 	public String getId() {
 		return jtf_id.getText();
 	}
+	@SuppressWarnings("deprecation")
 	public String getPw() {
 		return jpf_pw.getText();
 	}
 	
 	public static void main(String[] args) {
-		LoginView lv = new LoginView();
-		lv.initDisplay();
+		new LoginView();
 		
 	}
 }
