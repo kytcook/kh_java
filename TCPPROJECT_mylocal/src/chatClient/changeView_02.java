@@ -48,9 +48,7 @@ public class changeView_02 extends JFrame implements ActionListener {
 	Font			jl_font 		= new Font("맑은고딕체", Font.BOLD, 17);				// 폰트를 파라미터 값(글씨체, 폰트굵기, 크기)으로  생성한다.
 	
 	
-	String user_pw = jpf_pw.getText();			// user_pw 	에 사용자가 입력한 텍스트를 담음
-	String user_repw = jpf_repw.getText();		// user_repw에 사용자가 입력한 텍스트를 담음
-	String user_nickname = jtf_nick.getText();	// user_name에 사용자가 입력한 텍스트를 담음
+	
 	
 	/****************************************
 	 * 				   생성자					*	
@@ -163,6 +161,9 @@ public class changeView_02 extends JFrame implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		String user_pw = jpf_pw.getText();			// user_pw 	에 사용자가 입력한 텍스트를 담음
+		String user_repw = jpf_repw.getText();		// user_repw에 사용자가 입력한 텍스트를 담음
+		String user_nickname = jtf_nick.getText();	// user_name에 사용자가 입력한 텍스트를 담음
 		Object obj = e.getSource();
 		// 비밀번호 확인 버튼
 		if (obj == jbtn_pwok) {							// '비밀번호체크 버튼' 눌리면
@@ -192,6 +193,7 @@ public class changeView_02 extends JFrame implements ActionListener {
 			}
 		
 		if (obj == jbtn_update) {						// '변경하기 버튼'이 눌리면
+			
 	// user_pw에 입력받은 텍스트를 넣음 
 			int result = mDao.editMember(user_nickname,user_repw,myid); 
 		    if(result == -1) {
@@ -204,13 +206,8 @@ public class changeView_02 extends JFrame implements ActionListener {
 		
 		if (obj == jbtn_del) {							// '삭제하기 버튼'이 눌리면
 			int result = mDao.withdrawal(myid, user_repw); 
+			dispose();
 			}
 		}//////////////////[end of actionPerformed]//////////////////////
 	
-	
-	public static void main(String[] args) {
-		changeView_02 cv = new changeView_02();
-		cv.initDisplay();
-	}
-
 }/////////////////[end of class changeView_02]////////////////

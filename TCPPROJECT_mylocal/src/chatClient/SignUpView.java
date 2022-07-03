@@ -170,8 +170,8 @@ public class SignUpView extends JFrame implements ActionListener {
 				// 비밀번호 중복검사
 				if (passwordCheck() && result == 1) {
 					successMsg("회원가입을 축하합니다!!");
-					new LoginView();
 					dispose();
+					new LoginView();
 				} else {
 					errorMsg("입력한 비밀번호가 다릅니다. 확인 해주세요");
 					return;
