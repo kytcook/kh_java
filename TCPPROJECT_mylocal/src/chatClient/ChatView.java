@@ -24,8 +24,6 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 public class ChatView extends JFrame implements ActionListener {
-
-	
 	JTextField jtf_name = new JTextField("대화명을 입력하세요",20);
 	JButton jbtn_search = new JButton("찾기");
 	String zdos[] = {"닉네임"};
