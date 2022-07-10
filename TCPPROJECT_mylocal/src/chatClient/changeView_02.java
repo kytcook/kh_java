@@ -58,14 +58,14 @@ public class changeView_02 extends JFrame implements ActionListener {
 	}
 	public changeView_02(ChatView cv) {
 		this.myid = cv.myid; 
-		System.out.println("chatview의 myid값 불러오기 성공 : " + myid);
 	}
 	
 	/****************************************
 	 * 				   화면처리				*	
 	 ****************************************/
 	public void initDisplay() {
-		//선언부에 두게되면 생성자보다 먼저 초기화가 되면서 값 반영이 되지 않는다.
+		//선언부에 두게되면 생성자보다 우선적으로 인스턴스화가 되며 myid=null인 상태로 jtf 객체가 생성된다.
+		//따라서 initDisplay()를 호출할 때 널값이 저장된 객체가 호출된다.
 		JTextField 	jtf_id	= new JTextField(myid);		// 로그인에서 받아오는 아이디
 		////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////

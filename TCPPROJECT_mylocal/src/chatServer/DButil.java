@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class DButil {
 	private static Connection con = null;
 	private static final String url = "jdbc:oracle:thin:@localhost:1521/ORCL11";
-	private static final String user = "tomato";
+	private static final String user = "kytcook";
 	private static final String pwd = "tiger";
 	private static final String driver = "oracle.jdbc.driver.OracleDriver";
 
