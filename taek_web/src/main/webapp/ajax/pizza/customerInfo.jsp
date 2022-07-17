@@ -6,7 +6,7 @@
 	String mem_tel = request.getParameter("mem_tel");// get방식 : 노출된다. 크기에 제약이 있다(주소창) // post방식은 링크를 할 수 없다. - 즐겨찾기를 할 수 없다. : post는 단위테스트가 불가능하다.
 	// 개발단계에서는 get방식, 서버에 올릴때는 post로 바꿔서 올려라
 	// '양도' : 업무적인 depth를 키울 수 있다.
-	out.print("주문자 전화번호 :" + mem_tel);		
+	//out.print("주문자 전화번호 :" + mem_tel);		
 	List<Map<String,String>> cusList = new ArrayList<>();
     Map<String,String> rMap = new HashMap<>();
     rMap.put("mem_name","김유신");

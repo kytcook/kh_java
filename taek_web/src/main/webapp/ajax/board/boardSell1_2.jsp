@@ -34,6 +34,7 @@
 		background-color: #FFAAAA;
 	}
 </style>
+
 </head>
 <body>
 	<table width="300px" height="80px">
@@ -63,17 +64,16 @@
 				url : "./boardSellAction.jsp?"+new Date().getTime(),
 				success:function(result){
 					console.log("result:" + result);
-					const boardSold = $("#boardSold").text(result);//10 -> 15
-					//const cost = document.getElementById("cost");
-					const cost = $("#cost").text(); // jquery : 위의 코드와 같다.
+					const boardSold = $("#boardSold").text(result);// 10 -> 15
+					const cost = $("#cost").text();
 					const price = $("#price").text();
-					const cashPerBoard = price - cost;
+					const cashPerBoard = price -cost;
 					alert("보드 당 마진금액 : " + cashPerBoard);
 					$("#cash").text(cashPerBoard*result);
 				}
 			});
 		}
-	// 2번째 파라미터로 받은 무낮열을 첫번째 파라미터 받은 위치에 붙여준다.
+	// 2번째 파라미터로 받은 문자열을 첫번째 파라미터 받은 위치에 붙여준다.
 	function replaceText(el,text){
 		if(el !=null){
 			//기존의 노드에 들어있는 값은 초기화 시킨다.
@@ -81,8 +81,8 @@
 			var newNode = document.createTextNode(text);
 			el.appendChild(newNode);
 		}
-	}//replaceText ended​
-	function clearText(el){//element도 태그로 생각해 일단은
+	}//replaceText ended
+	function clearText(el){
 		if(el !=null){
 			if(el.childNodes){
 			//replaceText(boardsSoldEl, newTotal);
@@ -92,19 +92,19 @@
 				}//for ended
 			}//if ended
 		}//if ended 노드가 널이 아니면
-	}//clearText ended 지워줭
+	}//clearText ended 지워줘
 	
 	//childNodes는 지정된 개체의 직접적인 자식개체인  HTML elements와
 	//TextNode개체들의 컬렉션을 반환한다.
 	function getText(el){
-		alert("getText 호출 성공"); 
+		alert("getText 호출 성공");
 		let text = "";
 		if(el !=null){
 			if(el.childNodes){// 자바스크립트에서는 0이 아니면 모두 true
-		alert("getText 호출 성공 : " + el.childNodes.length);
-				for(let i=0;i<el.childNodes.length;i++){
-					let childNode = el.childNodes[i];
-		alert("getText 호출 성공")
+		alert("getText 호출 성공" + el.childNodes.length);
+			for(let i=0;i<el.childNodes.length;i++){
+				let childNode = el.childNodes[i];
+		alert("getText 호출 성공");
 					//너 텍스트 노드니?
 					if(childNode.nodeValue !=null){
 						text = text + childNode.nodeValue;
