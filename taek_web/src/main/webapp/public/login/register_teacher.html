@@ -16,19 +16,20 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    
     <script>
       const firebaseConfig = {
-        apiKey: "AIzaSyA3bZ9ZqoBiM9vxH5iauLABVOZzK35MdQk",
-        authDomain: "kh-terrgym2022.firebaseapp.com",
-        databaseURL: "https://kh-terrgym2022-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "kh-terrgym2022",
-        storageBucket: "kh-terrgym2022.appspot.com",
-        messagingSenderId: "106312190597",
-        appId: "1:106312190597:web:986b8107cb27801f74f7ec",
-        measurementId: "G-5DV4JCJLPE"
+        apiKey: "AIzaSyD_E3njzteRHKiYoc24ioUvfD4thpJlOgM",
+        authDomain: "d-gym-demo.firebaseapp.com",
+        databaseURL: "https://d-gym-demo-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "d-gym-demo",
+        storageBucket: "d-gym-demo.appspot.com",
+        messagingSenderId: "740962178337",
+        appId: "1:740962178337:web:a7e0d4e2e2e9e9288a9a60"
       };
       firebase.initializeApp(firebaseConfig);
     </script>
+
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -98,7 +99,7 @@
         const mem_pw = $("#mem_pw").val();
         firebase.auth().createUserWithEmailAndPassword(mem_email, mem_pw)
         .then((result) => {
-          console.log(result.user);
+          console.log(result.user); 
         })
       });
     </script>

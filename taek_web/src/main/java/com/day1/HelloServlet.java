@@ -31,11 +31,11 @@ public class HelloServlet extends HttpServlet {
 //		out.print("</html>");
 		
 		
-//		res.sendRedirect("./helloResponse.jsp");// 요청이 끊어졌기 때문에
-//		
-		req.setAttribute("name","scott");
-		RequestDispatcher view = req.getRequestDispatcher("helloResponse.jsp");
-		view.forward(req,res); // url주소 변경없이 응답한다.
+		res.sendRedirect("./helloResponse.jsp");// 요청이 끊어졌기 때문에
+		
+//		req.setAttribute("name","scott");
+//		RequestDispatcher view = req.getRequestDispatcher("helloResponse.jsp");
+//		view.forward(req,res); // url주소 변경없이 응답한다.
 		
 //		PrintWriter out = res.getWriter();//io 임포트
 	}

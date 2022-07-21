@@ -16,18 +16,20 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+
     <script>
       const firebaseConfig = {
-        apiKey: "AIzaSyCIS_v1-BdrTwGF2BQrGgPoiDd2u1A6XZw",
-        authDomain: "virtual-primer-354906.firebaseapp.com",
-        databaseURL: "https://virtual-primer-354906-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "virtual-primer-354906",
-        storageBucket: "virtual-primer-354906.appspot.com",
-        messagingSenderId: "442922054622",
-        appId: "1:442922054622:web:aaa9cf4f99a2a45ef8a34f"
+        apiKey: "AIzaSyD_E3njzteRHKiYoc24ioUvfD4thpJlOgM",
+        authDomain: "d-gym-demo.firebaseapp.com",
+        databaseURL: "https://d-gym-demo-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "d-gym-demo",
+        storageBucket: "d-gym-demo.appspot.com",
+        messagingSenderId: "740962178337",
+        appId: "1:740962178337:web:a7e0d4e2e2e9e9288a9a60"
       };
       firebase.initializeApp(firebaseConfig);
     </script>
+    
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -65,40 +67,47 @@
         </div>
       </div>
     </nav>
-    <!--  가입 화면 시작 -->
-    터짐 회원가입
-<div class="container mt-3">
-  <div class="mb-3">
-    <input type="text" class="form-control" placeholder="name" id="name-new" />
-  </div>
-  <div class="mb-3">
-    <input type="text" class="form-control" placeholder="hp" id="mem_hp" />
-  </div>
-  <div class="mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="email"
-      id="mem_email"
-    />
-  </div>
-  <div class="mb-3">
-    <input type="password" class="form-control" placeholder="pw" id="mem_pw" />
-  </div>
-  <button type="submit" class="btn btn-primary" id="register">로그아웃</button>
-</div>
-<!--  로그인 끝 -->
+       <!--  로그인 화면 시작 -->
+       <div class="container mt-3">
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="email"
+            id="mem_email"
+          />
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" placeholder="pw" id="mem_pw" />
+        </div>
+        <button type="submit" class="btn btn-primary" id="login">
+          로그인하기
+        </button>
+        <button type="submit" class="btn btn-danger" id="logout">로그아웃</button>
+      </div>
+      <!--  로그인 화면 끝 -->
 
 
 <script>
-  const db = firebase.firestore();
+      const db = firebase.firestore();
+
+      firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user.uid);
+        console.log(user.displayName);
+        $("#displayName").html(user.displayName);
+      }
+    });
+    
+      
+
   $("#login").click(function(){
     // 사용자가 입력한 이메일, 비번, 핸드폰번호, 이름
     const mem_email = $("#mem_email").val();
     const mem_pw = $("#mem_pw").val(); // 사용자가 입력한 값을 받아온다.
-    firebase.auth().signInUserWithEmailAndPassword(mem_email, mem_pw)
+    firebase.auth().signInWithEmailAndPassword(mem_email, mem_pw)
     .then((result) => {
-      console.log(reulst.user);
+      console.log(result.user);
     }) 
   });
 

@@ -16,22 +16,23 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+
     <script>
       const firebaseConfig = {
-        apiKey: "AIzaSyCIS_v1-BdrTwGF2BQrGgPoiDd2u1A6XZw",
-        authDomain: "virtual-primer-354906.firebaseapp.com",
-        databaseURL: "https://virtual-primer-354906-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "virtual-primer-354906",
-        storageBucket: "virtual-primer-354906.appspot.com",
-        messagingSenderId: "442922054622",
-        appId: "1:442922054622:web:aaa9cf4f99a2a45ef8a34f"
+        apiKey: "AIzaSyD_E3njzteRHKiYoc24ioUvfD4thpJlOgM",
+        authDomain: "d-gym-demo.firebaseapp.com",
+        databaseURL: "https://d-gym-demo-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "d-gym-demo",
+        storageBucket: "d-gym-demo.appspot.com",
+        messagingSenderId: "740962178337",
+        appId: "1:740962178337:web:a7e0d4e2e2e9e9288a9a60"
       };
       firebase.initializeApp(firebaseConfig);
     </script>
+
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
-        <span id ="mem_email">로그인이메일</span>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,39 +67,74 @@
       </div>
     </nav>
     <!--  가입 화면 시작 -->
-    터짐 회원가입
-<div class="container mt-3">
-  <div class="mb-3">
-    <input type="text" class="form-control" placeholder="name" id="mem_name" />
-  </div>
-  <div class="mb-3">
-    <input type="text" class="form-control" placeholder="hp" id="mem_hp" />
-  </div>
-  <div class="mb-3">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="email"
-      id="mem_email"
-    />
-  </div>
-  <div class="mb-3">
-    <input type="password" class="form-control" placeholder="pw" id="mem_pw" />
-  </div>
-  <button type="submit" class="btn btn-primary" id="register">가입하기</button>
-</div>
-<!--  가입 화면 끝 -->
-
+    TerrGYM 회원가입
+    <div class="container mt-3">
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="name" id="mem_name" />
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="hp" id="mem_hp" />
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="email"
+          id="mem_email"
+        />
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" placeholder="pw" id="mem_pw" />
+      </div>
+      <div class="mb-3">
+      <input type="file" class="form-control" name="image" id="image">
+      </div>
+      <button type="submit" class="btn btn-primary" id="register">가입하기</button>
+    </div>
+    <!--  가입 화면 끝 -->
     <script>
-      const db = firebase.firestore(); 
-      
-      const mem_name = $("#mem_name").val();
-      const mem_email = $("#mem_email").val();
-      const mem_hp = $("#mem_hp").val();
-      const mem_pw = $("#mem_pw").val();
-      
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+      $("#register").click(function(){// 회원가입 시 선택한 이미지가 파베로 들어간다. 똑같은 이미지는 중복으로 들어가지 않는다.
+        const file = document.querySelector("#image").files[0];
+        const storageRef = storage.ref();
+        const storagePath = storageRef.child("image/"+file.name)
+        const uploadImg = storagePath.put(file);
+        uploadImg.on("state_change", null, (error) => {
+          console.error(error);
+        },
+        // 성공했을 때 동작
+        () => {
+          uploadImg.snapshot.ref.getDownloadURL().then((url) => {
+            console.log(url);
+          })
+        })
+
+        //사용자가 입력한 이메일, 비번, 핸폰번호, 이름
+        const mem_name = $("#mem_name").val();
+        const mem_email = $("#mem_email").val();
+        const mem_hp = $("#mem_hp").val();
+        const mem_pw = $("#mem_pw").val();
+        firebase.auth().createUserWithEmailAndPassword(mem_email, mem_pw)
+        .then((result) => {
+          console.log(result.user);
+
+          const userInfo = {
+            mem_email : mem_email,
+            mem_hp: mem_hp,
+          };// userInfo를 변수로 담아서 Firestore Database에 저장함
+          // db.collection('user').doc(result.user.uid).set({mem_email: mem_email, mem_hp:mem_hp})
+          db.collection('user').doc(result.user.uid).set({userInfo})
+          result.user.updateProfile({dsplayName: name}).then((displayName) => {
+            console.log("displayName => " + mem_name);
+          });
+          // window.location.href="./loginForm.html";//회원가입 성공시 로그인페이지로 
+        })
+        .catch((error) => {//에러가 발생하면 에러메시지라도 힌트로 잡겠다.
+          console.log(error);
+        })
+      });
     </script>
-    TerrGYM Project
   </body>
 </html>
 <!-- 
