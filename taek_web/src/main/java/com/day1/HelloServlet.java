@@ -1,6 +1,7 @@
 package com.day1;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +20,10 @@ public class HelloServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 	throws ServletException, IOException{
 		System.out.println("doGet호출 성공");
+		PrintWriter out = res.getWriter();
+		out.print("<html><head>" + name);
+		req.setAttribute("name", "scott");
+		res.sendRedirect("./helloResponse.jsp");
 //		res.setContentType("text/html;charset=UTF-8");// html양식을 받기 위해서
 //		res.setContentType("./helloResponse.jsp");
 //		out.print("<html>");
@@ -31,11 +36,11 @@ public class HelloServlet extends HttpServlet {
 //		out.print("</html>");
 		
 		
-		res.sendRedirect("./helloResponse.jsp");// 요청이 끊어졌기 때문에
+//		res.sendRedirect("./helloResponse.jsp");// 요청이 끊어졌기 때문에
 		
-//		req.setAttribute("name","scott");
-//		RequestDispatcher view = req.getRequestDispatcher("helloResponse.jsp");
-//		view.forward(req,res); // url주소 변경없이 응답한다.
+		req.setAttribute("name","scott");
+		RequestDispatcher view = req.getRequestDispatcher("helloResponse.jsp");
+		view.forward(req,res); // url주소 변경없이 응답한다.
 		
 //		PrintWriter out = res.getWriter();//io 임포트
 	}
@@ -48,7 +53,8 @@ public class HelloServlet extends HttpServlet {
 	
 }
 
-/*
+/* 22.07.21
+ * 
  * HelloServlet.java - helloResponse.jsp - web.xml 세 개를 같이 본다.
  * 
  * 서블릿 수업
@@ -56,6 +62,11 @@ public class HelloServlet extends HttpServlet {
  * 서블릿으로 웹페이지를 출력할 수 있다.
  * web.xml문서에 대해 말 할 수 있다.
  * ★★★★sendRedirect와 forward에 대해 이해하고 코드에 활용할 수 있다.★★★★
+ * 
+ * 서블릿은 컨트롤계층 담당하게 한다.(Server + Applet)
+ * JSP는 화면을 담당하게 한다. -> 자바를 담을 수 있다 - 오라클서버 - List, Map을 통해 뽑아낸다 - JSON을 통해 서버에 뿌린다 -<% 스크립틀릿String name="";%>
+ * html은 자바를 담을 수 없다
+ * 
  * 
  * 
  * 톰캣 서버를 기동한다.
@@ -90,5 +101,84 @@ public class HelloServlet extends HttpServlet {
  * RequestDispatcher view = req.getRequestDispatcher("XXX.jsp");
  * view.forward(req,res);// 주소창이 안바뀐다 -> 요청이 계속 유지되고 있다. - 톰캣
  * 
+ * -------------------------------------------------------------------------------------
  * 
+ * 22.07.22
+ * 
+ * servlet-api.jar ( 서블릿 컨테이너 )
+ * jsp-api.jar → JSP컨테이너( 엔진 - 내부에 클래스 정보를 가지고 있다. 확인:경로 - tomcat-lib )
+ * 
+ * 애플리케이션 배포
+ * (압축방식 - zip방식 동일)
+ * 
+ * jar - 로컬 어플리케이션
+ * 폴더 -> Export -> jar file -> 
+ * 
+ * war - 웹 어플리케이션 
+ * web폴더 -> Export -> WAR file -> 웹에 배포하면 자동으로 압축이 풀리게 된다.
+ * WEB-INF 까지의 트리구조는 알고 있어야 한다.
+ * 배포하세요~> WAR 파일로 추출하장
+ * 엔터프라이즈급 서버
+ * JBOSS, WebSpear, Weblogic
+ * 
+ * ejb기술 
+ * -> spring프레임워크 - 경량컨테이너
+ * 
+ * ear - 엔터프라이즈 어플리케이션( EJB - Enterprise JAVA Beans ) - 금융권 - 제 1금융, 제 2금융, 제 3금융
+ * 보안 - 언마샬링
+ * 금강원 감독
+ * 
+ * 	web.xml 기술하기
+ *	데이터의 캡슐화, 축소
+ *	- 배치서술자라고 한다(dd파일) 
+ *	- 서블릿 클래스 등록, URL매핑 - 요청(get:링크,단위테스트, header,post:자스, body)
+ *	- 톰캣서버 기동시 가장 먼저 스캔한다.
+ *	- Mservlet-mapping>-> url-pattern -> URL주소 -> main없자나 -> 브라우저 
+ *	- -> get방식(쿼리스트링으로 값을 전달 할 수 있다. 단위테스트 가능하다. 넘길 수 있는 값의 크기가 제한된다.노출된다.) / 로그인은 POST
+ *	-
+ *  
+ * 	엑스플랫폼 (업무 뎁스가 깊은 UI, UX기반 플랫폼)
+ *  
+ *  부트스트랩과 자바의 만남, 부트스트랩과 html의 만남, 부트스트랩과 파베의 만남 
+ *  
+ * 요청객체와 응답객체를 선점하zaza!! express - get방식 post방식 / restful / 화면 페이지 전환 API는 몽땅 정리(?)
+ * XXX.jsp를 만들면 -> XXX.jsp.java 로 만들어진다. -> XXX_jsp.class -> res.setContentType("text/html") -> 응답객체 반드시 있어야 한다.
+ * JSP컨테이너 자바에는 있고(톰캣) html에는 없다		servlet컨테이너
+ * 
+ * 
+ * 물리적인 경로 - 브라우저에 쓰기를 해준다. 
+ * D:\java_study\workspace_java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\ROOT\org\apache\jsp 
+ *  
+ * 서블릿이 되기 위한 조건 -> 반드시 HttpServlet을 상속 받기
+ * 일반 자바 : 상복받는 클랙스가 Object -> HttpServlet ( http를 상속받게 되서 http서블릿이 된다)
+ * doGet():void 
+ * doPost():void
+ * 
+ * sendRedirect
+ * : 바뀐다.
+ * : 유지 안된다.
+ * : get방식과 동일한 취급
+ * 
+ * forward
+ * : 안바뀐다.
+ * : 유지된다.
+ * : view.forward(req,res)
+ * 
+ * req.setAttribute("key","value");
+ * 저장소 역할
+ * 
+ * String key = (String)req.getAttribute("key");
+ * 
+ * response으로 할 수 있는 일
+ * PrintWriter out = res.getWriter(); // 메소드의 형태로 객체 주입
+ * 
+ * request로 할 수 있는 일
+ * 듣기
+ * HttpServletRequest req
+ * 
+ * 내장 객체 제공
+ * 서블릿에서 사용시에는 메소드 파라미터(지역) 주입 - req - NullPorinterException 발생 하지 않는다 - 톰캣서버가 주입해줌. 필요할 때 
+ * String mem_id = request.getParameter("mem_id");
+ * 
+ *  
  * */
