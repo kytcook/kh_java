@@ -40,7 +40,7 @@ public class HelloServlet extends HttpServlet {
 		
 		req.setAttribute("name","scott");
 		RequestDispatcher view = req.getRequestDispatcher("helloResponse.jsp");
-		view.forward(req,res); // url주소 변경없이 응답한다.
+		view.forward(req,res); // url주소 변경없이 응답한다.-> 요청이 계속 유지되고 있다. - 톰캣이 
 		
 //		PrintWriter out = res.getWriter();//io 임포트
 	}
