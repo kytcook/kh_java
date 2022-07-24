@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map" %>
 <%
-	List<Map<String, Object>> boardList 
-	= request.getAttribute("boardList");
+	List<Map<String, Object>> boardList =
+			(List<Map<String, Object>>)request.getAttribute("boardList");
 %>
 <!DOCTYPE html>
 <html>
@@ -24,19 +24,25 @@
 	if(boardList !=null){
 		for(int i=0 ; i < boardList.size() ; i++) {
 			Map<String,Object> rmap = boardList.get(i);
-		}///////////////end of for
-	}///////////////////end of if
 %>		
 		<tr><!-- 이꼴은 익스프레이션  -->
-			<td><%=rmap.get("코치명") " %></td>
-			<td><%=rmap.get("수업유형") " %></td>
-			<td><%=rmap.get("hp") " %></td>
+			<td><%out.print(rmap.get("코치명"));%></td>
+			<td><%=rmap.get("수업유형") %></td>
+			<td><%=rmap.get("hp") %></td>
 		</tr>		
+<%
+		}////////////end of for
+	}///////////////////end of if
+	else{
+		
+%>
+		<tr>
+			<td colspan="3">조회결과가 없습니다.</td>
+		</tr>
 <%
 	}
 %>
-
-	</table>
+</table>
 </body> 
 	<!-- crud공부 시   -->
 </html>
