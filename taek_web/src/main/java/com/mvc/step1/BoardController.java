@@ -17,33 +17,32 @@ public class BoardController implements Action {
 	
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		logger.info("execute 호출 성공");
+		String upmu[] = (String[])req.getAttribute("upmu");
 		ActionForward af = new ActionForward(); // ActionForward받아서 리턴해서 sendRidirect나 forward를 하겠다.
-		String command = req.getParameter("gubun"); // MVC패턴
 		StringBuilder path = new StringBuilder();// 이 스타일은 pojo이지만 스프링을 흉내내고 있다.
-		path.append("/board-step1/");
-		logger.info("command ===> " + command);
+		path.append("/board/");// 변수나 경로의 이름을 통일 하였다. <- board-step1
+		logger.info("upmu[1] ===>" + upmu[1]);
 		boolean isRedirect = false;// true - sendRedirect false : forward : 유지-select // select면 몰라도 forward다
-		// select면 몰라도 forward다 select면 몰라도 forward다 select면 몰라도 forward다 select면 몰라도 forward다 select면 몰라도 forward다 
-		// select면 몰라도 forward다 select면 몰라도 forward다 select면 몰라도 forward다 select면 몰라도 forward다 select면 몰라도 forward다 
-		// select면 몰라도 forward다 select면 몰라도 forward다 select면 몰라도 forward다 select면 몰라도 forward다 select면 몰라도 forward다 
 		// select이면 유지이다. forward / sendRedirect XXXXXX 절대 쓰지 않는다
 		// select 에는 조회결과가 있고 커서가 움직이니까 -> 맵에 상주하고 -> 맵에 상주하는 정보를 리스트에 담는거고 -> html에 뿌려준다. : forward
 		// 글쓰기
 		// 메소드 하나에서 4가지 경우를 따져야 한다.
 		// forward 
-		if("insert".equals(command)) {
-			
+		if("boardInsert".equals(upmu[1])) {
+			logger.info("boardInsert 호출 성공");
 		}
 		// 글수정
-		else if("update".equals(command)) {
-			
+		else if("boardUpdate".equals(upmu[1])) {
+			logger.info("boardUpdate 호출 성공");
 		}
 		// 글삭제
-		else if("delete".equals(command)) {
-			
+		else if("boardDelete".equals(upmu[1])) {
+			logger.info("boardDelete 호출 성공");
 		}
 		// 글조회
-		else if("select".equals(command)) {
+		else if("boardselect".equals(upmu[1])) {
+			logger.info("boardSelect 호출 성공");
 			java.util.List<Map<String,Object>> boardList = new ArrayList<>();
 			// 선언부와 생성부의 타입이 다를 때 다형성 - 폴리모피즘
 			// rmap으로 자손의 메소드는 호출이 불가하다.
