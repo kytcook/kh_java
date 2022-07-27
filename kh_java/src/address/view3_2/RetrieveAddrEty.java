@@ -1,18 +1,25 @@
 package address.view3_2;
 
+import java.io.Reader;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 import java.util.Vector;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class RetrieveAddrEty {
 	// 이른 인스턴스화 (게으른 인스턴스화)
 	DBConnectionMgr 	dbMgr 	= new DBConnectionMgr();
 	Connection 			con 	= null;
 	PreparedStatement 	pstmt 	= null;
-	ResultSet 			rs 		= null;
+	ResultSet			rs 		= null;
 	/***************************************************************************
 	 * 회원정보 중 상세보기 구현 - 1건 조회
 	 * SELECT id, name, address, DECODE(gender,'1','남','여') as "성별"
@@ -29,39 +36,39 @@ public class RetrieveAddrEty {
 		sql.append("SELECT id, name, address, telephone, gender         ");
 	    sql.append("      ,relationship, birthday, comments, registedate"); 
 	    sql.append("  FROM mkaddrtb                                     ");
-	    sql.append(" WHERE id = ? ");
+	    sql.append(" WHERE id = ?");
 	    // AddressBook에서 선택한 로우의 id값 담기
+	    int id = vo.getId();
 	    try {
-	    	con = dbMgr.getConnection();
+			con = dbMgr.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				// 게으른 인스턴스화 - 나중에 인스턴스화 한다.
+				//게으른 인스턴스화
 				rVO = new AddressVO();
-				rVO.setName(rs.getString("name"));// 이름이 와도되고 숫자가 와도됑
-//				rVO.setName(rs.getString(2)); // 하지만 숫자는 싫엉용. 직관성이 떨어진다.
-				rVO.setName(rs.getString("address"));
+				rVO.setName(rs.getString("name"));
+				rVO.setAddress(rs.getString("address"));
 				rVO.setTelephone(rs.getString("telephone"));
-				rVO.setGender(rs.getString("gender")); //아래 4가지는 뭐가 다른걸까? 
+				rVO.setGender(rs.getString("gender"));
 				rVO.setRelationship(rs.getString("relationship"));
 				rVO.setBirthday(rs.getString("birthday"));
 				rVO.setComments(rs.getString("comments"));
 				rVO.setRegistedate(rs.getString("registedate"));
-				// 이 코드를 쓰지 않는 사람과 안쓰는 사람의 차이 - 한끝차이
+				// 이코드를 쓰지 않는자 와 쓰는자  그 차이 - 한끝차이
 				rVO.setId(rs.getInt("id"));
 				// 상세보기에서는 id가 필요 없지만 수정처리할 때는 id가 필요하니까 넣어두자
 				// UPDATE mkaddrtb set address = "서울시 영등포구" WHERE id = ?
-//				int Id 
 			}
 		} catch (SQLException se) {
 			System.out.println("[[query]]"+sql.toString());
 		} catch (Exception e) {
 			e.printStackTrace();// 에러 스택에 쌓여 있는 로그 정보 출력해줌.라인번호도 같이
 		} finally {
-			// DB연동에서 사용한 자원 반납하기 - 노출 가능, 위변조
+			// DB연동에서 사용한 자원 반납하기 - 노출가능, 위변조
 			dbMgr.freeConnection(rs, pstmt, con);
 		}
-//	    return null;
+		//return null;
 		return rVO;
 	}
 	/***************************************************************************
@@ -109,6 +116,32 @@ public class RetrieveAddrEty {
 			dbMgr.freeConnection(rs, pstmt, con);
 		}
 		return vos;
+	}
+	// iBatis <-- myBatis, JDO, hibernate,......
+	public List<Map<String,Object>> myBatisRetrieve() {
+		SqlSessionFactory sqlMapper = null;
+		SqlSession sqlSes = null;
+		//호출 유무
+		System.out.println("RetrieveAddrEty myBatisRetrieve() 호출 성공");	
+		// 물리적으로 떨어져 있는 오라클 서버의 접속을 위한 정보 담음
+		// 컴파일을 하지 않아도 된다. 그래서 버전관리 용이 - spring 프레임워크 - xml 모르는 - 어노테이션
+		String resource = "address/view3/MapperConfig.xml";
+		// IO클래스 통하여 xml스캔한다 - 커넥션, 연결통로
+		Reader reader = null;
+		List<Map<String,Object>> addressList = null;
+		try {
+			reader  = Resources.getResourceAsReader(resource);
+			sqlMapper = new SqlSessionFactoryBuilder().build(reader);
+			sqlSes = sqlMapper.openSession();
+			//I/O, network, JDBC API -  명시적으로 자원 반납할 것을 권장하고 있음 - 자바튜닝팀
+			reader.close();
+			//mkaddrtb.xml에 등록된 아이디로 쿼리문 호출
+			addressList = sqlSes.selectList("retrieveAll");
+			System.out.println(addressList);
+		} catch (Exception e) {
+			e.printStackTrace();// 에러 스택에 쌓여 있는 로그 정보 출력해줌.라인번호도 같이
+		}
+		return addressList;
 	}
 }
 
