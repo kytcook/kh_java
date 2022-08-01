@@ -37,9 +37,9 @@ public class MyBatisCommonFactory {
 			String resource = "com/mybatis/MapperConfig.xml";
 			Reader reader = Resources.getResourceAsReader(resource);
 			logger.info("before sqlSessionFactory : "+sqlSessionFactory);
-			if(sqlSessionFactory == null) { //널이 아닐때만 객체 주입을 새로 받는다.
+			//if(sqlSessionFactory == null) { //널이 아닐때만 객체 주입을 새로 받는다.
 				sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader,"development");
-			}
+			//}
 			logger.info("after sqlSessionFactory : "+sqlSessionFactory);
 		} catch (Exception e) {
 			logger.info("[[ Exception ]] "+e.toString());

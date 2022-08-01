@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.boardMapper">
 		<!-- parameterType = (알리야스가 선언되어 있어서 map만 써도 된다) -->
-	<select id="boardList" parameterType="java.util.map" resultType="map">
+	<select id="boardList" parameterType="java.util.Map" resultType="map">
 		SELECT bm.b_no, bm.b_title, bm.b_writer, bs.B_FILE, bm.b_hit
 		  FROM BOARD_MASTER_T bm LEFT OUTER JOIN BOARD_SUB_T bs
 		    ON bm.b_no = bs.b_no
