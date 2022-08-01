@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>글상세보기</title>
+    <link rel="stylesheet" href="./board.css" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <script>
+      /*ready == jquery에서는 이게 onload이다. */
+      // 화면이 렌더링 되는 것과 스크립트 처리사이에 시간차
+      $(documnet).ready(function () {
+        let params = new URLSearchParams(document.location.search);
+        let id = params.get("id"); // 문자열 "Jonathan"
+        console.log("사용자가 선택한 item.id" + id);
+      });
+    </script>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">이해완료♣</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- 
+     시간차
+     랜더링이 되는 시점과 우리가 스크립트를 쓰는 시점의 시간차이를 관찰해야 한다.
+     화면이 뜨는 시간과 이벤트의 시간차
+     돔트리가 먼저 구성이 되어 있어야 한다. 
+
+     window. onload(); : 돔트리가 그려지면, 로딩이 됐으면,
+
+
+     당해봐라 ~~~~~~ 트러블 슈팅에 대한 정리를 더 구체저긍로 정리하세여.
+     블로그, 트러들 슈팅한 기억들 메모들
+     내가 관리한 vlog
+
+-->

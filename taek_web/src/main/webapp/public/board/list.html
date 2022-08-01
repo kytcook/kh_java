@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./board.css" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyD_E3njzteRHKiYoc24ioUvfD4thpJlOgM",
+        authDomain: "d-gym-demo.firebaseapp.com",
+        databaseURL:
+          "https://d-gym-demo-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "d-gym-demo",
+        storageBucket: "d-gym-demo.appspot.com",
+        messagingSenderId: "740962178337",
+        appId: "1:740962178337:web:a7e0d4e2e2e9e9288a9a60",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script>
+      //Database에서 데이터 가져오기
+      const db = firebase.firestore(); // 변수선언 먼저
+      let num = 0; //반복문에서 값을 증가시킬 변수 num을 선언한다.
+      db.collection("board")
+        .get()
+        .then((snapshot) => {
+          // console.log(snapshot); // 정보들어오는지 확인용 삭제해도 됨
+          snapshot.forEach((item) => {
+            // console.log(doc.data());
+            // 코드양은 늘어나더라도() 복잡도 증가하지 않도록
+            const template = `/* 변수를 쓰고 싶어서 백틱기호 사용 - 백틱안에서는 $좌중괄호우중괄호 */
+                          <tr>
+                            /* $[변수명] 넣는다. 0부터 쓰기는 싫다. 1부터 쓰고싶다 ++ */
+                            <th scope="row">${++num}</th>
+                            /* item.id = 식별자 */
+                            <td><a href = "./read.html?id=${item.id}"
+                            class=" btn btn-primary" data-bs-toggle="modal" data-bs-target="$staticBackdrop">
+                            ${item.data().제목}</a></td>
+                            <td>${item.data().작성자}</td>
+                            <td>${item.data().작성일}</td>
+                            <td>${item.data().내용}</td>
+                          </tr>
+          `;
+            $(".board-content").append(template);
+          });
+        });
+    </script>
+    <!-- Navbar 시작 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link disabled"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Disabled</a
+              >
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar  끝  -->
+    <div class="container">
+      <!-- page header -->
+      <div class="page-header">
+        <h2>공지사항</h2>
+        <hr />
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <select
+            class="form-select"
+            aria-label="분류선택"
+            name="gubun"
+            id="gubun"
+          >
+            <option defaultValue>분류선택</option>
+            <option value="b_title">제목</option>
+            <option value="b_writer">작성자</option>
+            <option value="b_content">내용</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <input type="text" name="keyword" id="keyword" class="form-control" />
+        </div>
+        <div class="col-3">
+          <button class="btn btn-danger">검색</button>
+        </div>
+      </div>
+      <!-- page header -->
+      <div class="board-list">
+        <table class="table table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">제목</th>
+              <th scope="col">작성자</th>
+              <th scope="col">작성일</th>
+              <th scope="col">내용</th>
+            </tr>
+          </thead>
+          <tbody class="board-content"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- 모달창 화면 추가 -->
+
+    <!-- Modal -->
+    <!-- 여기다가 id값을 주면 타임라인이 안 맞는다. 눌렀을 때 데이터베이스를 불러와야 한다. 시점의 문제
+    시점의 문제 - 클래스를 나누자 - modal.id > read.html로 옮기자~
+-->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">이해완료♣</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 모달창 화면 추가 -->
+  </body>
+</html>
