@@ -29,6 +29,7 @@ public class BoardController implements Action {
 		// 글쓰기
 		// 메소드 하나에서 4가지 경우를 따져야 한다.
 		// forward 
+		// 1-1에서는 메소드내에서 분기문으로 처리를 함 -> 가독성 별로... 재사용성 별로,,
 		if("boardInsert".equals(upmu[1])) {
 			logger.info("boardInsert 호출 성공");
 		}
