@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+<web-app xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="https://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
 <!--========================07.21===========================-->
   <context-param>
   		<param-name>log4jConfigLocation</param-name>
@@ -25,12 +25,12 @@
 	</servlet-mapping>
 <!--========================08.01===========================-->	
 	<servlet>
-		<servlet-name>FrontMVC2</servlet-name>
+		<servlet-name>FrontMVC2</servlet-name><!-- 아래 ActionServlet을 직접 부를 순 없으니까 FrontMVC2라는 임의의 이름으로 명명한다. -->
 		<servlet-class>com.mvc.step2.ActionServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>FrontMVC2</servlet-name>
-		<url-pattern>*.kh</url-pattern>
+		<servlet-name>FrontMVC2</servlet-name><!-- kh는 FrontMVC2라는 가상의 이름으로 매핑되어 있다. -->
+		<url-pattern>*.kh</url-pattern><!-- 클라이언트가 kh를 요청 -->
 	</servlet-mapping>
 </web-app>
 
