@@ -48,6 +48,7 @@ public class FrontMVC extends HttpServlet {
 		// 메소드의 파라미터 자리는 
 		// 서블릿 클래스만이 객체주입(게으른...)을 받을 수 있다. 필요할 때 넣어준다 ex-청소부
 		// 참조에 의한 호출
+		// 이 부분에 대해 2사람 이상에게 설명해 보자★★★
 		if("board".equals(upmu[0])) {
 			req.setAttribute("upmu", upmu);
 			af = boardController.execute(req, res);
@@ -57,8 +58,12 @@ public class FrontMVC extends HttpServlet {
 		if(af != null) {
 			if(af.isRedirect()) {
 //				res.sendRedirect("xxx.jsp");상수싫어용 변수 좋아용 변수보단 getter setter
-				res.sendRedirect(af.getPath());// 외부에서 위변조 못하게 프라이빗하게! 
+				// select에서는 절대 쓰면 안돼. - why? 정보를 불렀는데, 유지가 되야하는데 샌드리다이랙트는 안돼~~
+				res.sendRedirect(af.getPath());// 외부에서 위변조 못하게 프라이빗하게! 유지가안돼★★★
 			} else { //forward = 유지, 주소안변함, 그런데 페이지는 바뀌었다.
+				// select문(조회,검색) 이면 무조건 forward - 조회한 정보가 유지가 되야지 ㅡㅡ 
+				// 세션에 담는다:로그인 정보 - cache는 너무비싸...
+				// 세션과 cookie : 유지의 문제 
 				RequestDispatcher view = req.getRequestDispatcher(af.getPath());
 				view.forward(req, res);
 			}

@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import com.mvc.step1.FrontMVC;
 // 시중 교재에서는 어노테이션으로 url매핑을 처리하지만
 // 수업에서는 스프링 프레임워크를 최대한 흉내내 보자는 취지로 사용하지 않는다.
+// 1-4 에서는 가급적 if문을 버리고 메소드로 독립시켜 본다.
 public class ActionServlet extends HttpServlet {
 	Logger logger = Logger.getLogger(FrontMVC.class); // org.appach.log4
 	public void doService(HttpServletRequest req, HttpServletResponse res)
@@ -66,7 +67,7 @@ public class ActionServlet extends HttpServlet {
 			// 결과적으로 ActionServlet의 역할은 사용자 요청에 대한 서비스를 담당할 적절한 컨트롤 클래스를 
 			// 찾아서 연결해 주고 각 업무별 추가된 컨트롤 클래스에서 지정한 페이지에 대한 요청 URL의 조립은
 			// ActionServlet에서 제공해줌
-			if(pageMove !=null) {
+			if(pageMove !=null) {// if문 중첩되있는거 불편한데, 어떻게 건드리지?? 뎁스는 줄이자. 가독성이 떨어진다.
 				String path = pageMove[1];
 				// Board2Controller에 리턴 값이 return "redirect:boardList.jsp"일 때
 				// boardList.kh가 있으면 안되는 이유  -> boardList.kh.jsp로 요청 URL조립이 되니까 404
