@@ -32,6 +32,15 @@
 		<servlet-name>FrontMVC2</servlet-name><!-- kh는 FrontMVC2라는 가상의 이름으로 매핑되어 있다. -->
 		<url-pattern>*.kh</url-pattern><!-- 클라이언트가 kh를 요청 -->
 	</servlet-mapping>
+<!--========================08.03===========================-->	
+	<servlet>
+		<servlet-name>ch1dept</servlet-name><!-- 아래 ActionServlet을 직접 부를 순 없으니까 FrontMVC2라는 임의의 이름으로 명명한다. -->
+		<servlet-class>book.ch1.DeptServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ch1dept</servlet-name><!-- kh는 FrontMVC2라는 가상의 이름으로 매핑되어 있다. -->
+		<url-pattern>/dept/dept.ds</url-pattern><!-- 클라이언트가 kh를 요청 -->
+	</servlet-mapping>
 </web-app>
 
 <!--
