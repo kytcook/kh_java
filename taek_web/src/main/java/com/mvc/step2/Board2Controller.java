@@ -23,16 +23,16 @@ public class Board2Controller implements Controller {
 	public String execute(HttpServletRequest req, HttpServletResponse res)
 	throws ServletException, IOException {
 		logger.info("execute 호출 성공");
-		String upmu[] = (String[]) req.getAttribute("upmu");
+		String upmu[] = (String[]) req.getAttribute("upmu");//servlet에서 setAttribute한걸 받아온다. 반환타입이 오브젝트라서 String으로 받는다
 		// null로 두는 것이 맞지만 웹서비스에서 NullPointerException 발생시, 어떠한 화면도 확인이 불가하고
 		// 힌트도 볼수 없기에 ""로 처리한다.
 		String page = ""; 
 		// upmu[0] => 업무이름, upmu[1] => 업무기능이름 -> 1-4(메소드이름 매칭)
-		logger.info(upmu[0]+","+upmu[1]);
+		logger.info(upmu[0]+","+upmu[1]);// borad2, boardList
 		if("boardList".equals(upmu[1])) {
-			List<Map<String, Object>> boardList = null;
-			boardList = boardLogic.boardList();
-			req.setAttribute("boardList", boardList);
+			List<Map<String, Object>> boardList = null;//Strings
+			boardList = boardLogic.boardList();// 순서대로 들어가서 가져온 값을 boardList에 담는다.
+			req.setAttribute("boardList", boardList);// req에 위의값을 가져온다.
 			// 오라클 서버에서 조회된 결과가 화면에 출력이 나가야 함
 			// 유지의 문제 - (로그인 세션유지)
    	 	 // page = "board2/boardList";
@@ -40,7 +40,7 @@ public class Board2Controller implements Controller {
 		} else if("jsonBoardList".equals(upmu[1])) {
 			List<Map<String, Object>> boardList = null;
 			boardList = boardLogic.boardList();
-			req.setAttribute("boardList", boardList);
+			req.setAttribute("boardList", boardList); 
 			// 오라클 서버에서 조회된 결과가 화면에 출력이 나가야 함
 			// 유지의 문제 - (로그인 세션유지)
    	 	 // page = "board2/boardList";

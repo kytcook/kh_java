@@ -7,7 +7,7 @@
 		isOk = Boolean.parseBoolean(request.getParameter("isOk"));
 	}
 	List<Map<String,Object>> boardList = 
-			(List<Map<String,Object>>)request.getAttribute("boardList");
+			(List<Map<String,Object>>)request.getAttribute("boardList");//sql문을 넘겨넘겨 받아서 가지고옴
 	int size = 0;
 	if(boardList!=null){
 		size = boardList.size();
@@ -140,7 +140,7 @@
 	else if(size>0){
 		for(int i=0;i<size;i++){
 			if(size == i) break;
-			Map<String,Object> rMap = boardList.get(i);
+			Map<String,Object> rMap = boardList.get(i);// 데이터 꺼내는 반복문/ 데이터 껀수만큼
 %>	      
         	<tr>
         		<td><%=rMap.get("BM_NO")%></td>

@@ -14,7 +14,7 @@ import com.mvc.step1.FrontMVC;
 // 시중 교재에서는 어노테이션으로 url매핑을 처리하지만
 // 수업에서는 스프링 프레임워크를 최대한 흉내내 보자는 취지로 사용하지 않는다.
 // 1-4 에서는 가급적 if문을 버리고 메소드로 독립시켜 본다.
-public class ActionServlet extends HttpServlet {
+public class ActionServlet extends HttpServlet {//
 	Logger logger = Logger.getLogger(FrontMVC.class); // org.appach.log4
 	public void doService(HttpServletRequest req, HttpServletResponse res)
 	throws ServletException, IOException{
@@ -24,18 +24,18 @@ public class ActionServlet extends HttpServlet {
 		String requestURI = req.getRequestURI();//-> /board2/boardApp.kh?crud=select
 		// 컨텍스트는 톰캣 서버의 server.xml에 배포된 위치 정보 값을 참조함
 		// /taek_web or /
-		String contextPath = req.getContextPath();
-		String command = requestURI.substring(contextPath.length()+1);
-		int end = command.lastIndexOf(".");
-		command = command.substring(0, end);
+		String contextPath = req.getContextPath();// board2가 담긴다
+		String command = requestURI.substring(contextPath.length()+1);// boardList.kh
+		int end = command.lastIndexOf(".");//
+		command = command.substring(0, end);// boardList   /.앞에까지만 담긴다
 		String upmu[] = null;
 		upmu = command.split("/");
-		logger.info(upmu[0]+","+upmu[1]);
-		req.setAttribute("upmu", upmu);
-		Board2Controller boardController = new Board2Controller();
+		logger.info(upmu[0]+","+upmu[1]);// 0번째 배열에 borad2가 담기고, 1번째 배열에는 boardList
+		req.setAttribute("upmu", upmu);// upmu라는 키값으로 방금 저장한 upmu 배열을 저장한다. req객체에다가
+		Board2Controller boardController = new Board2Controller();// board2컨트롤러 객체 생성
 		// 컨트롤 클래스에서 리턴타입을 String, ModelAndView(Spring2.X)[scope] 이원화 해보기 > 1-4번 계획
 		Object obj = null;
-		obj = boardController.execute(req,res);//리턴타입을 받아온다. 메소드 호출
+		obj = boardController.execute(req,res);//리턴타입을 받아온다. 메소드 호출 //req에 업무라는 배열을 저장해서 넘겨줬다.
 		// page로 넘어오는 값으 유형
 		// redirect:boaard2/boardInsert
 		// response.sendRedirect("XXX.jsp");
@@ -78,13 +78,13 @@ public class ActionServlet extends HttpServlet {
 				//Board2Controller에 리턴 값이 return "forward:boardList"일 때
 				else if("forward".equals(pageMove[0])) {// 난 유지하게 해줄래
 					RequestDispatcher view = req.getRequestDispatcher("/"+path+".jsp");
-					view.forward(req,  res);
+					view.forward(req,  res);// boardList
 				}
 				//Board2Controller에 리턴 값이 return "board2/boardList"일 때
 				else {// redirect나 forward문자열이 없는 경우라면?
 					path = pageMove[0]+"/"+pageMove[1];
 					RequestDispatcher view = 
-							req.getRequestDispatcher("/WEB-INF/jsp/"+path+".jsp");
+					req.getRequestDispatcher("/WEB-INF/jsp/"+path+".jsp");// path : board2/ boardList
 					view.forward(req,  res);
 				}
 			}////////////end of ㅊ출력페이지 호출 URL패턴 조립하기

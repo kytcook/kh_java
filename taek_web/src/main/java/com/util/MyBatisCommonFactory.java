@@ -26,20 +26,20 @@ import org.apache.log4j.Logger;
  * 
  * 
  */
-public class MyBatisCommonFactory {
+public class MyBatisCommonFactory {//=  jdbc
 	static Logger logger = Logger.getLogger(MyBatisCommonFactory.class);
-	public static SqlSessionFactory sqlSessionFactory = null;
+	public static SqlSessionFactory sqlSessionFactory = null;// 바티스를 쓰려면 얘가 먼저 선언되야 한다.
 	// SqlSessionFactory객체를 생성해 주는 메소드 입니다.- 싱글톤 패턴 적용하기 위한 코드.
 	// 메소드 중심의 객체주입 코드(디자인패턴적용, 싱글톤, 의존성주입, 제어역행, 개발방법론(MVC, MVP, MVVM), 메소드 중심의 인스턴스화
 	// 인스턴스화 5가지 유형
 	public static void init() {
 		try {
 			String resource = "com/mybatis/MapperConfig.xml";
-			Reader reader = Resources.getResourceAsReader(resource);
+			Reader reader = Resources.getResourceAsReader(resource);// jdbc = getConnection; // reader = i/o클래스
 			logger.info("before sqlSessionFactory : "+sqlSessionFactory);
-			//if(sqlSessionFactory == null) { //널이 아닐때만 객체 주입을 새로 받는다.
+			if(sqlSessionFactory == null) { //널이 아닐때만 객체 주입을 새로 받는다.
 				sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader,"development");
-			//}
+			}
 			logger.info("after sqlSessionFactory : "+sqlSessionFactory);
 		} catch (Exception e) {
 			logger.info("[[ Exception ]] "+e.toString());
@@ -48,7 +48,7 @@ public class MyBatisCommonFactory {
 	// getter
 	public static SqlSessionFactory getSqlSessionFactory() {
 		init();
-		return sqlSessionFactory;
+		return sqlSessionFactory;// 외부에서 돌려준다.
 	}
 	
 }
