@@ -6,7 +6,7 @@
 	if(request.getParameter("isOk")!=null){
 		isOk = Boolean.parseBoolean(request.getParameter("isOk"));
 	}
-	List<Map<String,Object>> boardList = 
+	List<Map<String,Object>> boardList = //유지의문제 - DB를 경유해야한다 ->servlet
 			(List<Map<String,Object>>)request.getAttribute("boardList");//sql문을 넘겨넘겨 받아서 가지고옴
 	int size = 0;
 	if(boardList!=null){
@@ -31,7 +31,7 @@
 	}
 	function getBoardList(){
 		//alert("getBoardList호출");     	   	
-		$("#dg_board").datagrid({
+		$("#dg_board").datagrid({// document.getElementById(" ")
 			url:"jsonBoardList.kh"
 		})
 	}	
