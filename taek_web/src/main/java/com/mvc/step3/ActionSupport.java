@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.mvc.step2.Board2Controller;
-import com.mvc.step2.ModelAndView;
+import com.mvc.step3.Board3Controller;
+import com.mvc.step3.ModelAndView;
 /*
  * 리턴타입을 String + ModelAndView 추가 지원해 본다.
  * CRUD구현에 필요한 로직을 if문이 아닌 메소드 중심 코딩 전개가 가능하도록 개선해 본다.
@@ -48,6 +48,7 @@ public class ActionSupport extends HttpServlet {
 		
 		if(obj !=null) {
 			String pageMove[] = null;
+			ModelAndView mav = null;
 			if(obj instanceof String) {
 				if(((String)obj).contains(":")) {
 					logger.info(":콜론이 포함되어 있어요");
@@ -57,10 +58,16 @@ public class ActionSupport extends HttpServlet {
 				} else {
 					logger.info(":콜론이 포함되어 있지않아요");
 					pageMove = obj.toString().split("/");
-				}
+				}//////end of String
 				logger.info("pageMove==>"+pageMove[0]+","+pageMove[1]);//찾아 볼 수 있도록 로거를 남겨두자
 			}////////end of String
+			// Model(데이터-내안에  List있다) 과 View의 혼합(함께)
 			else if(obj instanceof ModelAndView) {
+				mav = (ModelAndView)obj;
+				pageMove = new String[2];
+				pageMove[0] = "forward";
+				pageMove[1] = mav.getViewName();
+				logger.info("pageMove==>"+pageMove[0]+","+pageMove[1]);//찾아 볼 수 있도록 로거를 남겨두자
 				
 			}
 			if(pageMove !=null) {// if문 중첩되있는거 불편한데, 어떻게 건드리지?? 뎁스는 줄이자. 가독성이 떨어진다.

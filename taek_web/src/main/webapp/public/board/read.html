@@ -24,16 +24,55 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+    <!-- Firebase Connection -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyD_E3njzteRHKiYoc24ioUvfD4thpJlOgM",
+        authDomain: "d-gym-demo.firebaseapp.com",
+        databaseURL:
+          "https://d-gym-demo-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "d-gym-demo",
+        storageBucket: "d-gym-demo.appspot.com",
+        messagingSenderId: "740962178337",
+        appId: "1:740962178337:web:a7e0d4e2e2e9e9288a9a60",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- Firebase Connection -->
   </head>
 
   <body>
     <script>
       /*ready == jquery에서는 이게 onload이다. */
       // 화면이 렌더링 되는 것과 스크립트 처리사이에 시간차
-      $(documnet).ready(function () {
+      $(document).ready(function () {
+        const db = firebase.firestore(); // 컬렉션에서 꺼내오는 코드
         let params = new URLSearchParams(document.location.search);
         let id = params.get("id"); // 문자열 "Jonathan"
         console.log("사용자가 선택한 item.id" + id);
+        $("#staticBackdrop").modal("show");
+        const readModal = document.getElementById("staticBackdrop");
+        readModal.addEventListener("shown.bs.modal", () => {
+          db.collection("board")
+            .doc(id)
+            .get()
+            .then((result) => {
+              // console.log(result.data());
+              const title = result.data().제목;
+              const writer = result.data().작성자;
+              const regdate = result.data().작성일;
+              const content = result.data().내용;
+              $("#staticBackdropLabel").text(title); //id, append가 되는게 아니라 덮어쓰기가 된다.
+              $(".writer").text(writer);
+              $(".regdate").text(regdate);
+              $(".content").text(content);
+            });
+        });
       });
     </script>
     <!-- Modal -->

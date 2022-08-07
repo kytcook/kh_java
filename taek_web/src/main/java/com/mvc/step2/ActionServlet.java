@@ -26,7 +26,7 @@ public class ActionServlet extends HttpServlet {//
 		// /taek_web or /
 		String contextPath = req.getContextPath();// board2가 담긴다
 		String command = requestURI.substring(contextPath.length()+1);// boardList.kh
-		int end = command.lastIndexOf(".");//
+		int end = command.lastIndexOf("."); // url주소 마지막에 .을 찍는다.
 		command = command.substring(0, end);// boardList   /.앞에까지만 담긴다
 		String upmu[] = null;
 		upmu = command.split("/");

@@ -33,6 +33,7 @@ public class HandlerMapping {
 			if("board3".equals(upmu[0])) {
 				controller = new Board3Controller();
 				if("boardList".equals(upmu[1])) {
+					// 파라미터로 원본을 넘긴다
 					obj = controller.boardList(req,res);
 					if(obj instanceof ModelAndView) {
 						return(ModelAndView)obj;

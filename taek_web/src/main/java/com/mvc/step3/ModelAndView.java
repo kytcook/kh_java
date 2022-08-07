@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 // 왜 굳이 ModelAndView를 추가했나? -> Model, ModelMap으로 바뀜
 // spring2.5까지 많이 사용하던 클래스 이다.
 // req.setAttribute("boardList",boardList);
@@ -14,7 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 // 서블릿에 의존적이지 않은 프레임워크가 정답이다.
 // req 없이도 조회된 결과를 화면에 전달할 수 있었으면 해 
 public class ModelAndView {
+	Logger logger = Logger.getLogger(ModelAndView.class);
 	HttpServletRequest req = null;
+	// 접두어/ WEB-INF / jsp
+	// 접미어 .jsp
+	// 접두어와 접미어를 붙여서 응답 페이지의 URL을 완성한다.
 	private String viewName = null;// private을 넣었기때문에 getter setter로 불러오는 구조로 바뀜
 	List<Map<String,Object>> reqList = new ArrayList<>();
 //	String viewName = new String(); 이건 복사본이야. 원본을 써야해. whhhhhy??
@@ -40,9 +46,10 @@ public class ModelAndView {
 		return viewName;
 	}
 	public void addObject(String name, Object obj) {
+		logger.info(name+","+obj);
 		Map<String,Object> pMap = new HashMap<>();
 		pMap.put(name, obj);
-		req.setAttribute("name", obj);
+		req.setAttribute(name, obj);
 		reqList.add(pMap);
 	}
 }
