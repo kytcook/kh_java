@@ -1,0 +1,25 @@
+.icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+}
+
+.btn-google {
+  background-color: white;
+  border: 1px solid white;
+}
+
+.btn-github {
+  background-color: rgb(151, 177, 191);
+  border: 1px solid rgb(214, 197, 197);
+  color: black;
+}
+
+.icon-goolge {
+  background: url(../images/icon-google.svg) no-repeat center/20px; /* no-repeat : 반복처리 안되게 해준다 */
+}
+
+.icon-github {
+  background: url(../images/icon-google.svg) no-repeat center/20px; /* no-repeat : 반복처리 안되게 해준다 */
+}
