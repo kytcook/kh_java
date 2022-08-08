@@ -17,12 +17,12 @@ public class HandlerMapping {
 	 * @param upmu[0]=업무폴더이름, upmu[1]= 업무기능이름 - 메소드명으로 사용하면 됨)
 	 * @param req 1-2,3 에서와는 다르게 Controller인터페이스를 implements 하지 않고 있따.
 	 * @param res 그렇다면 req와 res를 어디서 전달 받는 걸가??
-	 * HttpsServlet을 상ㅅ받아서 톰캣서버가 제공하는 요청객체와 응답객체를 사용함.
+	 * HttpsServlet을 상속받아서 톰캣서버가 제공하는 요청객체와 응답객체를 사용함.
 	 * @return String/ModelAndView(유지를 위한 req.setAttribute()를 대신함
 	 */
 	public static Object getController(String[] upmu
-						 , HttpServletRequest req
-						 , HttpServletResponse res) {
+										, HttpServletRequest req
+										, HttpServletResponse res) {
 			logger.info(upmu[0]+","+upmu[1]);
 			Controller3 controller = null;
 			Board3Controller boardController = null;
@@ -44,4 +44,4 @@ public class HandlerMapping {
 			}
 			return obj ;
 		}
-}
+	}	

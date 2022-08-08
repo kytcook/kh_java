@@ -36,19 +36,20 @@ public class ActionSupport extends HttpServlet {
 		// 업무에 대응하는 컨트롤러 클래스에 인스턴스화는 HandlerMapping클래스에서 하니까
 		// 아래 코드 필요 없다
 		// Board2Controller boardController = new Board2Controller();
-		req.setAttribute("upmu", upmu);// upmu라는 키값으로 방금 저장한 upmu 배열을 저장한다. req객체에다가
-		Board3Controller boardController = new Board3Controller();// board2컨트롤러 객체 생성
+//		req.setAttribute("upmu", upmu);// upmu라는 키값으로 방금 저장한 upmu 배열을 저장한다. req객체에다가
+//		Board3Controller boardController = new Board3Controller();// board2컨트롤러 객체 생성
 		Object obj = null;
 		try {
 			obj = HandlerMapping.getController(upmu,req,res);
 		} catch (Exception e) {
 			logger.info("Exception : " + e.toString());
 		}
-		obj = boardController.execute(req,res);//리턴타입을 받아온다. 메소드 호출 //req에 업무라는 배열을 저장해서 넘겨줬다.
+//		obj = boardController.execute(req,res);//리턴타입을 받아온다. 메소드 호출 //req에 업무라는 배열을 저장해서 넘겨줬다.
 		
 		if(obj !=null) {
 			String pageMove[] = null;
 			ModelAndView mav = null;
+			//
 			if(obj instanceof String) {
 				if(((String)obj).contains(":")) {
 					logger.info(":콜론이 포함되어 있어요");
@@ -82,7 +83,7 @@ public class ActionSupport extends HttpServlet {
 				else {// redirect나 forward문자열이 없는 경우라면?
 					path = pageMove[0]+"/"+pageMove[1];
 					RequestDispatcher view = 
-					req.getRequestDispatcher("/WEB-INF/jsp/"+path+".jsp");// path : board2/ boardList
+							req.getRequestDispatcher("/WEB-INF/jsp/"+path+".jsp");// path : board2/ boardList
 					view.forward(req,  res);
 				}
 			}////////////end of ㅊ출력페이지 호출 URL패턴 조립하기

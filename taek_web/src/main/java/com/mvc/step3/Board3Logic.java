@@ -17,4 +17,5 @@ public class Board3Logic {
 		boardList = boardDao.boardList();
 		return boardList;
 	}
+	
 }

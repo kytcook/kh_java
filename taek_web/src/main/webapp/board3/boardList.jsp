@@ -162,7 +162,7 @@
         		<td><%=rMap.get("BM_NO")%></td>
         		<td>
 <!-- 너 댓글이니? -->        		
-<a href="javascript:boardDetail('<%=rMap.get("BM_NO")%>')" style="text-decoration:none;color:#000000">        		
+<a href="javascript:boardDetail('<%=rMap.get("B_NO")%>')" style="text-decoration:none;color:#000000">        		
         		<%=rMap.get("B_TITLE")%>
 </a>        		
         		</td>
@@ -216,8 +216,8 @@
 		[1][2][3] 	
 <%
 	String pagePath = "boardList.pj";
-	PageBar pb = new PageBar(numPerpage, size, nowPage, pagePath);
-	out.print(pn.getPageBar());
+	PageBar pb = new PageBar(numPerPage, size, nowPage, pagePath);
+	out.print(pb.getPageBar());
 %>
 	</div>
 	
