@@ -21,7 +21,7 @@ public class HelloServlet extends HttpServlet {
 	throws ServletException, IOException{
 		System.out.println("doGet호출 성공");
 		PrintWriter out = res.getWriter();
-		out.print("<html><head>" + name);
+		out.print("<html><head>" + out);
 		req.setAttribute("name", "scott");
 		res.sendRedirect("./helloResponse.jsp");
 //		res.setContentType("text/html;charset=UTF-8");// html양식을 받기 위해서

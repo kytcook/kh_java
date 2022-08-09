@@ -46,23 +46,10 @@
       });
     </script>
     <script>
-        $(document).ready(fuction() {
-          const c_name = $.cookie("c_name")
-          console.log("쿠키에서 꺼내온 이름 : " + c_name);
-        })
-      <script>
-        // callback함수 then
-        authService.login("Google").then((sanpshot) => {
-          // console.log(JSON.stringify(snapshot));//확인용
-          const imsi = JSON.stringify(snapshot); // 문자열로 변환
-          const jsonDoc = JSON.parse(imsi);
-          const displayName = jsonDoc.user.displayName;
-          console.log(displayName);
-          if (displayName) {
-            $.cookie("c_name", displayName); //쿠키에서 값을 꺼낸다. 쿠키가 살아있는 동안은 유지되고 있다.
-            moveMain();
-          } // 일급함수 겅부?
-        });
+      $(document).ready(function () {
+        const c_name = $.cookie("c_name");
+        console.log("쿠키에서 꺼내온 이름 : " + c_name);
+      });
     </script>
     <header>
       <nav class="navbar navbar-expand-lg bg-light">

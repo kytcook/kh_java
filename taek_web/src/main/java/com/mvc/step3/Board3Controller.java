@@ -1,5 +1,6 @@
 package com.mvc.step3;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+
+import com.util.HashMapBinder;
 
 // 컨트롤 계층을 담당하는 클래스는 서블릿이 아니어도 괜찮아
 // 혼자서는 아무것도 완성할 수 없는 나 - 전체적인 틀, 와꾸, 패턴, 기준
@@ -22,9 +25,12 @@ public class Board3Controller implements Controller3 {
 	public ModelAndView boardList(HttpServletRequest req, HttpServletResponse res) {
 		logger.info("boardList 호출 성공");
 		// ModelAndView객체를 설계함에 따라서 req가 없어도 조회결과를 담을 수 있게 되었다.-의미
+		Map<String,Object> pMap = new HashMap<>();
+		HashMapBinder hmb = new HashMapBinder(req);
+		hmb.bind(pMap);
 		ModelAndView mav = new ModelAndView(req);
 		List<Map<String, Object>> boardList = null;
-		boardList = boardLogic.boardList();
+		boardList = boardLogic.boardList(pMap);
 		mav.addObject("boardList", boardList);
 		mav.setViewName("board3/boardList");
 		return mav;
@@ -41,5 +47,33 @@ public class Board3Controller implements Controller3 {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	//boardList.jsp -> 모달 -> 입력 -> insert -> board3/boardList.pj
+	@Override
+	public Object boardInsert(HttpServletRequest req, HttpServletResponse res) {
+		logger.info("boardInsert 호출 성공");
+		Map<String, Object> pMap = new HashMap<>();
+		HashMapBinder hmb = new HashMapBinder(req);
+		hmb.bind(pMap);
+		int result = 0;
+		result = boardLogic.boardInsert(pMap);
+		String path = "redirect:boardList.pj";
+		return null;
+	}
+	
+	@Override
+	public Object boardDetail(HttpServletRequest req, HttpServletResponse res) {
+		logger.info("boardDetail 호출 성공");
+		Map<String,Object> pMap = new HashMap<>();
+		HashMapBinder hmb = new HashMapBinder(req);
+		hmb.bind(pMap);
+		// ModelAndView객체를 설계함에 따라서 req가 없어도 조회결과를 담을 수 있게 되었다.-의미
+		ModelAndView mav = new ModelAndView(req);
+		List<Map<String, Object>> boardList = null;
+		boardList = boardLogic.boardList(pMap);
+		mav.addObject("boardList", boardList);
+		mav.setViewName("board3/read");
+		return mav;
+	}
+	
 }

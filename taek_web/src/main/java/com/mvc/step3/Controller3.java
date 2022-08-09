@@ -12,4 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 public interface Controller3 {
 	public ModelAndView execute(HttpServletRequest req, HttpServletResponse res, Map<String,Object> pMap);
 	public String execute(HttpServletRequest req, HttpServletResponse res);
-	public Object boardList(HttpServletRequest req, HttpServletResponse res);}
+	public Object boardList(HttpServletRequest req, HttpServletResponse res);
+	public Object boardDetail(HttpServletRequest req, HttpServletResponse res);
+	public Object boardInsert(HttpServletRequest req, HttpServletResponse res);}

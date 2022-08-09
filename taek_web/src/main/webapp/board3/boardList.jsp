@@ -23,9 +23,7 @@
 	int nowPage = 0;
 	if(request.getParameter("nowPage")!=null){
 		nowPage = Integer.parseInt(request.getParameter("nowPage"));
-		
 	}
-	
 	
 %>    
 <!DOCTYPE html>
@@ -35,11 +33,12 @@
 <title>MVC기반의 계층형 게시판 구현하기</title>
 <%@ include file="../common/easyui_common.jsp" %>
 <script type="text/javascript">
-	var g_no=0;//그리드에서 선택이 바뀔때 마다 변경된 값이 저장됨.
+	let g_no=0;//그리드에서 선택이 바뀔때 마다 변경된 값이 저장됨.
 	var tb_value;
 	let isOk = false;
 	function dlgIns_save(){
 		//폼 전송 처리함.
+		$("#f_boardIns").submit();
 	}
 	function dlgIns_close(){
 		$("#dlg_boardIns").dialog('close');
@@ -50,7 +49,7 @@
 			url:"jsonBoardList.kh"
 		})
 	}	
-	function boardDetail(bm_no){
+	function boardDetail(b_no){
 	}
     function fileDown(fname){
 		//alert(fname);
@@ -59,7 +58,7 @@
 </head>
 <body>
 <script type="text/javascript">
-	var user_combo="bm_title";//제목|내용|작성자
+	var user_combo="b_title";//제목|내용|작성자
 	var v_date;//사용자가 선택한 날짜 정보 담기
 //기본 날짜포맷을 재정의
 	$.fn.datebox.defaults.formatter = function(date){
@@ -79,7 +78,16 @@
 	}	
 	$(document).ready(function(){//DOM구성이 완료된 시점-자바스크립트로 태그접근,설정변경,이미지
 		$("#dg_board").datagrid({
-
+			onSelect:function(index, row) {
+				g_no = row.B_NO;
+				console.log("g_no : "+g_no);
+			},
+			onDblClickCell: function(index, field, value){
+				if("B_TITLE" == field)
+					location.href="./boardDetail.pj?b_no="+g_no
+					g_no = 0;		
+					$("#dg_board").datagrid('clearSelections')		
+			}
 		});
 	
 		//등록 날짜 정보를 선택했을 때
@@ -137,7 +145,7 @@
                 <th data-options="field:'B_TITLE',width:350">제목</th>
                 <th data-options="field:'B_WRITER',width:80,align:'center'">작성자</th>
                 <th data-options="field:'B_DATE',width:100,align:'center'">작성일</th>
-                <th data-options="field:'BS_FILE',width:170">첨부파일</th>
+                <th data-options="field:'B_FILE',width:170">첨부파일</th>
                 <th data-options="field:'B_HIT',width:60,align:'center'">조회수</th>
             </tr>
         </thead>
@@ -159,7 +167,7 @@
 			Map<String,Object> rMap = boardList.get(i);// 데이터 꺼내는 반복문/ 데이터 껀수만큼
 %>	      
         	<tr>
-        		<td><%=rMap.get("BM_NO")%></td>
+        		<td><%=rMap.get("b_NO")%></td>
         		<td>
 <!-- 너 댓글이니? -->        		
 <a href="javascript:boardDetail('<%=rMap.get("B_NO")%>')" style="text-decoration:none;color:#000000">        		
@@ -169,8 +177,8 @@
         		<td><%=rMap.get("B_WRITER")%></td>
         		<td><%=rMap.get("B_DATE")%></td>
         		<td>
-        		<a href="javascript:fileDown('<%=rMap.get("BS_FILE") %>')">
-        		<%=rMap.get("BS_FILE")%>
+        		<a href="javascript:fileDown('<%=rMap.get("B_FILE") %>')">
+        		<%=rMap.get("B_FILE")%>
         		</a>
         		</td>
         		<td><%=rMap.get("B_HIT")%></td>
@@ -190,13 +198,13 @@
                                      -->
         <select class="easyui-combobox" id="cb_search" name="cb_search" panelHeight="auto" style="width:100px">
             <option selected>선택</option>
-            <option value="bm_title">제목</option>
-            <option value="bm_content">내용</option>
-            <option value="bm_writer">작성자</option>
+            <option value="b_title">제목</option>
+            <option value="b_content">내용</option>
+            <option value="b_writer">작성자</option>
         </select>
         <input id="tb_search" name="tb_search" class="easyui-textbox" style="width:320px">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                작성일: <input id="db_date" class="easyui-datebox" name="bm_date" style="width:110px">
+                작성일: <input id="db_date" class="easyui-datebox" name="b_date" style="width:110px">
 <!-- 태그내에서 속성(width, align, href)이나  -->   
         <a id="linkBtnSearch" class="easyui-linkbutton" iconCls="icon-search">Search</a>
 <!--    <a id="linkBtnSearch" href="javascript:btnSearch()" class="easyui-linkbutton" iconCls="icon-search">Search</a> -->
@@ -247,36 +255,32 @@
 %>
 <!-- 글입력 화면 추가 시작 -->
     <div id="dlg_boardIns" footer="#tb_boardIns" class="easyui-dialog" title="글쓰기" data-options="modal:true,closed:true" style="width:600px;height:400px;padding:10px">
-        <form id="f_boardIns" method="post" enctype="multipart/form-data" action="./boardInsert.do">
-        <!--<form id="f_boardIns" method="get" action="./boardInsert.do">-->
-	    <input type="hidden" id="bm_no" name="bm_no" value="0">
-	    <input type="hidden" id="bm_group" name="bm_group" value="0">
-	    <input type="hidden" id="bm_pos" name="bm_pos" value="0">
-	    <input type="hidden" id="bm_step" name="bm_step" value="0">
+        <!-- <form id="f_boardIns" method="post" enctype="multipart/form-data" action="./boardInsert.do">  -->
+        <form id="f_boardIns" method="get" action="./boardInsert.pj">
+	    <input type="hidden" id="b_no" name="b_no" value="0">
+	    <input type="hidden" id="b_group" name="b_group" value="0">
+	    <input type="hidden" id="b_pos" name="b_pos" value="0">
+	    <input type="hidden" id="b_step" name="b_step" value="0">
         	<table>
         		<tr>
         			<td width="100px">제&nbsp;&nbsp;&nbsp;목</td>
-        			<td width="500px"><input id="bm_title" name="bm_title" class="easyui-textbox" data-options="width:'250px'" required></td>
+        			<td width="500px"><input id="b_title" name="b_title" class="easyui-textbox" data-options="width:'250px'" required></td>
         		</tr>
         		<tr>
         			<td width="100px">작&nbsp;성&nbsp;자</td>
-        			<td width="500px"><input id="bm_writer" name="bm_writer" class="easyui-textbox" data-options="width:'150px'" required></td>
-        		</tr>
-        		<tr>
-        			<td width="100px">이&nbsp;메&nbsp;일</td>
-        			<td width="500px"><input id="bm_email" name="bm_email" class="easyui-textbox" data-options="width:'150px'" required></td>
+        			<td width="500px"><input id="b_writer" name="b_writer" class="easyui-textbox" data-options="width:'150px'" required></td>
         		</tr>
         		<tr>
         			<td width="100px">내&nbsp;&nbsp;&nbsp;용</td>
-        			<td width="500px"><input id="bm_content" name="bm_content" class="easyui-textbox" data-options="multiline:'true',width:'350px', height:'90px'" required></td>
+        			<td width="500px"><input id="b_content" name="b_content" class="easyui-textbox" data-options="multiline:'true',width:'350px', height:'90px'" required></td>
         		</tr>
         		<tr>
         			<td width="100px">비&nbsp;&nbsp;&nbsp;번</td>
-        			<td width="500px"><input id="bm_pw" name="bm_pw" class="easyui-textbox" data-options="width:'100px'" required></td>
+        			<td width="500px"><input id="b_pw" name="b_pw" class="easyui-textbox" data-options="width:'100px'" required></td>
         		</tr>
         		<tr>
         			<td width="100px">첨부파일</td>
-        			<td width="500px"><input id="bs_file" name="bs_file" class="easyui-filebox" data-options="width:'350px'"></td>
+        			<td width="500px"><input id="b_file" name="b_file" class="easyui-filebox" data-options="width:'350px'"></td>
         		</tr>
         	</table>
         </form>

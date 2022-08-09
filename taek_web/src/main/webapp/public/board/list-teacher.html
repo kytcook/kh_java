@@ -32,6 +32,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"></script>
     <script>
+      //import(ES6 type=module) or require(NodeJS CommonJS)
       const firebaseConfig = {
         apiKey: "AIzaSyD_E3njzteRHKiYoc24ioUvfD4thpJlOgM",
         authDomain: "d-gym-demo.firebaseapp.com",
@@ -42,14 +43,12 @@
         messagingSenderId: "740962178337",
         appId: "1:740962178337:web:a7e0d4e2e2e9e9288a9a60",
       };
-
       firebase.initializeApp(firebaseConfig);
     </script>
     <script>
-      // import(ES6 type=module이 들어있어야한다?) or require(NodeJS CommonJS)
-      // 절차지향적인 언어들.... 조심 c언어
-      // 객체지향을 넘어서 함수형 프로그래밍 처리 - 리액트, 훅 등등
-      // 전체레코드 갯수
+      //절차지향적인 언어들.... 조심 c언어 - 함수도 객체이니까......
+      // 객체지향을 넘어서 함수형 프로그래밍 처리 - 리액트 훅
+      //전체레코드 갯수
       class PageBar {
         totalRecord;
         //페이지당 레코드 수
@@ -144,64 +143,64 @@
           this.setPageBar();
           return this.pagination;
         }
-      } ////////////end of PageBar
+      } //end of PageBar
     </script>
     <script>
-      //Database에서 데이터 가져오기
-      const db = firebase.firestore(); // 변수선언 먼저
-      // =========[[ 페이징 처리에 필요한 변수 선언]]==========//
-      let num = 0; //반복문에서 값을 증가시킬 변수 num을 선언한다./ 페이지 순번을 담음
-      let total = 0; // 전체 레코드 수
-      let numPerPage = 2; // 한 페이지에 몇 개씩 뿌릴건데??
-      let nowPage = 0; // 현재 내가 바라보느 페이지
+      // Database에서 데이터 가져오기
+      const db = firebase.firestore();
+      // ==== [[ 페이징 처리에 필요한 변수 선언 ]] ====//
+      let num = 0; //페이지 순번 담음
+      let total = 0; //전체 레코드 수
+      let numPerPage = 2; // 한 페이지에 몇개씩 뿌릴건가
+      let nowPage = 0; // 현재 내가 바라보는 페이지
       let params = new URLSearchParams(document.location.search);
       nowPage = params.get("nowPage");
-      // =========[[ 페이징 처리에 필요한 변수 선언]]==========//
+      // 페이징 처리에 필요한 변수 선언 //
 
       db.collection("board")
         .get()
         .then((snapshot) => {
-          console.log(snapshot); //Object, object -> JSON.parse() or JSON.stringify()
-          // console.log(JSON.parse(snapshot.data()));
-          // console.log(JSON.stringify(snapshot));// 제이슨으로 데이터접근. 유형별로 어떻게 꺼내오나??
-          // 콜백영역 - callback함수, fetch 함수, await, async동기 비동기와 관련된 함수
-          total = snapshot.docs.length; // 문서의 총개수
-          console.log("전체 레코드 수 ===>" + total);
+          console.log(snapshot); // [Object , object] -> JSON.parse() or JSON.stringify()
+          //console.log(JSON.parse(snapshot))
+          //console.log(JSON.stringify(snapshot))
+          // 콜백영역- callback함수, fetch함수, await, async
+          total = snapshot.docs.length;
+          console.log("전체 레코드 수 ===> " + total);
+          /*    */
           for (
             let i = nowPage * numPerPage;
             i < nowPage * numPerPage + numPerPage;
             i++
           ) {
-            // for (let i = 0; i < total; i++) {
-            // 무조건 페이지 레코드 수만큼 반복되는 구조이므로 해당 페이지에 한 개 레코드만 있는 경우는 break문 처리한다.
-            // 더 이상 레코드가 없으면 멈춰야지! 안그러면 undefiend
+            //for (let i = 0; i < total; i++) {
+            // 무조건 페이지 레코드 수만큼 반복되는 구조이므로 해당 페이지에
+            // 한 개 레코드만 있는 경우는 break문 처리한다
             if (total === i) break;
             num = i;
-            console.log(
-              snapshot.docs[i].id + ", 제목:" + snapshot.docs[i].data().제목
-            ); // 테스트를 해봅시다.
+            //console.log(doc.data());
+            // 코드양은 늘어나더라도(DOM Tree구조는 잘 보임) 복잡도 증가하지 않도록
+            /**/
             const template = `
-                            <tr>
-                              <th scope="row">${++num}</th>
-                              <td><a href = "./read.html?id=${
-                                snapshot.docs[i].id
-                              }"
-                              class=" btn btn-primary" data-bs-toggle="modal">
-                              ${snapshot.docs[i].data().제목}</a></td>
-                              <td>${snapshot.docs[i].data().작성자}</td>
-                              <td>${snapshot.docs[i].data().작성일}</td>
-                            </tr>
+                              <tr>
+                                <th scope="row">${++num}</th>
+                                <td><a href="./read.html?id=${
+                                  snapshot.docs[i].id
+                                }" class="btn btn-primary" data-bs-toggle="modal">${
+              snapshot.docs[i].data().제목
+            }</a></td>
+                                <td>${snapshot.docs[i].data().작성자}</td>
+                                <td>${snapshot.docs[i].data().작성일}</td>
+                              </tr>
             `;
             $(".board-content").append(template);
-          } ///////////// end of for
+          } //////// end of for
 
           /* 페이지 네비게이션 처리 위치 */
-          // 위치는 코딩을 반복많이 하면서 익숙해진다.
           const pagePath = "list.html";
-          const pb = new PageBar(numPerPage, total, nowPage, pagePath); // size -> total / 위에서 size는 삭제함
-          // console.log(pb.getPageBar()); //class PAgeBar에서 생서오디는 링크 출력해봄
+          const pb = new PageBar(numPerPage, total, nowPage, pagePath);
+          //console.log(pb.getPageBar()) class PageBar에서 생성되는 링크 출력해봄
           $(".pagenation").append(pb.getPageBar());
-        }); /////////////////end of callback
+        }); ///////// end of callback
     </script>
     <!-- Navbar 시작 -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -312,26 +311,25 @@
         function searchList() {
           const choice = $("#gubun option:selected").val();
           const user = $("#keyword").val();
-          // alert("검색" + choice + ", " + user);
+          //alert("검색 ===> " + choice + ", " + user)
 
-          let num = 0; //반복문에서 값을 증가시킬 변수 num을 선언한다./ 페이지 순번을 담음
-          let total = 0; // 전체 레코드 수
-          let numPerPage = 3; // 한 페이지에 몇 개씩 뿌릴건데??
-          let nowPage = 0; // 현재 내가 바라보느 페이지
+          let num = 0; //페이지 순번 담음
+          let total = 0; //전체 레코드 수
+          let numPerPage = 2; // 한 페이지에 몇개씩 뿌릴건가
+          let nowPage = 0; // 현재 내가 바라보는 페이지
           let params = new URLSearchParams(document.location.search);
           nowPage = params.get("nowPage");
-          // =========[[ 페이징 처리에 필요한 변수 선언]]==========//
+          // 페이징 처리에 필요한 변수 선언 //
 
           db.collection("board")
             .where(choice, "==", user)
             .get()
             .then((snapshot) => {
-              total = snapshot.docs.length; // 문서의 총개수
+              total = snapshot.docs.length;
               if (total > 0) {
                 $(".board-content").text("");
               }
-              console.log("전체 레코드 수 : " + total);
-              /*  */
+              /*    */
               for (
                 let i = nowPage * numPerPage;
                 i < nowPage * numPerPage + numPerPage;
@@ -339,35 +337,29 @@
               ) {
                 if (total === i) break;
                 num = i;
-                console.log(
-                  snapshot.docs[i].id + ", 제목:" + snapshot.docs[i].data().제목
-                ); // 테스트를 해봅시다.
-                /* 변수를 쓰고 싶어서 백틱기호 사용 - 백틱안에서는 ${} */
-                /* item.id = 식별자 */
                 const template = `
                               <tr>
                                 <th scope="row">${++num}</th>
-                                <td><a href = "./read.html?id=${
+                                <td><a href="./read.html?id=${
                                   snapshot.docs[i].id
-                                }"
-                                class=" btn btn-primary" data-bs-toggle="modal">
-                                ${snapshot.docs[i].data().제목}</a></td>
+                                }" class="btn btn-primary" data-bs-toggle="modal">${
+                  snapshot.docs[i].data().제목
+                }</a></td>
                                 <td>${snapshot.docs[i].data().작성자}</td>
                                 <td>${snapshot.docs[i].data().작성일}</td>
                               </tr>
-              `;
+            `;
                 $(".board-content").append(template);
-              } ///////////// end of for
+              } //////// end of for
 
               $(".pagenation").text("");
               /* 페이지 네비게이션 처리 위치 */
-              // 위치는 코딩을 반복많이 하면서 익숙해진다.
               const pagePath = "list.html";
-              const pb = new PageBar(numPerPage, total, nowPage, pagePath); // size -> total / 위에서 size는 삭제함
-              // console.log(pb.getPageBar()); //class PageBar에서 생성되는 링크 출력해봄
+              const pb = new PageBar(numPerPage, total, nowPage, pagePath);
+              //console.log(pb.getPageBar()) class PageBar에서 생성되는 링크 출력해봄
               $(".pagenation").append(pb.getPageBar());
-            }); ///////////end of callback
-        } /////// end of searchList
+            }); ///////// end of callback
+        } // end of searchList
       </script>
       <!-- 게시글 목록 시작 -->
       <div class="board-list">
@@ -383,54 +375,16 @@
           <tbody class="board-content"></tbody>
         </table>
       </div>
-      <!-- 게시글 목록 끝 -->
-      <!-- 페이지 네이션 시작 -->
+      <!-- 게시글 목록  끝  -->
+      <!-- 페이지 네이션 처리  시작  -->
       <hr />
       <table align="center">
         <tbody class="pagenation"></tbody>
       </table>
-      <!-- 페이지 네이션  끝 -->
+      <!-- 페이지 네이션 처리   끝  -->
     </div>
     <!-- 모달창 화면 추가 -->
 
-    <!-- Modal -->
-    <!-- 여기다가 id값을 주면 타임라인이 안 맞는다. 눌렀을 때 데이터베이스를 불러와야 한다. 시점의 문제
-    시점의 문제 - 클래스를 나누자 - modal.id => read.html로 옮기자~
--->
-    <!-- <div
-      class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">...</div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">이해완료♣</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <!-- 모달창 화면 추가 -->
   </body>
 </html>

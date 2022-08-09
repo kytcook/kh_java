@@ -32,13 +32,32 @@ public class HandlerMapping {
 			ModelAndView mav = null;
 			if("board3".equals(upmu[0])) {
 				controller = new Board3Controller();
-				if("boardList".equals(upmu[1])) {
+				// 게시판 글쓰기 메소드 호출
+				if("boardInsert".equals(upmu[1])) {
 					// 파라미터로 원본을 넘긴다
-					obj = controller.boardList(req,res);
-					if(obj instanceof ModelAndView) {
-						return(ModelAndView)obj;
-					}else if (obj instanceof String) {
+					obj = controller.boardInsert(req,res);
+					if(obj instanceof String) {
 						return (String)obj;
+					}
+				}
+			// 게시판 글쓰기 메소드 호출
+			else if("boardList".equals(upmu[1])) {
+				// 파라미터로 원본을 넘긴다
+				obj = controller.boardList(req,res);
+				if(obj instanceof ModelAndView) {
+					return(ModelAndView)obj;
+				}else if (obj instanceof String) {
+					return (String)obj;
+				}
+			}
+			// 게시판 글쓰기 메소드 호출
+			else if("boardList".equals(upmu[1])) {
+				// 파라미터로 원본을 넘긴다
+				obj = controller.boardList(req,res);
+				if(obj instanceof ModelAndView) {
+					return(ModelAndView)obj;
+				}else if (obj instanceof String) {
+					return (String)obj;
 					}
 				}
 			}
