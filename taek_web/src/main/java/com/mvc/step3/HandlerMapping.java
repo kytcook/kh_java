@@ -34,42 +34,42 @@ public class HandlerMapping {
       String path = null;
       ModelAndView mav = null;
       if("board3".equals(upmu[0])) {
-         controller = new Board3Controller();
-         // 게시판 글쓰기 메소드 호출
-         if("boardInsert".equals(upmu[1])) {
-            // 파라미터로 원본을 넘긴다.
-            obj = controller.boardInsert(req, res);
-            if(obj instanceof String) {
-               return (String)obj;
-            }
-         }
-         // 게시판 글목록 메소드 호출
-         else if("boardList".equals(upmu[1])) {
-            // 파라미터로 원본을 넘긴다.
-            obj = controller.boardList(req, res);
-            if(obj instanceof ModelAndView) { //obj 타입이 ModelAndView 클래스 타입이면
-               return (ModelAndView)obj;
-            }else if(obj instanceof String) {
-               return (String)obj;
-            }
-         } 
-         else if("boardDetail".equals(upmu[1])) {
-            // 파라미터로 원본을 넘긴다.
-            obj = controller.boardDetail(req, res);
-            if(obj instanceof ModelAndView) {
-               return (ModelAndView)obj;
-            }else if(obj instanceof String) {
-               return (String)obj;
-            }
-         }
-         else if("boardUpdate".equals(upmu[1])) {
-            // 파라미터로 원본을 넘긴다.
-            obj = controller.boardUpdate(req, res);
-            if(obj instanceof String) {
-               return (String)obj;
-            }
-         }
-      }
-      return obj;
-   }
+			controller = new Board3Controller();
+			//게시판 글쓰기 메소드 호출
+			if("boardUpdate".equals(upmu[1])) {
+				// 파리미터로 원본을 넘긴다
+				obj = controller.boardUpdate(req,res);
+				if(obj instanceof String) {
+					return (String)obj;
+				}
+			}
+			else if("boardInsert".equals(upmu[1])) {
+				// 파리미터로 원본을 넘긴다
+				obj = controller.boardInsert(req,res);
+				if(obj instanceof String) {
+					return (String)obj;
+				}
+			}
+			//게시판 글목록 메소드 호출
+			else if("boardList".equals(upmu[1])) {
+				// 파리미터로 원본을 넘긴다
+				obj = controller.boardList(req,res);
+				if(obj instanceof ModelAndView) {
+					return (ModelAndView)obj;
+				}else if(obj instanceof String) {
+					return (String)obj;
+				}
+			}
+			else if("boardDetail".equals(upmu[1])) {
+				// 파리미터로 원본을 넘긴다
+				obj = controller.boardDetail(req,res);
+				if(obj instanceof ModelAndView) {
+					return (ModelAndView)obj;
+				}else if(obj instanceof String) {
+					return (String)obj;
+				}
+			}
+		}
+		return obj;
+	}
 }

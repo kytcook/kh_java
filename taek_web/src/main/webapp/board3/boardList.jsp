@@ -5,7 +5,6 @@
 // jsp에서 자바코드 (스크립틀릿)와 html코드의 작성 위치는 문제가 되지 않는다.
 // 왜냐하면 어차피 jsp는 서버에서 실행되고 그 결과가 text로 출력되는 것이므로
 // html과 처리 시점이완전 다르니까...
-
 	boolean isOk = false;
 	if(request.getParameter("isOk")!=null){
 		isOk = Boolean.parseBoolean(request.getParameter("isOk"));
@@ -24,7 +23,6 @@
 	if(request.getParameter("nowPage")!=null){
 		nowPage = Integer.parseInt(request.getParameter("nowPage"));
 	}
-	
 %>    
 <!DOCTYPE html>
 <html>

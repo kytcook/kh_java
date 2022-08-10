@@ -43,20 +43,21 @@
 		$("#dlg_boardIns").dialog('open');
 	}
 	function updateForm(){
-		$("#dlg_boardUps").dialog('open');
+		$("#dlg_boardUpd").dialog('open');
 	}
-	function dlgUpd_sava{
+	function dlgUpd_save(){
 		$("#f_boardUpd").submit();
 	}
 	function deleteForm(){
 		// 리액트 계속 - import(ES6, module, ES6기준문법-안전하다, require-CommonJS)
 		$("#dlg_boardDel").dialog({
 			title: "글삭제- 비번확인",
-			href : 'boardDelForm.jsp?b_no=<%=rb_no%>&b_pw=<%=rb_pw%>'
+			href : 'boardDelForm.jsp?b_no=<%=rb_no%>&b_pw=<%=rb_pw%>',
 			modal:true,
-			closed : false
-			});
+			closed : true
+		});
 		$("#dlg_boardDel").dialog('open');
+	}
 		// 확인시 비번체크는 누가 할까요? html, js, java 중 뉴규 -> js
 			// 어디에서?? -> read.jsp(비번), boardDelForm.jsp(확인버튼 눌려져서 서버에 보내지기 전에 체크해야 함)
 					// -> read.jsp 
@@ -65,8 +66,8 @@
 		//  WHERE b_no = 3(사용자가)
 		// <input type = "hidden"> 안보임, 몰래(사용자 몰래_내부적으로 처리되는 것)
 		// 
-	}
 	function boardDel(){
+		console.log('boardDel호출 성공');
 		// 자바스크립트에서는 값에 더블 혹은 싱글 쿼테이션을 안붙이면 변수
 		let db_pw = "<%=rb_pw%>";
 		const u_pw = $("#u_pw").textbox('getValue');// u_pw : boardDelForm에서 가져온다.
@@ -110,10 +111,10 @@
        <a href="javascript:boardList()" class="easyui-linkbutton" iconCls="icon-search" plain="true">목록</a>
    </div>   
 <!-- 글삭제 시작 -->
-	<div id="dlg_boardDel" footer="#tb_boardDel" class="easyui-dialog" 
+	<div id="dlg_boardDel" footer="#btn_boardDel" class="easyui-dialog" 
          title="삭제하기" data-options="modal:true,closed:true" 
          style="width:600px;height:200px;padding:10px">
-		<div id="bt_boardDel" align="right">
+		<div id="btn_boardDel" align="right">
 			<a href="javascript:boardDel()" class="easyui-linkbutton" iconCls="icon-ok">확인</a>
 			<a href="javascript:boardDelClose()" class="easyui-linkbutton" iconCls="icon-clear">닫기</a>
 		</div>
