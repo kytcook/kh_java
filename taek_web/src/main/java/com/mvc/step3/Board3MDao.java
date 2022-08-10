@@ -84,6 +84,21 @@ public class Board3MDao {
 		}		
 		return result;
 	}
+	   public int boardMUpdate(Map<String, Object> pMap) {
+		      int result = 0;
+		      try {
+		         sqlSession = sqlSessionFactory.openSession();
+		         result = sqlSession.update("boardMUpdate",pMap);
+		         sqlSession.commit();
+		         logger.info("result: "+ result);
+		      } catch (Exception e) {
+		         logger.info("Exception : " + e.toString());
+		      } finally {
+		         sqlSession.close();
+		      }
+		      return result;
+		   }
+
 	public int boardMInsert(Map<String, Object> pMap) {
 		int result = 0;
 		try {

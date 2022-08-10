@@ -13,7 +13,7 @@
 	List<Map<String,Object>> boardList = //유지의문제 - DB를 경유해야한다 ->servlet
 			(List<Map<String,Object>>)request.getAttribute("boardList");//sql문을 넘겨넘겨 받아서 가지고옴
 	out.print("test");
-			int size = 0;
+	int size = 0;
 	if(boardList!=null){
 		size = boardList.size();
 	}
@@ -83,12 +83,14 @@
 				console.log("g_no : "+g_no);
 			},
 			onDblClickCell: function(index, field, value){
-				if("B_TITLE" == field)
+				if("B_TITLE" == field){
 					location.href="./boardDetail.pj?b_no="+g_no
 					g_no = 0;		
 					$("#dg_board").datagrid('clearSelections')		
-			}
-		});
+			     }
+	         }
+	      });
+
 	
 		//등록 날짜 정보를 선택했을 때
 		$('#db_date').datebox({
@@ -167,9 +169,22 @@
 			Map<String,Object> rMap = boardList.get(i);// 데이터 꺼내는 반복문/ 데이터 껀수만큼
 %>	      
         	<tr>
-        		<td><%=rMap.get("b_NO")%></td>
+        		<td><%=rMap.get("B_NO")%></td>
         		<td>
 <!-- 너 댓글이니? -->        		
+<%
+// 스크립틀릿 안에 작성한 코드는 라이프 사이클에서 service()들어간다.
+// 그러니까 메소드 선언 안됨
+	String imgPath = path + "..\\images\\";
+	if(Integer.parseInt(rMap.get("B_POS").toString()) > 0){
+		for(int j=0; j <Integer.parseInt(rMap.get("B_POS").toString());j++){
+			out.print("&nbsp;&nbsp;&nbsp;");
+		}//////end of for
+%>
+	<img src ="<%=imgPath %>reply.gif"/>
+<%
+		}// 너 댓글이니까.... 댓글 아이콘 추가
+%>
 <a href="javascript:boardDetail('<%=rMap.get("B_NO")%>')" style="text-decoration:none;color:#000000">        		
         		<%=rMap.get("B_TITLE")%>
 </a>        		
@@ -204,7 +219,7 @@
         </select>
         <input id="tb_search" name="tb_search" class="easyui-textbox" style="width:320px">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                작성일: <input id="db_date" class="easyui-datebox" name="b_date" style="width:110px">
+                작성일: <input id="b_date" class="easyui-datebox" name="b_date" style="width:110px">
 <!-- 태그내에서 속성(width, align, href)이나  -->   
         <a id="linkBtnSearch" class="easyui-linkbutton" iconCls="icon-search">Search</a>
 <!--    <a id="linkBtnSearch" href="javascript:btnSearch()" class="easyui-linkbutton" iconCls="icon-search">Search</a> -->
@@ -246,14 +261,14 @@
 <%
 	String gubun = request.getParameter("gubun");
 	if("list".equals(gubun)){
-%>	
+%>
 <script type="text/javascript">
 		getBoardList();
-</script>	
-<%		
+</script>
+<%
 	}
 %>
-<!-- 글입력 화면 추가 시작 -->
+<!-- 댓글 화면 추가 시작 -->
     <div id="dlg_boardIns" footer="#tb_boardIns" class="easyui-dialog" title="글쓰기" data-options="modal:true,closed:true" style="width:600px;height:400px;padding:10px">
         <!-- <form id="f_boardIns" method="post" enctype="multipart/form-data" action="./boardInsert.do">  -->
         <form id="f_boardIns" method="get" action="./boardInsert.pj">
@@ -291,7 +306,7 @@
 	<a href="javascript:dlgIns_close()" class="easyui-linkbutton">닫기</a>
 	</div>    
     <!-- 다이얼로그 화면 버튼 추가  끝   -->
-<!-- 글입력 화면 추가  끝   -->
+<!-- 댓글 화면 추가  끝   -->
 </center>
 </body>
 </html>

@@ -7,6 +7,13 @@
            , #{b_group},#{b_pos},#{b_step},to_char(sysdate, 'YYYY-MM-DD'))        
    </insert>
 
+	<update id="boardMUpdate" parameterType="map">
+		Update board_master_t
+		   Set b_title = #{b_title}
+		     , b_writer = #{b_writer}
+		     , b_content = #{b_content}
+		 WHERE b_no = #{b_no}
+	</update>
 	<update id="bStepUpdate" parameterType="map">
 		Update board_master_t
 		   Set b_step = b_step + 1
@@ -29,12 +36,12 @@
 	</select>	
 	<select id="boardList" parameterType="java.util.Map" resultType="map">
 		SELECT bm.b_no, bm.b_title, bm.b_writer, bs.b_file, bm.b_hit 
-		      ,bm.b_content, bm.b_date, bm.b_group, bm.b_pos, bm.b_step 
+		      ,bm.b_content, bm.b_date, bm.b_group, bm.b_pos, bm.b_step, bm.b_pw 
 		  FROM board_master_t bm LEFT OUTER JOIN board_sub_t bs
 		    ON bm.b_no = bs.b_no
 	  	 <where>
 	  	 	<if test="b_no>0">
-	  	 		AND bm_no = #{bm_no}
+	  	 		AND bm.b_no = #{b_no}
 	  	 	</if>
 	  	 </where>
 	  	 ORDER BY bm.b_group desc, b_step asc

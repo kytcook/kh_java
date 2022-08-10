@@ -21,6 +21,21 @@ import com.util.HashMapBinder;
 public class Board3Controller implements Controller3 {
 	Logger logger = Logger.getLogger(Board3Controller.class);
 	Board3Logic boardLogic = new Board3Logic();
+	
+	@Override
+	public Object boardUpdate(HttpServletRequest req, HttpServletResponse res) {
+		logger.info("boardInsert 호출 성공");
+		// 사용자가 입력한 값을 담기 - Map - req.getParameter
+		Map<String, Object> pMap = new HashMap<>();
+		HashMapBinder hmb = new HashMapBinder(req);
+		hmb.bind(pMap);
+		int result = 0;
+		result = boardLogic.boardUpdate(pMap);
+		// jsp -> action(update) -> action(select) --(forward) --> boardList.jsp
+		String path = "redirect:boardList.pj";// 리다이렉트
+		return path;
+	}
+	
 	@Override
 	public ModelAndView boardList(HttpServletRequest req, HttpServletResponse res) {
 		logger.info("boardList 호출 성공");
@@ -30,7 +45,7 @@ public class Board3Controller implements Controller3 {
 		hmb.bind(pMap);
 		ModelAndView mav = new ModelAndView(req);
 		List<Map<String, Object>> boardList = null;
-		boardList = boardLogic.boardList(pMap);
+		boardList = boardLogic.boardList(pMap);// forward로 저장된다.
 		mav.addObject("boardList", boardList);
 		mav.setViewName("board3/boardList");
 		return mav;
@@ -58,7 +73,7 @@ public class Board3Controller implements Controller3 {
 		int result = 0;
 		result = boardLogic.boardInsert(pMap);
 		String path = "redirect:boardList.pj";
-		return null;
+		return path;
 	}
 	
 	@Override
@@ -73,6 +88,7 @@ public class Board3Controller implements Controller3 {
 		boardList = boardLogic.boardList(pMap);
 		mav.addObject("boardList", boardList);
 		mav.setViewName("board3/read");
+		logger.info("boardDetail 호출 성공2");
 		return mav;
 	}
 	

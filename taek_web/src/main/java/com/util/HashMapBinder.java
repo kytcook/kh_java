@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 
 public class HashMapBinder {
 	Logger logger = Logger.getLogger(HashMapBinder.class);
+	
 	HttpServletRequest req = null;
 	public HashMapBinder(HttpServletRequest req) {
 		this.req = req;
@@ -32,5 +33,6 @@ public class HashMapBinder {
 			logger.info(req.getParameter(key));
 			pMap.put(key, req.getParameter(key));
 		}
+		logger.info("pMap ===> "+ pMap);
 	}//////////end of bind
 }

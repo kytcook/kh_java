@@ -6,7 +6,10 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.mvc.step2.Board2Dao;
-
+/* 로직의 필요성 : 
+ * 
+ * 듣고 판단한다.  
+ */
 public class Board3Logic {
 	Logger logger = Logger.getLogger(Board3Logic.class);
 	Board3MDao boardMDao = new Board3MDao();
@@ -22,6 +25,7 @@ public class Board3Logic {
 		int result = 0;
 		int b_no = 0;
 		int b_group = 0;
+		// 글 번호 채번 - 한번
 		b_no = boardMDao.getBNo();
 		pMap.put("b_no", b_no);
 		if(pMap.get("b_group")!=null) {
@@ -29,6 +33,8 @@ public class Board3Logic {
 		}
 		// 댓글쓰기
 		if(b_group > 0) {
+			// 아래 코드는 내 뒤에 댓글이 있을 때만 처리가 된다.
+			// 내 뒤에 댓글있으면 두 번
 			boardMDao.bStepUpdate(pMap);
 			pMap.put("b_pos", Integer.parseInt(pMap.get("b_pos").toString())+1);
 			pMap.put("b_step", Integer.parseInt(pMap.get("b_step").toString())+1);
@@ -36,13 +42,19 @@ public class Board3Logic {
 		// 새글쓰기
 		else {
 			// 새글쓰기에서는 댓글쓰기와는 다르게 그룹번호를 새로 채번해야 함
+			// 새글일때 그룹번호 채번할 때 세번
 			b_group = boardMDao.getBGroup();
 			pMap.put("b_group", b_group);
 			pMap.put("b_pos", 0);
 			pMap.put("b_step", 0);
 		}
-		result = boardMDao.boardMInsert(pMap);
+		result = boardMDao.boardMInsert(pMap);// 한번에 새글쓰기, 댓글쓰기 동시 처리해준다.
 		//첨부파일이 있는 경우에만 board_sub_t 추가함
+		return result;
+	}
+	public int boardUpdate(Map<String, Object> pMap) {
+		int result = 0;
+		result = boardMDao.boardMUpdate(pMap);
 		return result;
 	}
 	
