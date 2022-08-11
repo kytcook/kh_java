@@ -91,5 +91,20 @@ public class Board3Controller implements Controller3 {
 		logger.info("boardDetail 호출 성공2");
 		return mav;
 	}
+
+	@Override
+	public Object boardDelete(HttpServletRequest req, HttpServletResponse res) {
+		logger.info("boardDelete 호출 성공");
+		// 사용자가 입력한 값을 담기 - Map - req.getParameter
+		Map<String, Object> pMap = new HashMap<>();
+		HashMapBinder hmb = new HashMapBinder(req);
+		hmb.bind(pMap);
+		int result = 0;
+		result = boardLogic.boardUpdate(pMap);
+		// jsp -> action(update) -> action(select) --(forward) --> boardList.jsp
+		String path = "redirect:boardDelete.pj";// 리다이렉트
+		return path;
+	}
+	
 	
 }

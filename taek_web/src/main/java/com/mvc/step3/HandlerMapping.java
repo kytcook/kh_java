@@ -60,6 +60,13 @@ public class HandlerMapping {
 					return (String)obj;
 				}
 			}
+			else if("boardDelete".equals(upmu[1])) {
+				// 파리미터로 원본을 넘긴다
+				obj = controller.boardDelete(req,res);
+				if(obj instanceof String) {
+					return (String)obj;
+				}
+			}
 			else if("boardDetail".equals(upmu[1])) {
 				// 파리미터로 원본을 넘긴다
 				obj = controller.boardDetail(req,res);

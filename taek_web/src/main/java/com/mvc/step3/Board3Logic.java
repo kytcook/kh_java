@@ -14,6 +14,15 @@ public class Board3Logic {
 	Logger logger = Logger.getLogger(Board3Logic.class);
 	Board3MDao boardMDao = new Board3MDao();
 	Board3SDao boardSDao = new Board3SDao();
+	public List<Map<String,Object>> boardDetail(Map<String, Object> pMap){
+		logger.info("boardDetail 호출 성공");
+		List<Map<String,Object>>  boardList = null;
+		boardList = boardMDao.boardList(pMap);
+		if(boardList!=null && boardList.size()==1) {
+			boardMDao.hitCount(pMap);
+		}
+		return boardList;
+	}
 	public List<Map<String,Object>> boardList(Map<String, Object> pMap){
 		logger.info("boardList 호출 성공");
 		List<Map<String,Object>>  boardList = null;
@@ -55,6 +64,11 @@ public class Board3Logic {
 	public int boardUpdate(Map<String, Object> pMap) {
 		int result = 0;
 		result = boardMDao.boardMUpdate(pMap);
+		return result;
+	}
+	public int boardDelete(Map<String, Object> pMap) {
+		int result = 0;
+		result = boardMDao.boardMDelete(pMap);
 		return result;
 	}
 	

@@ -69,21 +69,35 @@ public class Board3MDao {
 	 * @param pMap
 	 * @return
 	 ***********************************************************/
-	public int bStepUpdate(Map<String, Object> pMap) {
-		int result = 0;
-		try {
-			sqlSession = sqlSessionFactory.openSession();
-			result = sqlSession.update("bStepUpdate",pMap);
-			sqlSession.commit();
-			logger.info("result : "+result);
-		} catch (Exception e) {
-			logger.info("Exception : "+e.toString());
-		} finally {
-			//사용한 자원은 반드시 반납한다 - 묵시적으로 처리는 되지만 좀 더 서버의 부담을 덜기 위해 명시호출
-			sqlSession.close();
-		}		
-		return result;
-	}
+		public int bStepUpdate(Map<String, Object> pMap) {
+			int result = 0;
+			try {
+				sqlSession = sqlSessionFactory.openSession();
+				result = sqlSession.update("bStepUpdate",pMap);
+				sqlSession.commit();
+				logger.info("result : "+result);
+			} catch (Exception e) {
+				logger.info("Exception : "+e.toString());
+			} finally {
+				//사용한 자원은 반드시 반납한다 - 묵시적으로 처리는 되지만 좀 더 서버의 부담을 덜기 위해 명시호출
+				sqlSession.close();
+			}		
+			return result;
+			}
+		public int hitCount(Map<String, Object> pMap) {
+			int result = 0;
+			try {
+				sqlSession = sqlSessionFactory.openSession();
+				result = sqlSession.update("hitCount",pMap);
+				sqlSession.commit();
+				logger.info("result: "+ result);
+			} catch (Exception e) {
+				logger.info("Exception : " + e.toString());
+			} finally {
+				sqlSession.close();
+			}
+			return result;
+		}
 	   public int boardMUpdate(Map<String, Object> pMap) {
 		      int result = 0;
 		      try {
@@ -99,27 +113,41 @@ public class Board3MDao {
 		      return result;
 		   }
 
-	public int boardMInsert(Map<String, Object> pMap) {
-		int result = 0;
-		try {
-			//MapperConfig에 등록된 서버 정보를 통해 커넥션을 연결함
-			sqlSession = sqlSessionFactory.openSession();
-			//insert메소드 대신 update를 사용한 것은 selectKey라는 속성으로 
-			//insert메소드의 리턴타입이 Object로 되어 있기 때문에 update를 
-			//사용하였다. - delete를 사용해도 결과는 같다
-			//사용자가 입력한 값을 HashMapBinder클래스를 통해서 Map에 담고
-			//insert문을 호출할 때 파라미터로 넘김
-			result = sqlSession.update("boardMInsert",pMap);
-			//물리적인 테이블에 등록하는 것이니 반드시 커밋 할것... 주의....
-			sqlSession.commit();
-			// insert here
-			logger.info("result : "+result);
-		} catch (Exception e) {
-			logger.info("Exception : "+e.toString());
-		} finally {
-			//사용한 자원은 반드시 반납한다 - 묵시적으로 처리는 되지만 좀 더 서버의 부담을 덜기 위해 명시호출
-			sqlSession.close();
-		}		
-		return result;
+		public int boardMInsert(Map<String, Object> pMap) {
+			int result = 0;
+			try {
+				//MapperConfig에 등록된 서버 정보를 통해 커넥션을 연결함
+				sqlSession = sqlSessionFactory.openSession();
+				//insert메소드 대신 update를 사용한 것은 selectKey라는 속성으로 
+				//insert메소드의 리턴타입이 Object로 되어 있기 때문에 update를 
+				//사용하였다. - delete를 사용해도 결과는 같다
+				//사용자가 입력한 값을 HashMapBinder클래스를 통해서 Map에 담고
+				//insert문을 호출할 때 파라미터로 넘김
+				result = sqlSession.update("boardMInsert",pMap);
+				//물리적인 테이블에 등록하는 것이니 반드시 커밋 할것... 주의....
+				sqlSession.commit();
+				// insert here
+				logger.info("result : "+result);
+			} catch (Exception e) {
+				logger.info("Exception : "+e.toString());
+			} finally {
+				//사용한 자원은 반드시 반납한다 - 묵시적으로 처리는 되지만 좀 더 서버의 부담을 덜기 위해 명시호출
+				sqlSession.close();
+			}		
+			return result;
+		}
+		public int boardMDelete(Map<String, Object> pMap) {
+		      int result = 0;
+		      try {
+		         sqlSession = sqlSessionFactory.openSession();
+		         result = sqlSession.update("boardMDelete",pMap);
+		         sqlSession.commit();
+		         logger.info("result: "+ result);
+		      } catch (Exception e) {
+		         logger.info("Exception : " + e.toString());
+		      } finally {
+		         sqlSession.close();
+		      }
+		      return result;
+		}
 	}
-}

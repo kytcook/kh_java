@@ -36,6 +36,10 @@
 // javascript만으로 처리하는 연습
 // html+javascript혼합 처리 (권장-리액트) 연습
 // 
+	
+	function boardList(){
+		location.href="./boardList.pj"
+	}
 	function dlgIns_save(){
 		$("#f_boardIns").submit();
 	}
@@ -72,7 +76,7 @@
 		let db_pw = "<%=rb_pw%>";
 		const u_pw = $("#u_pw").textbox('getValue');// u_pw : boardDelForm에서 가져온다.
 		if(u_pw == db_pw){//디비에서 가져온 번허와 화면에서 가져온 사용자 비밀번호가 같니?
-				$.messanger.confirm('Confirm','정말 삭제할꺼야?', function(r){
+				$.messager.confirm('Confirm','정말 삭제할꺼야?', function(r){
 					if(r){
 						location.href ="./boardDelete.pj?b_no="+<%=rb_no%>;
 					}
