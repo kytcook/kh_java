@@ -123,7 +123,7 @@ public class Board3MDao {
 				//사용하였다. - delete를 사용해도 결과는 같다
 				//사용자가 입력한 값을 HashMapBinder클래스를 통해서 Map에 담고
 				//insert문을 호출할 때 파라미터로 넘김
-				result = sqlSession.update("boardMInsert",pMap);
+				result = sqlSession.update("boardMInsert",pMap);// 
 				//물리적인 테이블에 등록하는 것이니 반드시 커밋 할것... 주의....
 				sqlSession.commit();
 				// insert here
@@ -136,11 +136,12 @@ public class Board3MDao {
 			}		
 			return result;
 		}
+		
 		public int boardMDelete(Map<String, Object> pMap) {
 		      int result = 0;
 		      try {
 		         sqlSession = sqlSessionFactory.openSession();
-		         result = sqlSession.update("boardMDelete",pMap);
+		         result = sqlSession.delete("boardMDelete",pMap);
 		         sqlSession.commit();
 		         logger.info("result: "+ result);
 		      } catch (Exception e) {

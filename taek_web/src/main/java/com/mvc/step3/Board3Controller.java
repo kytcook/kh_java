@@ -46,7 +46,7 @@ public class Board3Controller implements Controller3 {
 		ModelAndView mav = new ModelAndView(req);
 		List<Map<String, Object>> boardList = null;
 		boardList = boardLogic.boardList(pMap);// forward로 저장된다.
-		mav.addObject("boardList", boardList);
+		mav.addObject("boardList",boardList);
 		mav.setViewName("board3/boardList");
 		return mav;
 	}
@@ -85,7 +85,7 @@ public class Board3Controller implements Controller3 {
 		// ModelAndView객체를 설계함에 따라서 req가 없어도 조회결과를 담을 수 있게 되었다.-의미
 		ModelAndView mav = new ModelAndView(req);
 		List<Map<String, Object>> boardList = null;
-		boardList = boardLogic.boardList(pMap);
+		boardList = boardLogic.boardDetail(pMap);
 		mav.addObject("boardList", boardList);
 		mav.setViewName("board3/read");
 		logger.info("boardDetail 호출 성공2");
@@ -95,14 +95,12 @@ public class Board3Controller implements Controller3 {
 	@Override
 	public Object boardDelete(HttpServletRequest req, HttpServletResponse res) {
 		logger.info("boardDelete 호출 성공");
-		// 사용자가 입력한 값을 담기 - Map - req.getParameter
 		Map<String, Object> pMap = new HashMap<>();
 		HashMapBinder hmb = new HashMapBinder(req);
 		hmb.bind(pMap);
 		int result = 0;
-		result = boardLogic.boardUpdate(pMap);
-		// jsp -> action(update) -> action(select) --(forward) --> boardList.jsp
-		String path = "redirect:boardDelete.pj";// 리다이렉트
+		result = boardLogic.boardDelete(pMap);
+		String path = "redirect:boardList.pj";// 리다이렉트
 		return path;
 	}
 	

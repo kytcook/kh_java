@@ -46,7 +46,7 @@
 		// 사용자가 선택한 콤보박스에 value가 담김 - b_title, or b_content or b_writer
 		cb_value = user_combo;
 		tb_value = $("#tb_search").val()// 사용자가 입력한 조건 검색 문자열
-		console.log("콤보박스 값 : "+ cb_value + ", 사용자가 입력한 키워드 : "+tb_value);
+		console.log("콤보박스 값 : "+cb_value+", 사용자가 입력한 키워드: "+tb_value);
 		location.href = "boardList.pj?cb_serach="+cb_value+"&tb_search="+tb_value+"&b_date="+v_date;
 		}	
 	function boardDetail(b_no){
@@ -226,9 +226,6 @@
         <input id="tb_search" name="tb_search" class="easyui-textbox" style="width:320px">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 작성일: <input id="b_date" class="easyui-datebox" name="b_date" style="width:110px">
-<!-- 태그내에서 속성(width, align, href)이나  -->   
-    <!--     <a id="linkBtnSearch" class="easyui-linkbutton" iconCls="icon-search">Search</a> 돋보기-->
-<!--    <a id="linkBtnSearch" href="javascript:btnSearch()" class="easyui-linkbutton" iconCls="icon-search">Search</a> -->
 	<!-- 버튼 추가 화면 시작 --> 
 	    <div id="ft" style="padding:2px 5px;">
 	        <a id="crudBtnSel" href="#" class="easyui-linkbutton" iconCls="icon-search" plain="true">조회</a>
@@ -242,7 +239,6 @@
    
 <!-- 페이지 네이션 추가 시작 -->
 	<div style="display:table-cell;vertical-align:middle; width:800px; background:#efefef; height:30; border:1px solid #ccc;">
-		[1][2][3] 	
 <%
 	String pagePath = "boardList.pj";
 	PageBar pb = new PageBar(numPerPage, size, nowPage, pagePath);

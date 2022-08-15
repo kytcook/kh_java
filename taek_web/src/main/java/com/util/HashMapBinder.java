@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 public class HashMapBinder {
 	Logger logger = Logger.getLogger(HashMapBinder.class);
 	HttpServletRequest req = null;
+	public HashMapBinder() {}
 	public HashMapBinder(HttpServletRequest req) {
 		this.req = req;
 	}
@@ -26,7 +27,7 @@ public class HashMapBinder {
 		pMap.clear(); // 초기화를 해줌
 		// html화면에 정의된 input name값들을 모두 담아줌
 		Enumeration<String> em = req.getParameterNames( );
-		while(em.hasMoreElements( )) {
+		while(em.hasMoreElements()) {
 			// key값 꺼내기
 			String key = em.nextElement(); // b_title, b_writer, b_content, b_pw 등
 			logger.info(req.getParameter(key));
