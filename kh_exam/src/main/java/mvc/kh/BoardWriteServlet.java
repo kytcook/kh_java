@@ -32,8 +32,14 @@ public class BoardWriteServlet extends HttpServlet {
 		//BoardDao boardDao = new BoardDao();
 //		result = boardDao.insertBoard(conn,board);
 		result = boardService.insertBoard(board);
+		result = 0;
 		if(result==1) res.sendRedirect("/kh_exam/board/boardList");
-		else res.sendRedirect("/board/boardWriteFail.jsp");		
+		else{
+			req.setAttribute("message", "게시글 등록 실패");
+			RequestDispatcher view = 
+					req.getRequestDispatcher("/WEB-INF/views/common/error.jsp");
+			view.forward(req, res);
+		}	
 	}
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
@@ -49,13 +55,7 @@ public class BoardWriteServlet extends HttpServlet {
 		board.setBoardWriter(boardWriter);
 		board.setBoardContent(boardContent);
 		result = boardService.insertBoard(board);
-		result = 0;
 		if(result==1) res.sendRedirect("boardList.jsp");
-		else {
-			req.setAttribute("messaage", "게시글 등록 실패");
-			RequestDispatcher view = 
-					req.getRequestDispatcher("/WEB-INF/views/common/error.jsp");
-			view.forward(req, res);
-		}
+		else res.sendRedirect("/board/boardWriteFail.jsp");
 	}	
 }

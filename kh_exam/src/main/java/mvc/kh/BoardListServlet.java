@@ -34,7 +34,7 @@ public class BoardListServlet extends HttpServlet {
 		// 위치의 문제 - 뭐가 다른 거임?????
 		// 32번에서 인스턴스화 한 후 아래에서 다시 인스턴스화 됨.
 		// 결과적으로 31번에서 생성된 객체가 아니라 아래에서 다시 생성됨 -  타입은 같지만 주번이 다르다.
-		boardList = new ArrayList<>();
+//		boardList = new ArrayList<>();
 		logger.info("boardList의 주소번지가 찍힐까? : " + boardList + "," + boardList.size());//#3
 		req.setAttribute("boardList", boardList);
 		RequestDispatcher view = req.getRequestDispatcher("/board/boardList.jsp");

@@ -1,8 +1,9 @@
 import React from "react";
 import Workout from "./components/Workout";
+import "./app.css";
 
 function WorkoutApp() {
-  return <Workout/>;// 싱글페이지 어플리케이션이다. 여러조각의 화면을 한 화면에서 처리가 가능하다
+  return <Workout />; // 싱글페이지 어플리케이션이다. 여러조각의 화면을 한 화면에서 처리가 가능하다
 }
 
 export default WorkoutApp;

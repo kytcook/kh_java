@@ -13,7 +13,6 @@ public class LoginService {
 	// 로그인 서버에대한 인스턴스화가 될 때. 멤버변수는 초기화가 먼저 된다.
 	LoginDao loginDao = new LoginDao(); // 이른 인스턴스화의 위치는 클래스 선언 바로 뒤에 위치하는 것이 좋다.
 	public String login(String mem_id, String mem_pw) {
-		// TODO Auto-generated method stub
 		String mem_name = null;
 		mem_name = loginDao.login(mem_id, mem_pw);
 		return mem_name;
