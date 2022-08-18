@@ -1,9 +1,52 @@
 * {
-  box-sizing : border-box;
+  box-sizing: border-box;
 }
 
 button {
-  outline : none;
-  border : 0;
-  cursor : pointer;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.workout {
+  /* rem과 em의 차이 em : 내가 폰트사이즈로 지정한 크기를 기준
+    따로 크기를 주지 않으면, 일반적으로 16px을 기준
+  */
+  font-size: 2.5rem;
+  padding: 0.5em;
+  list-style: none;
+}
+
+.workout-count {
+  display: inline-block;
+  text-align: center;
+  font-size: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  margin-left: 0.2em;
+  margin-right: 0.5em;
+  background-color: darkseagreen;
+  color: white;
+  border-radius: 50%;
+}
+
+.wo-button:hover {
+  font-size: 2.5rem;
+  margin: 0 0.1em;
+  background-color: transparent;
+}
+
+.wo-button:hover {
+  opacity: 0.8;
+}
+
+.workout-increase,
+.workout-decrease {
+  color: goldenrod;
+}
+
+.workout-delete {
+  font-size: 2rem;
+  color: darkred;
 }

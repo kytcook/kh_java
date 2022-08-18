@@ -15,4 +15,17 @@ public class Board3SDao {
 	public Board3SDao() {
 		sqlSessionFactory = MyBatisCommonFactory.getSqlSessionFactory();//공통코드,1
 	}
+	public int boardSInsert(Map<String,Object> pMap) {
+		int result = 0;
+		logger.info("boardSInsert 호출 성공");
+		try {
+			sqlSession = sqlSessionFactory.openSession();
+			result = sqlSession.insert("boardSInsert", pMap);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();//스택메모리에 쌓여 있는 에러 히스토리까지 출력해준다. - 디버깅시에 활용
+			// TODO: handle exception
+		}
+		return result;
+	}
 }

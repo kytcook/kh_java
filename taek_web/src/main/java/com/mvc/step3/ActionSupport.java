@@ -18,6 +18,22 @@ import com.mvc.step3.ModelAndView;
  * : 메소드 안에 req와 res를 지원해야 함. - HttpSession session = req.getSession(); // 세션객체 생성
  * 그러기 위해서는 클래스 설계를 어떻게 가져 가야 할까?
  * :board3/boardList.pj와 메소드 이름으로 매칭을 할 수 있어야 한다.
+ * 넌 FrontControllerㅇ 야
+ * request객체와 response객체를 주입 받는다.
+ * LiveServer 내안에는 servlet-api.jar와 jsp-api.jar가 없다.
+ * 요청객체로할 수 있는 것
+ * request.getParmeter("name"); 듣기
+ * PrintWriter out = req.getWriter(); // document.write("");
+ * 페이지 처리
+ * 페이지 이동
+ * response.sendRedirect("");
+ * response.setContentType("text/html;utf-8");// 마임타임 결정
+ * 브라우저가 보고 처리를 한다.
+ * scope의 하나 이다. - request.setAttribute("이름",값) - 유지
+ * request.getRequestDispatcher("XXX.jsp").forward(req,res)
+ * session.setAttribute("",값);
+ * HttpSession session = requset.getSession();세션객체를 생성할때도 request가 필요하다..
+ * 
  * 
  */
 public class ActionSupport extends HttpServlet {
@@ -30,7 +46,7 @@ public class ActionSupport extends HttpServlet {
 		int end = command.lastIndexOf(".");//
 		command = command.substring(0, end);// boardList   /.앞에까지만 담긴다
 		String upmu[] = null;
-		upmu = command.split("/");
+		upmu = command.split("/");// 업무폴더이름/업무이름.[terrgym]
 		logger.info(upmu[0]+","+upmu[1]);// 0번째 배열에 borad2가 담기고, 1번째 배열에는 boardList
 		// 1-2, 3과는 다르게 메소드의 파라미터 upmu배열을 전달함
 		// 업무에 대응하는 컨트롤러 클래스에 인스턴스화는 HandlerMapping클래스에서 하니까
@@ -40,6 +56,10 @@ public class ActionSupport extends HttpServlet {
 //		Board3Controller boardController = new Board3Controller();// board2컨트롤러 객체 생성
 		Object obj = null;
 		try {
+			// 이 요청을 어떤 컨트롤러 클래스가 담당하나요??
+			// Controller or OrderController or PriceController
+			// Board3Controller가 서블릿이 아니더라도 req와 res를 사용할 수 있는 것은
+			// HandlerMapping클래스의 getController 메소드의 파라미터로 전달되기 때문에 가능함.
 			obj = HandlerMapping.getController(upmu,req,res);
 		} catch (Exception e) {
 			logger.info("Exception : " + e.toString());
@@ -89,7 +109,7 @@ public class ActionSupport extends HttpServlet {
 			}////////////end of ㅊ출력페이지 호출 URL패턴 조립하기
 		}////////////////end of 컨트롤계층 리턴결과
 	}////////////////////
-	
+	// 403 or 405 에러 주의
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException{

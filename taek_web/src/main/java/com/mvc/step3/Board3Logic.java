@@ -57,7 +57,15 @@ public class Board3Logic {
 			pMap.put("b_step", 0);
 		}
 		result = boardMDao.boardMInsert(pMap);   // 새글쓰기와 댓글쓰기 동시
-		//첨부파일이 있는 경우에만 board_sub_t 추가함
+		// 첨부파일이 있는 경우에만 board_sub_t 추가함
+		// 첨부파일이 있니?
+		if(pMap.get("bs_file")!=null && pMap.get("bs_file").toString().length()>1) {
+			pMap.put("b_no", b_no);
+			pMap.put("bs_seq", 1);
+			int result2 = boardSDao.boardSInsert(pMap);
+			logger.info("result2가 1이면 등록 성공 ===> "+result2);
+		}
+		
 		return result;
 	}
 	public int boardUpdate(Map<String, Object> pMap) {
