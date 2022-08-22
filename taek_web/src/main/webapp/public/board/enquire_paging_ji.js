@@ -137,12 +137,6 @@ db.collection("enquire")
       $(".enquire-article").append(template);
     } ////// end of for
 
-    /* 페이지 네비게이션 처리 위치 */
-    const pagePath = "enquire-paging_ji.html";
-    const pb = new PageBar(numPerPage, total, nowPage, pagePath);
-    // console.log(pb.getPageBar()); // class PageBar에서 생성되는 링크 출력해보자
-    $(".pagenation").append(pb.getPageBar());
-
     /*=============== 삭제 Start ==============*/
     const deletebtn = document.querySelectorAll(".del"); // 클래스명이 del인 버튼(207)을 상수에 저장
     $(document).ready(function () {
@@ -150,6 +144,7 @@ db.collection("enquire")
       deletebtn.forEach((deletebtn) => {
         // 버튼 클릭, 삭제
         deletebtn.addEventListener("click", (e) => {
+          console.log(e);
           e.stopPropagation(); // 이벤트가 발생한 상태에서 다른 이벤트나 움직임을 강제로 멈추는 기능
           let id = e.target.parentElement.getAttribute("id"); // 이벤트발생시 id가 가진 속성의 부모요소를 타게팅하여 변수에 저장
           db.collection("enquire") // enquire문서에서, 위에서 담은 변수 id 삭제
@@ -157,7 +152,7 @@ db.collection("enquire")
             .delete()
             .then(() => {
               console.log("Document successfully deleted!");
-              location.reload(); // 삭제성공 -> 새로고침
+              // location.reload(); // 삭제성공 -> 새로고침
               // window.location.href = "./enquire_1-4f.html";
             })
             .catch((error) => {
@@ -167,4 +162,10 @@ db.collection("enquire")
       });
     });
     /*================ 삭제 End ===============*/
+
+    /* 페이지 네비게이션 처리 위치 */
+    const pagePath = "enquire-paging_ji.html";
+    const pb = new PageBar(numPerPage, total, nowPage, pagePath);
+    // console.log(pb.getPageBar()); // class PageBar에서 생성되는 링크 출력해보자
+    $(".pagenation").append(pb.getPageBar());
   }); ////// end of callback
