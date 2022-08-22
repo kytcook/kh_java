@@ -3,37 +3,37 @@ import {
   signInWithPopup,
   GithubAuthProvider,
   GoogleAuthProvider,
-} from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js"
 export default class AuthService {
   constructor() {
-    this.firebaseAuth = getAuth();
-    this.googleProvider = new GoogleAuthProvider();
-    this.githubProvider = new GithubAuthProvider();
+    this.firebaseAuth = getAuth()
+    this.googleProvider = new GoogleAuthProvider()
+    this.githubProvider = new GithubAuthProvider()
   }
   login(providerName) {
-    const authProvider = this.getProvider(providerName);
+    const authProvider = this.getProvider(providerName)
     //return signInWithPopup(this.firebaseAuth, authProvider);
-    return signInWithPopup(this.firebaseAuth, authProvider);
+    return signInWithPopup(this.firebaseAuth, authProvider)
   }
 
   logout() {
-    this.firebaseAuth.signOut();
+    this.firebaseAuth.signOut()
   }
 
   onAuthChange(onUserChanged) {
     this.firebaseAuth.onAuthStateChanged((user) => {
-      onUserChanged(user);
-    });
+      onUserChanged(user)
+    })
   }
 
   getProvider(providerName) {
     switch (providerName) {
       case "Google":
-        return this.googleProvider;
+        return this.googleProvider
       case "Github":
-        return this.githubProvider;
+        return this.githubProvider
       default:
-        throw new Error(`not supported provider: ${providerName}`);
+        throw new Error(`not supported provider: ${providerName}`)
     }
   }
 }

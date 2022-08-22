@@ -8,7 +8,12 @@
     <%@ include file="../common/easyui_common.jsp" %>
     <script type="text/javascript">
     	function login() {
-    		
+    		const tb_id = $("#tb_id").val();
+    		const tb_pw = $("#tb_pw").val();
+    		location.href="./login.pj?mem_id="+tb_id+"&mem_pw="+tb_pw;
+    	}
+    	function logout(){
+    		location.href="./logout.jsp";
     	}
     </script>
 </head>
@@ -39,8 +44,8 @@ $('#tb-pw').textbox({
    //s_name = "이순신";
    if(s_name != null) {
 %>
-홍길동님 환영합니다.<br>
-<a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">로그아웃</a>
+<%s_name%>님 환영합니다.
+<a id="btn" href="javascript:logout()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">로그아웃</a>
 <!-- 로그인을 하지 않았구나 -->
 <%
    }else {

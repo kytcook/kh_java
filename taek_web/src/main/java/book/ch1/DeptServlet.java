@@ -22,8 +22,8 @@ public class DeptServlet extends HttpServlet {
 		// 그래서 불편하다.
 		// 이 페이지를 경유했다는 흔적을 남기기 위해서 logger.info를 통해 기록을 남긴다.
 		logger.info("doGet 호출 성공"); 
-		String s_name = "이순신";
-		req.setAttribute("s_name", s_name);
+		String s_name = "이순신"; // 이순신을 스트링 타입 변수 s_name에 담는다.
+		req.setAttribute("s_name", s_name); // 이순신을 담은 변수를 요청객체로 보낸다.
 		List<DeptVO> list = new ArrayList<>();
 		DeptVO dvo = new DeptVO();
 		dvo.setDeptno(10);
