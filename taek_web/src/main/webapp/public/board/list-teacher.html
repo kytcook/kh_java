@@ -374,10 +374,29 @@
           </thead>
           <tbody class="board-content"></tbody>
         </table>
+        <form class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <input
+            class="form-control me-8 w-50 d-md-flex justify-content-center"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <div>
+            <button
+              id="upload"
+              type="button"
+              class="btn btn-outline-secondary"
+              onclick="location.href='questionUpload.html'"
+            >
+              등록하기
+            </button>
+          </div>
+        </form>
       </div>
       <!-- 게시글 목록  끝  -->
       <!-- 페이지 네이션 처리  시작  -->
       <hr />
+      <br />
       <table align="center">
         <tbody class="pagenation"></tbody>
       </table>
