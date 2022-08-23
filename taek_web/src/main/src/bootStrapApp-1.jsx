@@ -1,9 +1,9 @@
 import React from "react";
-import { container, Navbar, Nav, Button } from "react-bootstrap";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import styled from "styled-components";
 let BtnColor = styled.button`
   background: ${(props) => props.bgc};
-  color: ${(pros) => (props.bgc === "yellow" ? "black" : "white")};
+  color: ${(props) => (props.bgc === "yellow" ? "black" : "white")};
   padding: 5px;
 `;
 function BootStrapApp(props) {
@@ -21,10 +21,9 @@ function BootStrapApp(props) {
       </Navbar>
       <Button>Home</Button>
       <BtnColor bgc="yellow">Home</BtnColor>
-      <BtnColor bgc="black">Home</BtnColor>
       <BtnColor bgc="red">Home</BtnColor>
     </>
   );
 }
 
-export default Bootstrap;
+export default BootStrapApp;

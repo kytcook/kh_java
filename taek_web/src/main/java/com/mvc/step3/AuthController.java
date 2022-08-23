@@ -3,6 +3,7 @@ package com.mvc.step3;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,9 +23,11 @@ public class AuthController implements Controller3 {
 		HashMapBinder hmb = new HashMapBinder(req);
 		hmb.bind(pMap);
 		String s_name = null;
-		HttpSession session = req.getSession();
+		Cookie c = new Cookie("c_name", s_name);
+		c.setPath("/");
+		c.setMaxAge(60*3);
 		s_name = authLogic.login(pMap);
-		session.setAttribute("s_name", s_name);
+		res.addCookie(c);
 		String path = "redirect:index.jsp";
 		return path;
 	}

@@ -35,7 +35,7 @@ $('#tb-pw').textbox({
     <p>쿠키 혹은 세션을 이용하여 유지하기</p>
     <div style="margin:20px 0;"></div>
     <div class="easyui-layout" style="width:1000px;height:500px;">
-        <div data-options="region:'north'" style="height:50px"></div>
+        <div data-options="region:'north'" style="height:50px"></div><!-- region으로 나눴따.  -->
         <div data-options="region:'south',split:true" style="height:50px;"></div>
         <div data-options="region:'west',split:true" title="KH정보교육원" style="width:200px;">
 <!-- 로그인을 한거니 -->
