@@ -32,11 +32,11 @@ function WorkoutApp() {
   // 하위 노드인 Workout.jsx에서 props로 받은 정보를
   // 다시 넘겨 받는다
   const handleDelete = (workout) => {
-    console.log(`handleDelete ${workout.name}`);
-    // 전체 집합에서 가져온 아이디와 파라밑로 넘어온 아이디가 서로 다르니?
-    const workouts = items.filter((item) => item.id !== workout.id);
-    // 그럼 왜 useState에 저장을 하는걸까??
-    // 이상 돔트리와 비교해서 데이터에 변화가 있는 돔만 새로 처리함.
+    //전체 집합에서 가져온 아이디와 파라미터로 넘어온 아이디가 
+    // 서로 다르니?
+    const workouts = items.filter(item => item.id  !== workout.id);
+    // 그럼 왜  useState에 저장을 하는걸까?
+    // 이상 돔트리와 비교해서 데이터에 변화가 있는 돔만 새로 처리함
     setItems([...workouts]);
   };
 

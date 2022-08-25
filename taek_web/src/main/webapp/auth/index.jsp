@@ -21,15 +21,15 @@
 <script>
    //DOM트리가 다 그려 진거니? - YES
    $(document).ready(function(){
-$('#tb-id').textbox({
-    iconCls:'icon-man',
-    iconAlign:'right'
-})
-$('#tb-pw').textbox({
-    iconCls:'icon-lock',
-    iconAlign:'right'
-})
-   })
+		$('#tb-id').textbox({
+		    iconCls:'icon-man',
+		    iconAlign:'right'
+		})
+		$('#tb-pw').textbox({
+		    iconCls:'icon-lock',
+		    iconAlign:'right'
+		})
+   });
 </script>
     <h2>인증처리</h2>
     <p>쿠키 혹은 세션을 이용하여 유지하기</p>
@@ -53,7 +53,7 @@ $('#tb-pw').textbox({
    <table>
       <tr>
          <td>
-<input id="tb-id" type="text" style="width:100px"><br>
+	  <input id="tb-id" type="text" style="width:100px"><br>
          </td>
          <td rowspan="2">
 <a id="btn" href="javascript:login()" class="easyui-linkbutton" data-options="iconClx`s:'icon-cancel'">로그인</a>
@@ -68,9 +68,8 @@ $('#tb-pw').textbox({
 <%
    }//end of else
 %>        
-        
         </div>
-        <div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'">
+        <div data-options="region:'center',title:'<%=s_name %>',iconCls:'icon-ok'">
             <table class="easyui-datagrid"
                     data-options="url:'datagrid_data1.json',method:'get',border:false,singleSelect:true,fit:true,fitColumns:true">
                 <thead>
@@ -86,6 +85,5 @@ $('#tb-pw').textbox({
             </table>
         </div>
     </div>
-
-/body>
+</body>
 </html>

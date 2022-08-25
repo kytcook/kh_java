@@ -1,11 +1,17 @@
 import "./app.css";
-import React from "react";
+import {React, useState} from "react";
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TentPage from "./components/pages/TentPage";
+import goods from "./tentData.js";
 function BootStrapApp(props) {
-  //변수 선언 위치, 함수 선언 위치
+  // 변수 선언 위치, 함수 선언 위치
+  // 상태관리를 위해 제공되는 훅(16.8버전 후에 지원: 이전 함수로는 state관리가 불가.)
+  // 기존 클래스에서 this의 이슈로 에러가 발생함 - 미숙함이 있을 수 있다.ㅊ
+  let [tents, setTents] = useState([
+    {id:1, title:"텐트1", content:"2~3인용텐트"}
+  ]);
   let navigate = useNavigate(); //함수형 프로그래밍지향 - 클래스가 아닌 훅으로 처리함
   return (
     <>
@@ -36,7 +42,7 @@ function BootStrapApp(props) {
       <div className="main-bg"></div>
       <Routes>
         <Route path="/" element={<div>홈페이지 입니다.</div>} />
-        <Route path="/tents/:id/:name" element={<TentPage />} />
+        <Route path="/tents/:id/:name" element={<TentPage tents={tents} />} />
       </Routes>
     </>
   );

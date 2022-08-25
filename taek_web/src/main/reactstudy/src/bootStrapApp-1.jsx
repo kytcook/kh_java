@@ -1,9 +1,9 @@
 import React from "react";
-import { container, Navbar, Nav, Button } from "react-bootstrap";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import styled from "styled-components";
 let BtnColor = styled.button`
   background: ${(props) => props.bgc};
-  color: ${(pros) => (props.bgc === "yellow" ? "black" : "white")};
+  color: ${(props) => (props.bgc === "yellow" ? "black" : "white")};
   padding: 5px;
 `;
 function BootStrapApp(props) {
@@ -26,7 +26,4 @@ function BootStrapApp(props) {
   );
 }
 
-
-
-export default BootstrapApp;
-
+export default BootStrapApp;

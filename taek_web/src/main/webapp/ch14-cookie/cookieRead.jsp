@@ -10,15 +10,14 @@
 <%
 	Cookie cooks[] = request.getCookies();
 	int size = 0;
-	if(cooks!=null) {
+	if(cooks!=null){
 		size = cooks.length;//4
 	}
 	out.print(size);
-	for(int i=0; i<size; i++){
+	for(int i=0;i<size;i++){
 		out.print(cooks[i].getName() + ", "+cooks[i].getValue());
 		out.print("<br>");
 	}
 %>
-
 </body>
 </html>

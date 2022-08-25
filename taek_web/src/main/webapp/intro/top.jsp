@@ -22,8 +22,6 @@
 		String name = snames.nextElement();
 		out.print(name + "/br");
 	}
-	
-	
 %>
 <table border="1" borderColor="green" width="100%" height="100%">
 	<tr>
