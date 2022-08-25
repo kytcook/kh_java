@@ -1,0 +1,275 @@
+[debug] [2022-08-25T06:19:30.644Z] ----------------------------------------------------------------------
+[debug] [2022-08-25T06:19:30.647Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\kytcook\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-08-25T06:19:30.648Z] CLI Version:   11.6.0
+[debug] [2022-08-25T06:19:30.648Z] Platform:      win32
+[debug] [2022-08-25T06:19:30.648Z] Node Version:  v16.16.0
+[debug] [2022-08-25T06:19:30.650Z] Time:          Thu Aug 25 2022 15:19:30 GMT+0900 (대한민국 표준시)
+[debug] [2022-08-25T06:19:30.651Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-25T06:19:30.661Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-25T06:19:30.661Z] > authorizing via signed-in user (kytcook@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\java_study\workspace_java\kh_java\taek_web\src\main\javacamp
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-08-25T06:20:28.204Z] > refreshing access token with scopes: []
+[debug] [2022-08-25T06:20:28.207Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-08-25T06:20:28.207Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-08-25T06:20:28.814Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-08-25T06:20:28.815Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-08-25T06:20:28.837Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2022-08-25T06:20:29.724Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2022-08-25T06:20:29.724Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2022-08-25T06:20:47.086Z] Error: kill ENOSYS
+    at process.kill (node:internal/process/per_thread:220:13)
+    at process.listener (C:\Users\kytcook\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\signal-exit\index.js:95:15)
+    at process.emit (node:events:527:28)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2022-08-25T07:08:36.899Z] ----------------------------------------------------------------------
+[debug] [2022-08-25T07:08:36.906Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\kytcook\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-08-25T07:08:36.908Z] CLI Version:   11.6.0
+[debug] [2022-08-25T07:08:36.908Z] Platform:      win32
+[debug] [2022-08-25T07:08:36.908Z] Node Version:  v16.16.0
+[debug] [2022-08-25T07:08:36.912Z] Time:          Thu Aug 25 2022 16:08:36 GMT+0900 (대한민국 표준시)
+[debug] [2022-08-25T07:08:36.913Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-25T07:08:36.933Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-25T07:08:36.934Z] > authorizing via signed-in user (kytcook@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\java_study\workspace_java\kh_java\taek_web\src\main\javacamp
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2022-08-25T07:11:14.366Z] > refreshing access token with scopes: []
+[debug] [2022-08-25T07:11:14.370Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-08-25T07:11:14.371Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-08-25T07:11:14.912Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-08-25T07:11:14.912Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-08-25T07:11:14.943Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2022-08-25T07:11:14.944Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"javacamp","name":"javacamp"}
+[debug] [2022-08-25T07:11:16.611Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2022-08-25T07:11:16.612Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/cp.5723696676073313721"}
+[debug] [2022-08-25T07:11:16.616Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5723696676073313721 [none]
+[debug] [2022-08-25T07:11:17.949Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5723696676073313721 200
+[debug] [2022-08-25T07:11:17.949Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5723696676073313721 {"name":"operations/cp.5723696676073313721"}
+[debug] [2022-08-25T07:11:18.453Z] [Project Creation Poller] Retrying task index 0
+[debug] [2022-08-25T07:11:18.454Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5723696676073313721 [none]
+[debug] [2022-08-25T07:11:19.686Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5723696676073313721 200
+[debug] [2022-08-25T07:11:19.686Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5723696676073313721 {"name":"operations/cp.5723696676073313721","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true}}
+[debug] [2022-08-25T07:11:20.689Z] [Project Creation Poller] Retrying task index 0
+[debug] [2022-08-25T07:11:20.690Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5723696676073313721 [none]
+[debug] [2022-08-25T07:11:22.027Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5723696676073313721 200
+[debug] [2022-08-25T07:11:22.027Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/cp.5723696676073313721 {"name":"operations/cp.5723696676073313721","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true,"ready":true},"done":true,"response":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.Project","projectNumber":"44073994134","projectId":"javacamp","lifecycleState":"ACTIVE","name":"javacamp","createTime":"2022-08-25T07:11:13.063Z"}}
+[debug] [2022-08-25T07:11:22.032Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/javacamp:addFirebase [none]
+[debug] [2022-08-25T07:11:25.115Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/javacamp:addFirebase 200
+[debug] [2022-08-25T07:11:25.116Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/javacamp:addFirebase {"name":"operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5"}
+[debug] [2022-08-25T07:11:25.117Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 [none]
+[debug] [2022-08-25T07:11:26.753Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 200
+[debug] [2022-08-25T07:11:26.753Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 {"name":"operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5"}
+[debug] [2022-08-25T07:11:27.264Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2022-08-25T07:11:27.265Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 [none]
+[debug] [2022-08-25T07:11:28.390Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 200
+[debug] [2022-08-25T07:11:28.390Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 {"name":"operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5"}
+[debug] [2022-08-25T07:11:29.390Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2022-08-25T07:11:29.391Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 [none]
+[debug] [2022-08-25T07:11:30.646Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 200
+[debug] [2022-08-25T07:11:30.646Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 {"name":"operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5"}
+[debug] [2022-08-25T07:11:32.660Z] [Add Firebase Poller] Retrying task index 0
+[debug] [2022-08-25T07:11:32.661Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 [none]
+[debug] [2022-08-25T07:11:33.897Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 200
+[debug] [2022-08-25T07:11:33.898Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5 {"name":"operations/workflows/Njc2OGI2ZTItNGFhMS00NmIzLWI2YjgtYzFiZWEwNTdhZDQ5","done":true,"response":{"@type":"type.googleapis.com/google.firebase.service.v1beta1.FirebaseProject","projectId":"javacamp","projectNumber":"44073994134","displayName":"javacamp","name":"projects/javacamp","resources":{"hostingSite":"javacamp"}}}
+[info] 
+[info] === Your Firebase project is ready! ===
+[info] 
+[info] Project information:
+[info]    - Project ID: javacamp
+[info]    - Project Name: javacamp
+[info] 
+[info] Firebase console is available at
+[info] https://console.firebase.google.com/project/javacamp/overview
+[info] i  Using project javacamp (javacamp) 
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2022-08-25T07:11:33.929Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/javacamp/services/firebasedatabase.googleapis.com [none]
+[debug] [2022-08-25T07:11:35.624Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/javacamp/services/firebasedatabase.googleapis.com 200
+[debug] [2022-08-25T07:11:35.624Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/javacamp/services/firebasedatabase.googleapis.com [omitted]
+[warn] !  database: missing required API firebasedatabase.googleapis.com. Enabling now... 
+[debug] [2022-08-25T07:11:35.627Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/javacamp/services/firebasedatabase.googleapis.com:enable [none]
+[debug] [2022-08-25T07:11:37.398Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/javacamp/services/firebasedatabase.googleapis.com:enable 200
+[debug] [2022-08-25T07:11:37.399Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/javacamp/services/firebasedatabase.googleapis.com:enable [omitted]
+[debug] [2022-08-25T07:11:47.405Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/javacamp/services/firebasedatabase.googleapis.com [none]
+[debug] [2022-08-25T07:11:48.918Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/javacamp/services/firebasedatabase.googleapis.com 200
+[debug] [2022-08-25T07:11:48.918Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/javacamp/services/firebasedatabase.googleapis.com [omitted]
+[info] +  database: required API firebasedatabase.googleapis.com is enabled 
+[info] 
+[debug] [2022-08-25T07:11:48.927Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/javacamp [none]
+[debug] [2022-08-25T07:11:49.805Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/javacamp 200
+[debug] [2022-08-25T07:11:49.806Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/javacamp {"projectId":"javacamp","projectNumber":"44073994134","displayName":"javacamp","name":"projects/javacamp","resources":{"hostingSite":"javacamp"},"state":"ACTIVE","etag":"1_3254a249-863e-41a2-8605-8f5c6f80a300"}
+[debug] [2022-08-25T07:20:12.480Z] ----------------------------------------------------------------------
+[debug] [2022-08-25T07:20:12.486Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\kytcook\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-08-25T07:20:12.487Z] CLI Version:   11.6.0
+[debug] [2022-08-25T07:20:12.488Z] Platform:      win32
+[debug] [2022-08-25T07:20:12.488Z] Node Version:  v16.16.0
+[debug] [2022-08-25T07:20:12.491Z] Time:          Thu Aug 25 2022 16:20:12 GMT+0900 (대한민국 표준시)
+[debug] [2022-08-25T07:20:12.492Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-25T07:20:12.510Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-25T07:20:12.511Z] > authorizing via signed-in user (kytcook@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\java_study\workspace_java\kh_java\taek_web\src\main\javacamp
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-08-25T07:21:36.307Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2022-08-25T07:21:37.583Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2022-08-25T07:21:37.584Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project d-gym-demo (D GYM-DEMO) 
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2022-08-25T07:21:43.407Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/d-gym-demo/services/firebasedatabase.googleapis.com [none]
+[debug] [2022-08-25T07:21:45.245Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/d-gym-demo/services/firebasedatabase.googleapis.com 200
+[debug] [2022-08-25T07:21:45.245Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/d-gym-demo/services/firebasedatabase.googleapis.com [omitted]
+[info] +  database: required API firebasedatabase.googleapis.com is enabled 
+[info] 
+[debug] [2022-08-25T07:21:45.248Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/d-gym-demo/locations/-/instances/d-gym-demo-default-rtdb [none]
+[debug] [2022-08-25T07:21:47.195Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/d-gym-demo/locations/-/instances/d-gym-demo-default-rtdb 200
+[debug] [2022-08-25T07:21:47.195Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/d-gym-demo/locations/-/instances/d-gym-demo-default-rtdb {"name":"projects/740962178337/locations/asia-southeast1/instances/d-gym-demo-default-rtdb","project":"projects/740962178337","databaseUrl":"https://d-gym-demo-default-rtdb.asia-southeast1.firebasedatabase.app","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[info] 
+[info] Firebase Realtime Database Security Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
+[debug] [2022-08-25T07:21:54.508Z] >>> [apiv2][query] GET https://d-gym-demo-default-rtdb.asia-southeast1.firebasedatabase.app/.settings/rules.json [none]
+[debug] [2022-08-25T07:21:54.895Z] <<< [apiv2][status] GET https://d-gym-demo-default-rtdb.asia-southeast1.firebasedatabase.app/.settings/rules.json 200
+[debug] [2022-08-25T07:21:54.896Z] <<< [apiv2][body] GET https://d-gym-demo-default-rtdb.asia-southeast1.firebasedatabase.app/.settings/rules.json [stream]
+[info] +  Database Rules for d-gym-demo-default-rtdb have been written to database.rules.json. 
+[info] Future modifications to database.rules.json will update Realtime Database Security Rules when you run
+[info] firebase deploy.
+[info] 
+=== Firestore Setup
+[debug] [2022-08-25T07:21:54.905Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/d-gym-demo/services/firestore.googleapis.com [none]
+[debug] [2022-08-25T07:21:55.385Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/d-gym-demo/services/firestore.googleapis.com 200
+[debug] [2022-08-25T07:21:55.386Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/d-gym-demo/services/firestore.googleapis.com [omitted]
+[debug] [2022-08-25T07:21:55.386Z] >>> [apiv2][query] GET https://appengine.googleapis.com/v1/apps/d-gym-demo [none]
+[debug] [2022-08-25T07:21:55.793Z] <<< [apiv2][status] GET https://appengine.googleapis.com/v1/apps/d-gym-demo 200
+[debug] [2022-08-25T07:21:55.793Z] <<< [apiv2][body] GET https://appengine.googleapis.com/v1/apps/d-gym-demo {"name":"apps/d-gym-demo","id":"d-gym-demo","authDomain":"gmail.com","locationId":"asia-northeast1","codeBucket":"staging.d-gym-demo.appspot.com","servingStatus":"SERVING","defaultHostname":"d-gym-demo.an.r.appspot.com","defaultBucket":"d-gym-demo.appspot.com","serviceAccount":"d-gym-demo@appspot.gserviceaccount.com","gcrDomain":"asia.gcr.io","databaseType":"CLOUD_FIRESTORE","featureSettings":{"splitHealthChecks":true,"useContainerOptimizedOs":true}}
+[debug] [2022-08-25T07:21:55.793Z] database_type: CLOUD_FIRESTORE
+[debug] [2022-08-25T07:21:55.794Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-25T07:21:55.795Z] > authorizing via signed-in user (kytcook@gmail.com)
+[debug] [2022-08-25T07:21:55.795Z] [iam] checking project d-gym-demo for permissions ["firebase.projects.get"]
+[debug] [2022-08-25T07:21:55.796Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/d-gym-demo:testIamPermissions [none]
+[debug] [2022-08-25T07:21:55.796Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/d-gym-demo:testIamPermissions x-goog-quota-user=projects/d-gym-demo
+[debug] [2022-08-25T07:21:55.796Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/d-gym-demo:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-08-25T07:21:56.923Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/d-gym-demo:testIamPermissions 200
+[debug] [2022-08-25T07:21:56.923Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/d-gym-demo:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2022-08-25T07:21:58.836Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/d-gym-demo/releases pageSize=10&pageToken=
+[debug] [2022-08-25T07:22:00.300Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/d-gym-demo/releases 200
+[debug] [2022-08-25T07:22:00.301Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/d-gym-demo/releases {"releases":[{"name":"projects/d-gym-demo/releases/cloud.firestore","rulesetName":"projects/d-gym-demo/rulesets/7b7efb57-4659-4c19-a805-7678d0b7010b","createTime":"2022-07-20T02:46:53.798882Z","updateTime":"2022-07-20T03:51:46.815085Z"},{"name":"projects/d-gym-demo/releases/firebase.storage/d-gym-demo.appspot.com","rulesetName":"projects/d-gym-demo/rulesets/a33dcb01-114b-471b-86fc-53d7367571ef","createTime":"2022-07-20T03:03:47.431891Z","updateTime":"2022-07-20T03:03:58.396865Z"}]}
+[debug] [2022-08-25T07:22:00.301Z] Found ruleset: projects/d-gym-demo/rulesets/7b7efb57-4659-4c19-a805-7678d0b7010b
+[debug] [2022-08-25T07:22:00.303Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/d-gym-demo/rulesets/7b7efb57-4659-4c19-a805-7678d0b7010b [none]
+[debug] [2022-08-25T07:22:01.733Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/d-gym-demo/rulesets/7b7efb57-4659-4c19-a805-7678d0b7010b 200
+[debug] [2022-08-25T07:22:01.734Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/d-gym-demo/rulesets/7b7efb57-4659-4c19-a805-7678d0b7010b [omitted]
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2022-08-25T07:22:06.512Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/d-gym-demo/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2022-08-25T07:22:06.515Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/d-gym-demo/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false [none]
+[debug] [2022-08-25T07:22:06.978Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/d-gym-demo/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2022-08-25T07:22:06.979Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/d-gym-demo/databases/(default)/collectionGroups/-/indexes {}
+[debug] [2022-08-25T07:22:06.980Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/d-gym-demo/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false 200
+[debug] [2022-08-25T07:22:06.981Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/d-gym-demo/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false {"fields":[{"name":"projects/d-gym-demo/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2022-08-25T07:22:18.767Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2022-08-25T07:22:19.036Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2022-08-25T07:22:19.036Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"9.9.3","browserURL":"https://www.gstatic.com/firebasejs/9.9.3/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/9.9.3/firebase.tgz"},"live":{"version":"9.9","browserURL":"https://www.gstatic.com/firebasejs/live/9.9/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/9.9/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/9.9.3/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/9.9.3/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/9.9.3/firebase-auth/cordova.js","auth/react-native":"https://www.gstatic.com/firebasejs/9.9.3/firebase-auth/react-native.js","functions":"https://www.gstatic.com/firebasejs/9.9.3/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/9.9.3/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/9.9.3/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/9.9.3/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/9.9.3/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/9.9.3/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/9.9.3/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/9.9.3/firebase-database.js","firestore.memory":"https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.memory.js"}}
+[info] i  Skipping write of public/index.html 
+[info] 
+[info] i  Detected a .git folder at D:\java_study\workspace_java\kh_java 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=110608813&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2022-08-25T07:22:59.818Z] >>> [apiv2][query] POST https://github.com/login/oauth/access_token [none]
+[debug] [2022-08-25T07:22:59.818Z] >>> [apiv2][body] POST https://github.com/login/oauth/access_token [stream]
+[debug] [2022-08-25T07:23:00.212Z] <<< [apiv2][status] POST https://github.com/login/oauth/access_token 200
+[debug] [2022-08-25T07:23:00.212Z] <<< [apiv2][body] POST https://github.com/login/oauth/access_token {"access_token":"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","token_type":"bearer","scope":"read:user,repo"}
+[debug] [2022-08-25T07:23:00.234Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2022-08-25T07:23:00.612Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2022-08-25T07:23:00.612Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"kytcook","id":98031858,"node_id":"U_kgDOBdfY8g","avatar_url":"https://avatars.githubusercontent.com/u/98031858?v=4","gravatar_id":"","url":"https://api.github.com/users/kytcook","html_url":"https://github.com/kytcook","followers_url":"https://api.github.com/users/kytcook/followers","following_url":"https://api.github.com/users/kytcook/following{/other_user}","gists_url":"https://api.github.com/users/kytcook/gists{/gist_id}","starred_url":"https://api.github.com/users/kytcook/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/kytcook/subscriptions","organizations_url":"https://api.github.com/users/kytcook/orgs","repos_url":"https://api.github.com/users/kytcook/repos","events_url":"https://api.github.com/users/kytcook/events{/privacy}","received_events_url":"https://api.github.com/users/kytcook/received_events","type":"User","site_admin":false,"name":"EunTeak","company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":10,"public_gists":0,"followers":3,"following":7,"created_at":"2022-01-19T13:29:00Z","updated_at":"2022-08-15T06:10:25Z","private_gists":0,"total_private_repos":0,"owned_private_repos":0,"disk_usage":238626,"collaborators":0,"two_factor_authentication":false,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] +  Success! Logged into GitHub as kytcook 
+[info] 
+[debug] [2022-08-25T07:23:09.110Z] >>> [apiv2][query] GET https://api.github.com/repos/y/actions/secrets/public-key type=owner
+[debug] [2022-08-25T07:23:09.526Z] <<< [apiv2][status] GET https://api.github.com/repos/y/actions/secrets/public-key 404
+[debug] [2022-08-25T07:23:09.526Z] <<< [apiv2][body] GET https://api.github.com/repos/y/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2022-08-25T07:23:20.063Z] >>> [apiv2][query] GET https://api.github.com/repos/no/actions/secrets/public-key type=owner
+[debug] [2022-08-25T07:23:20.686Z] <<< [apiv2][status] GET https://api.github.com/repos/no/actions/secrets/public-key 404
+[debug] [2022-08-25T07:23:20.686Z] <<< [apiv2][body] GET https://api.github.com/repos/no/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2022-08-25T07:23:30.552Z] >>> [apiv2][query] GET https://api.github.com/repos/d/actions/secrets/public-key type=owner
+[debug] [2022-08-25T07:23:31.654Z] >>> [apiv2][query] GET https://api.github.com/repos/q/actions/secrets/public-key type=owner
+[debug] [2022-08-25T07:23:32.054Z] <<< [apiv2][status] GET https://api.github.com/repos/q/actions/secrets/public-key 404
+[debug] [2022-08-25T07:23:32.055Z] <<< [apiv2][body] GET https://api.github.com/repos/q/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2022-08-25T07:23:32.057Z] <<< [apiv2][status] GET https://api.github.com/repos/d/actions/secrets/public-key 404
+[debug] [2022-08-25T07:23:32.057Z] <<< [apiv2][body] GET https://api.github.com/repos/d/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2022-08-25T07:23:33.320Z] >>> [apiv2][query] GET https://api.github.com/repos/q/q/actions/secrets/public-key type=owner
+[debug] [2022-08-25T07:23:33.894Z] <<< [apiv2][status] GET https://api.github.com/repos/q/q/actions/secrets/public-key 404
+[debug] [2022-08-25T07:23:33.895Z] <<< [apiv2][body] GET https://api.github.com/repos/q/q/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#get-a-repository-public-key"}

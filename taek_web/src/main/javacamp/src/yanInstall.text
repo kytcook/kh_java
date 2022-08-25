@@ -1,0 +1,19 @@
+1. npm install -g yarn
+
+2. yarn -v : 버전확인
+
+3. yarn create react-app [ 원하는폴더명 ] : 얀 폴더 생성
+
+4. yarn add @fortawesome/fontawesome-free : 폰트어썸 설치
+
+5. yarn add bootstrap
+
+6. yarn add react-bootstrap
+
+7. yarn add styled-components
+
+8. yarn add react-router-dom
+
+9. yarn add firebase
+
+10. yarn start
