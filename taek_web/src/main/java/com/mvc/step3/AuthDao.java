@@ -17,20 +17,21 @@ public class AuthDao {
 	SqlSession sqlSession = null;
 	public AuthDao() {
 		sqlSessionFactory = MyBatisCommonFactory.getSqlSessionFactory();
-	}
+	}	
 	public String login(Map<String, Object> pMap) {
-		logger.info("boardList 호출 성공");
-		List<Map<String, Object>> boardList = null;
+		logger.info("login 호출 성공 : "+pMap);
+		String s_name = null;
 		try {
 			sqlSession = sqlSessionFactory.openSession();
-			boardList = sqlSession.selectOne("boardList", pMap);
+			s_name = sqlSession.selectOne("login", pMap);
 			// insert here
-			logger.info(boardList);
+			logger.info(s_name);
 		} catch (Exception e) {
 			logger.info("Exception : "+e.toString());
 		} finally {
 			sqlSession.close();
 		}
-		return boardList;
+		return s_name;
+	}
 
 }

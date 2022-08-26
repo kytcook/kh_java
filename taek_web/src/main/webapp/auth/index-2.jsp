@@ -7,35 +7,28 @@
     <title>인증처리 - 쿠키와 세션</title>
 	<%@ include file="../common/easyui_common.jsp" %>
 	<script type="text/javascript">
-		function login(){
-			const tb_id = $("#mem_id").val();
-			const tb_pw = $("#mem_pw").val();			
-			location.href="./login.pj?mem_id="+tb_id+"&mem_pw="+tb_pw;
-		}
-		function logout(){
-			location.href="./logout.jsp";
-		}
-		function memberList(){
-			alert("회원목록 호출 성공");
-		}
+	$(document).ready(function(){
+		$("#tre_gym_easyui+tree_2 span").click(function() {
+			alert("여기");
+		});
+		$( ".member li" ).click(function(e) {
+			  alert( "call.: "+ e.target.textContent );
+		});
+	});
 	</script>
 </head>
 <body>
 <script>
 	//DOM트리가 다 그려 진거니? - yes
 	$(document).ready(function(){
-		$("#dg_member").datagrid({
-			columns:[[
-				{field: 'mem_id', title:'아이디', width:100}				
-			   ,{field: 'mem_name', title:'이름', width:120}				
-			   ,{field: 'mem_address', title:'주소', width:200}				
-			]]
-			,data:[
-				{mem_id:'tomato', mem_name:'이순신', mem_address:'서울시 마포구 공덕동'}
-			   ,{mem_id:'apple', mem_name:'강감찬', mem_address:'서울시 강남구 대치동'}
-			   ,{mem_id:'nice', mem_name:'김유신', mem_address:'서울시 강남구 역삼동'}
-			] 
-		});
+		$('#tb_id').textbox({
+		    iconCls:'icon-man',
+		    iconAlign:'right'
+		})		
+		$('#tb_pw').textbox({
+		    iconCls:'icon-lock',
+		    iconAlign:'right'
+		})		
 	});
 </script>
     <div style="margin:20px 0;"></div>
@@ -50,6 +43,7 @@
 	if(s_name == null){
 %>  
 <!--######################  로그인 영역 시작 ######################-->    
+			<div style="margin: 10px 0;"></div>
 			<div id="d_login" align="center">
 			<div style="margin: 3px 0;"></div>
 			<input id="mem_id" name="mem_id" class="easyu-textbox"/>
@@ -139,14 +133,13 @@
       </ul>
     </div>      
 <!--###################### 메뉴 영역 끝 ######################-->
-        <div data-options="region:'center',title:'TerrGYM System',iconCls:'icon-ok'">
-        	<p style="margin: 5px 0px">
-       		HOME > 회원관리 > 회원목록
-       		<hr>
-	    	<div style="margin: 20px 0;"></div>
-	    	<div id="dg_member"></div>
- 		</div>
- 	</div>
- 	
+        <div data-options="region:'center',title:'<%=s_name%>님 환영합니다.',iconCls:'icon-ok'">
+        	<p style="margin: 20px 10px">
+       		여기는 터짐 시스템 입니다.<br>
+       		로그인 후 사용하세요.
+       		</p>
+       		<div id="d_memberList">회원목록</div>
+    	</div>
+ 
 </body>
 </html>

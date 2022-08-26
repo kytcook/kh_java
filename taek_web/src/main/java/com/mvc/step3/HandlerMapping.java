@@ -13,33 +13,38 @@ public class HandlerMapping {
 //            forward:board2/boardList
 //                    board2/boardList -> WEB-INF/jsp/path+".jsp"
 //   new ModelAndView();
-   /****************************************************************************
-    * 
-    * @param upmu(upmu[0]=업무폴더이름, upmu[1]=업무기능이름 -> 메소드명으로 사용하면 됨)
-    * @param req 1-2, 3에서와는 다르게 controller인터페이스를 implements하지 않고 있는데
-    * @param res                                        req와 res를 어디서 전달 받는겨?
-    *            >>> HttpServlet을 상속받아서 톰캣 서버가 제공하는 요청객체와 응답객체를 사용함
-    * @return String/ModelAndView(유지를 위한 req.setAttribute()를 대신!)
-    * 
-    ****************************************************************************/
-   public static Object getController(String[] upmu
-		   							, HttpServletRequest req
-		   							, HttpServletResponse res) {
-      logger.info(upmu[0]+", "+upmu[1]);
-      Controller3 controller = null;
-      Board3Controller boardController = null;
-      NoticeController noticeController = null; // 공지사항 게시판
-      
-      Object obj = null;
-      String path = null;
-      ModelAndView mav = null;
-      if("board3".equals(upmu[0])) {// 배열의 첫방에 업무폴더이름
+	/***************************************************************
+	 * 
+	 * @param upmu(upmu[0]=업무폴더이름, upmu[1]=업무기능이름- 메소드명으로 사용하면 됨)
+	 * @param req 1-2,3에서와는 다르게 Controller인터페이스를 implements하지 않고 있다.
+	 * @param res 그렇다면 req,res를 어디서 전달 받는 걸까?
+	 *  HttpServlet을 상속받아서 톰캣서버가 제공하는 요청객체와 응답객체를 사용함
+	 * @return String/ModelAndView(유지를 위한 req.setAttribute()를 대신)
+	 **************************************************************/
+	public static Object getController(String[] upmu
+			                         , HttpServletRequest req
+			                         , HttpServletResponse res) {
+		logger.info(upmu[0]+", "+upmu[1]);
+		Controller3 controller = null;
+		Board3Controller boardController = null;
+		NoticeController noticeController = null;//공지사항 게시판
+		Object obj = null;
+		String path  = null;
+		ModelAndView mav = null;
+		if("board3".equals(upmu[0])) {//배열의 첫방에 업무폴더이름
 			controller = new Board3Controller();
 			//게시판 글쓰기 메소드 호출
-			// if문 사용하여 메소드이름을 결정지었다.
-			// 코드의 양은 늘었다. 왜 if문
-			// 복잡도도 늘었나??
-			if("boardUpdate".equals(upmu[1])) {
+			//if문 사용하여 메소드이름을 결정지었다.
+			// 코드의 양은 늘었다.왜 if문이 늘어가니까
+			// 복잡도도 늘었나???
+			if("boardDelete".equals(upmu[1])) {
+				// 파리미터로 원본을 넘긴다
+				obj = controller.boardDelete(req,res);
+				if(obj instanceof String) {
+					return (String)obj;
+				}
+			}
+			else if("boardUpdate".equals(upmu[1])) {
 				// 파리미터로 원본을 넘긴다
 				obj = controller.boardUpdate(req,res);
 				if(obj instanceof String) {
@@ -63,13 +68,6 @@ public class HandlerMapping {
 					return (String)obj;
 				}
 			}
-			else if("boardDelete".equals(upmu[1])) {
-				// 파리미터로 원본을 넘긴다
-				obj = controller.boardDelete(req,res);
-				if(obj instanceof String) {
-					return (String)obj;
-				}
-			}
 			else if("boardDetail".equals(upmu[1])) {
 				// 파리미터로 원본을 넘긴다
 				obj = controller.boardDetail(req,res);
@@ -80,26 +78,26 @@ public class HandlerMapping {
 				}
 			}
 		}
-      else if("auth".equals(upmu[0])) {//배열의 첫방에 업무폴더이름) {
-    	  controller = new AuthController();
-    	  if("login".equals(upmu[1])) {
-    		  // 파라미터로 원본을 넘긴다
-    		  obj = controller.login(req,res);
-    		  if(obj instanceof String) {
-    		  return (String)obj;
-    	  }
-      }
-   }
-      else if("clogin".equals(upmu[1])) {//배열의 첫방에 업무폴더이름) {
-    	  controller = new AuthController();
-    	  if("login".equals(upmu[1])) {
-    		  // 파라미터로 원본을 넘긴다
-    		  obj = controller.clogin(req,res);
-    		  if(obj instanceof String) {
-    			  return (String)obj;
-    		  }
-    	  }
-   	}
+		else if("auth".equals(upmu[0])) {//배열의 첫방에 업무폴더이름) {
+			controller = new AuthController();
+			if("login".equals(upmu[1])) {
+				// 파리미터로 원본을 넘긴다
+				obj = controller.login(req,res);
+				if(obj instanceof String) {
+					return (String)obj;
+				}
+			}
+		}
+		else if("intro".equals(upmu[0])) {//배열의 첫방에 업무폴더이름) {
+			controller = new AuthController();
+			if("clogin".equals(upmu[1])) {
+				// 파리미터로 원본을 넘긴다
+				obj = controller.clogin(req,res);
+				if(obj instanceof String) {
+					return (String)obj;
+				}
+			}
+		}
 		return obj;
-	}
+	}////////////end of getController
 }
