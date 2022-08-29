@@ -18,8 +18,8 @@
       dong = request.getParameter("dong");
    }
 
-      Connection          con    = null;
-      PreparedStatement    pstmt    = null;
+      Connection         con      = null;
+      PreparedStatement  pstmt    = null;
       ResultSet          rs       = null;
       DBConnectionMgr    dbMgr    = new DBConnectionMgr();
       

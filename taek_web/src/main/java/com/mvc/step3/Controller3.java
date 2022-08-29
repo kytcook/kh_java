@@ -15,10 +15,12 @@ public interface Controller3 {
 	// ModelAndView - Select할 때 쓴다!★★
 	public ModelAndView execute(HttpServletRequest req, HttpServletResponse res, Map<String,Object> pMap);
 	public Object clogin(HttpServletRequest req, HttpServletResponse res);
-	//
+	// 세션 로그인 추상메소드 선언
 	public String execute(HttpServletRequest req, HttpServletResponse res);
-	// 로그인 추상메소드 선언
+	// 쿠키 로그인 추상메소드 선언
 	public Object login(HttpServletRequest req, HttpServletResponse res);
+	// 회원관리 메소드 시작
+	public Object memberList(HttpServletRequest req, HttpServletResponse res);
 	// 게시판 추상메소드 시작
 	public Object boardList(HttpServletRequest req, HttpServletResponse res);
 	public Object boardDetail(HttpServletRequest req, HttpServletResponse res);
