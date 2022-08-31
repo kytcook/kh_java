@@ -82,7 +82,10 @@ public class HandlerMapping {
 			controller = new MemberController();
 			if("memberList".equals(upmu[1])) {
 				obj = controller.memberList(req, res);
-				if(obj instanceof String) {//void doGet(req,res)->ActionForward doService(req, res) -> String 메소드이름
+
+				if(obj instanceof ModelAndView) {
+					return (ModelAndView)obj;
+				}else if(obj instanceof String) {
 					return (String)obj;
 				}
 			}

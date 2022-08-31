@@ -12,6 +12,20 @@
 		}
 	</style>
 	<script type="text/javascript">
+	// 함수선언은 head태그 안에서 한다.
+	// easyui_common.jsp
+		function memberInsert() {
+			alert("입력")
+			
+		}
+		function memberUpdate() {
+			alert("수정")
+			
+		}
+		function memberDelete() {
+			alert("삭제")
+			
+		}
 		function login(){
 			const tb_id = $("#mem_id").val();
 			const tb_pw = $("#mem_pw").val();			
@@ -22,7 +36,18 @@
 		}
 		// 순서지향적인, 절차지향적인 코딩 -> 모듈화 -> 비동기처럼 처리 하기(연습-await, async)
 		function memberList(){
-			alert("회원목록 호출 성공");
+			//alert("회원목록 호출 성공");
+			alert($("#_easyui_textbox_input3").val());
+			let type = null;
+			let keyword = null;
+			if($("#_easyui_textbox_input3").val()!=null && $("#_easyui_textbox_input3").val()) {
+				type = "mem_id";
+				keyword = $("#_easyui_textbox_input3").val();
+			}
+			else if($("#_easyui_textbox_input4").val()!=null && $("#_easyui_textbox_input4").val()) {
+				type = "mem_name";
+				keyword = $("#_easyui_textbox_input4").val();
+			}
 			// before
 			// 아래 코드는 클라이언트 측에 같이 다운로드가 완료된 상태에서 처리가 된다. - 결정이 되었다.
 			// 시점의 문제
@@ -33,12 +58,13 @@
 				// 오라클서버에서 요청한 결과를 myBatis를 사용하면 자동으로 컬럼명이 대문자
 				// 단 List<xxxVO>형태라면 그땐 소문자가 맞다.
 				columns:[[
-					{field: 'mem_id', title:'아이디', width:100}				
-				   ,{field: 'mem_name', title:'이름', width:120}				
-				   ,{field: 'mem_address', title:'주소', width:200}				
+					{field: 'MEM_ID', title:'아이디', width:100}				
+				   ,{field: 'MEM_NAME', title:'이름', width:120}				
+				   ,{field: 'MEM_ADDRESS', title:'주소', width:200}				
+				   ,{field: 'BUTTON', title:'버튼', width:120}				
 				]]
-				,method:"post"
-				,url:"/member/memberList.pj"// 응답페이지는 JSON포맷의 파일이어야 함. (html이 아니라)
+				,method:"get"
+				,url:"/member/memberList.pj?type="+type+"&keyword="+keyword // 응답페이지는 JSON포맷의 파일이어야 함. (html이 아니라)
 			});	
 			$("#d_member").show();
 			// after
@@ -179,7 +205,21 @@
         	<p style="margin: 5px 0px">
        		HOME > 회원관리 > 회원목록
        		<hr>
-	    	<div style="margin: 20px 0;"></div>
+	    	<div style="margin: 20px 0"></div>
+	    <!--[[ 조건검색 화면 ]]-->
+	    	<div style="margin: 20px 0">
+	    	아이디 : <input id="mem_id" name="mem_id" class="easyui-textbox" style="width:110px">
+	    	&nbsp;&nbsp;&nbsp;
+	    	이 름 : <input id="mem_name" name="mem_name" class="easyui-textbox" style="width:110px">
+	    	</div>
+	    <!--[[ 조회|입력|수정|삭제 버튼 ]]-->
+	    	<div style="margin: 10px 0;">
+				<a id="btn" href="javascript:memberList()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">조회</a>
+				<a id="btn" href="javascript:memberInsert()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">입력</a>
+				<a id="btn" href="javascript:memberUpdate()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">수정</a>
+				<a id="btn" href="javascript:memberDelete()" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">삭제</a>	    	
+	    	</div>
+	    <!--[[ 회원목록 출력 ]]-->
 	    	<div id="dg_member"></div>
 	    	</div>
         	<!--/////////////////////////////////////-->
