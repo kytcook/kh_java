@@ -2,6 +2,7 @@ package com.kh.test.model;
 
 public class test {
 /************************ 선언부 ************************/
+	// 파라미터를 갖는 5개의 생성자 호출을 통해서 전변의 초기화 됨
 	private int seq = 0;
 	private String writer = null;
 	private String title = null;
