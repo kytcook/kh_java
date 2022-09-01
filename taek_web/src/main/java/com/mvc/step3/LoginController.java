@@ -16,6 +16,8 @@ public class LoginController implements Controller3{
 	Logger logger = Logger.getLogger(LoginController.class);
 	LoginLogic loginLogic = new LoginLogic();
 	@Override
+	
+	
 	public Object login(HttpServletRequest req, HttpServletResponse res) {
 		logger.info("login 호출 성공");
 		Map<String,Object> pMap = new HashMap<>();
