@@ -4,7 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-
+// BeanNameUrlHandlerMapping
+// SimpleUrlHandlerMapping
 public class HandlerMapping {
    static Logger logger = Logger.getLogger(HandlerMapping.class);
 

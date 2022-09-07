@@ -49,9 +49,9 @@ public class Board3Controller implements Controller3 {
 		HashMapBinder hmb = new HashMapBinder(req);
 		hmb.bind(pMap);
 		ModelAndView mav = new ModelAndView(req);
+		List<Map<String,Object>> boardList = null;
 		// 여기여기....필요할 때 인스턴스화 해서 -> 게으른 인스턴스화 - 스프링에서 대단히 중요한 위치의 문제.
 //		boardLogic = new Board3Logic(); // 전변인데 주소번지는 다르다..
-		List<Map<String,Object>> boardList = null;
 		boardList = boardLogic.boardList(pMap);
 		mav.addObject("boardList",boardList);
 		mav.setViewName("board3/boardList");

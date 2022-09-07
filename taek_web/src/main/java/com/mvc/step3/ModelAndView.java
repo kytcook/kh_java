@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
   req 없이도 조회된 결과를 화면에 전달할 수 있었으면 해 
   내안에 scope가 있다. - request
 ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
- * */
+ */
 public class ModelAndView {
 	Logger logger = Logger.getLogger(ModelAndView.class);
 	HttpServletRequest req = null;
