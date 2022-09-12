@@ -37,10 +37,10 @@ public class ActionSupport extends HttpServlet {
 	private void doService(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		logger.info("doService 호출 성공");
 		String requestURI = req.getRequestURI();//-> /board2/boardApp.kh?crud=select
-		String contextPath = req.getContextPath();
+		String contextPath = req.getContextPath();// 프로젝트 path만 얻어온다 /board2
 		String command = requestURI.substring(contextPath.length()+1);
 		int end = command.lastIndexOf(".");
-		command = command.substring(0,end);
+		command = command.substring(0,end);// 객체의 시작 인덱스로부터 종료 인덱스 전까지 부분 문자열 반환
 		String upmu[] = null;
 		upmu = command.split("/");// 업무폴더이름/업무이름.pj
 		logger.info(upmu[0]+","+upmu[1]);
