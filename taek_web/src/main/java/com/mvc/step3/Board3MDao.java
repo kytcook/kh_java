@@ -126,7 +126,12 @@ public class Board3MDao {
 				//사용자가 입력한 값을 HashMapBinder클래스를 통해서 Map에 담고
 				//insert문을 호출할 때 파라미터로 넘김
 				result = sqlSession.update("boardMInsert",pMap);// 
-				//물리적인 테이블에 등록하는 것이니 반드시 커밋 할것... 주의....
+				// 물리적인 테이블에 등록하는 것이니 반드시 커밋 할것... 주의....
+				// Connection con = XXXX
+				// con.commit();
+				// boolean => 디폴트가 false
+				// con.setAutoCommit(true);
+				// con.setAutoCommit(false); 트랜잭션처리할 때
 				sqlSession.commit();
 				// insert here
 				logger.info("result : "+result);

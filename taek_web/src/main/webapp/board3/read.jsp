@@ -71,10 +71,9 @@
 				if(r){
 					location.href="./boardDelete.pj?b_no="+<%=rb_no%>;
 				}
-			else{
-				alert("비번이 틀려요");
-			}
 			});
+		}else{
+			alert("비번이 틀려요");
 		}
 	}
 </script>

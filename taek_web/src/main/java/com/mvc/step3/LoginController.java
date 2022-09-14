@@ -74,6 +74,18 @@ public class LoginController implements Controller3{
 		return null;
 	}
 
+	@Override
+	public Object clogin(HttpServletRequest req, HttpServletResponse res) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object memberList(HttpServletRequest req, HttpServletResponse res) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }
