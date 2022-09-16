@@ -2,6 +2,9 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
 	<typeAliases>
 		<typeAlias type="com.kh.myBatis.board.model.vo.Board" alias="boardVO"/>
 		<typeAlias type="com.kh.myBatis.board.model.vo.Member" alias="memberVO"/>
@@ -21,6 +24,11 @@
 		</environment>
 	</environments>
 	<mappers>
+	<!-- 매퍼 파일명이 달라도 아이디가 같으면 충돌이 발생함. 스캔 
+		 결론 : id는 유일해야 한다.
+	-->
 		<mapper resource="com/kh/myBatis/mapper/board.xml" />
+		<mapper resource="com/kh/myBatis/mapper/auth.xml" />
+		<mapper resource="com/kh/myBatis/mapper/member.xml" />
 	</mappers>
 </configuration>

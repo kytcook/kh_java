@@ -23,4 +23,21 @@ http://localhost:8000/kh_exam2/board/boardList?board_title=board_title&keyword=%
     </if> 
   </trim>	  
  </select>
+  <select id="boardList2" resultType="map" parameterType="map">
+	SELECT
+	       board_no, board_title, user_no, bcount, create_date
+	  FROM kh2board kb join kh2member on(board_writer=user_name) 
+	 WHERE 1=1
+  <choose>
+    <when test="user_no != null">
+         user_no like '%'||#{keyword}||'%'
+    </when> 
+    <when test="board_title != null">
+         board_title like '%'||#{keyword}||'%'
+    </when> 
+    <when test="board_content != null">
+         board_content like '%'||#{keyword}||'%'
+    </when> 
+  </choose>  
+ </select>
 </mapper>
