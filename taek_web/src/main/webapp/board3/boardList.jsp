@@ -11,7 +11,7 @@
 	}
 	List<Map<String,Object>> boardList = //유지의문제 - DB를 경유해야한다 ->servlet
 			(List<Map<String,Object>>)request.getAttribute("boardList");//sql문을 넘겨넘겨 받아서 가지고옴
-	out.print("test");
+	//out.print("test");
 	int size = 0;
 	if(boardList!=null){
 		size = boardList.size();
