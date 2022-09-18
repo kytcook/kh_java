@@ -28,7 +28,7 @@ public class AuthDao {
 			// 여러개를 담고 싶다면 객체배열이 되어야 한다.
 			mVO = sqlSession.selectOne("login", pMap);
 			// insert here
-			logger.info(mVO);
+			logger.info(mVO.getMem_name());
 		} catch (Exception e) {
 			logger.info("Exception : "+e.toString());
 		} finally {

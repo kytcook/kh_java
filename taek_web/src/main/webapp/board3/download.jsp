@@ -55,3 +55,11 @@
 		if(fis != null) fis.close();
 	}
 %>  
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>다운로드</title>
+</head>
+<body>
+</body>
+</html>

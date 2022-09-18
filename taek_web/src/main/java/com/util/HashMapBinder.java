@@ -6,6 +6,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 /*
  * 텍스트 파일 처리 (문자열 처리) - 숫자도 문자열 처리 - 숫자도 문자열로 처리 후 변경해서 출력
  * 바이너리 파일 처리 (문자 + 숫자 파일) - 첨부파일은 바이너리 코드
@@ -14,10 +17,6 @@ import org.apache.log4j.Logger;
  * 산업과 관련된 테이블의 컬럼 수는 100개 이상 200개 인 것도 다반사 임
  * 따라서 스프링과 같은 프레임워크에서는 반복되는 코드를 줄이기 위한 유틸 기능의 클래스도 지원함
  */
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 public class HashMapBinder {
 	Logger logger = Logger.getLogger(HashMapBinder.class);
 	HttpServletRequest req = null;
@@ -56,7 +55,7 @@ public class HashMapBinder {
 			while(files.hasMoreElements()) {
 				String fname = files.nextElement();
 				String filename = multi.getFilesystemName(fname);
-				pMap.put("bs_file", filename);
+				pMap.put("b_file", filename);
 				if(filename !=null && filename.length() >1) {
 					file = new File(realFolder+"\\"+filename);
 				}
@@ -80,7 +79,6 @@ public class HashMapBinder {
 		while(em.hasMoreElements()) {
 			// key값 꺼내기
 			String key = em.nextElement(); // b_title, b_writer, b_content, b_pw 등
-			logger.info(req.getParameter(key));
 			pMap.put(key, req.getParameter(key));
 		}
 		logger.info("pMap ===> "+ pMap);

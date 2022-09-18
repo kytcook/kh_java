@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.util.HashMapBinder;
+
 // 컨트롤 계층을 담당하는 클래스는 서블릿이 아니어도 괜찮아
 // 혼자서는 아무것도 완성할 수 없는 나 - 전체적인 틀, 와꾸, 패턴, 기준
 // Board3Controller는 Controller3인터페이스의 구현체 클래스 이다.(메소드를 누릴 수 있다)
