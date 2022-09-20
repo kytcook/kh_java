@@ -42,7 +42,7 @@ public class ActionSupport extends HttpServlet {
 		int end = command.lastIndexOf(".");
 		command = command.substring(0,end);// 객체의 시작 인덱스로부터 종료 인덱스 전까지 부분 문자열 반환
 		String upmu[] = null;
-		upmu = command.split("/");// 업무폴더이름/업무이름.pj
+		upmu = command.split("/");// 0번째는 : 업무폴더이름/ 1번째는 : 업무이름.pj
 		logger.info(upmu[0]+","+upmu[1]);
 		//1-2,3과는 다르게 메소드의 파라미터로 upmu배열을 전달함
 		//req.setAttribute("upmu", upmu);필요가 없다 . 왜냐면 파라미터로 전달하니까....

@@ -55,7 +55,6 @@ public class BoardController implements Action {
 			req.setAttribute("boardList", boardList);
 			path.append("boardList.jsp"); // 조립중이다.
 			
-			
 		}
 		af.setPath(path.toString());
 		af.setRedirect(isRedirect);
