@@ -105,4 +105,10 @@ public class MemberController implements Controller3 {
 		return mav;
 	}
 
+	@Override
+	public Object doEmp(HttpServletRequest req, HttpServletResponse res) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

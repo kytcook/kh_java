@@ -20,10 +20,10 @@ public class HelloServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 	throws ServletException, IOException{
 		System.out.println("doGet호출 성공");
-		PrintWriter out = res.getWriter();
-		out.print("<html><head>" + out);
+//		PrintWriter out = res.getWriter();
+//		out.print("<html><head>" + out);
 		req.setAttribute("name", "scott");
-		res.sendRedirect("./helloResponse.jsp");
+//		res.sendRedirect("./helloResponse.jsp");
 //		res.setContentType("text/html;charset=UTF-8");// html양식을 받기 위해서
 //		res.setContentType("./helloResponse.jsp");
 //		out.print("<html>");
@@ -38,7 +38,7 @@ public class HelloServlet extends HttpServlet {
 		
 //		res.sendRedirect("./helloResponse.jsp");// 요청이 끊어졌기 때문에
 		
-		req.setAttribute("name","scott");
+//		req.setAttribute("name","scott");
 		RequestDispatcher view = req.getRequestDispatcher("helloResponse.jsp");
 		view.forward(req,res); // url주소 변경없이 응답한다.-> 요청이 계속 유지되고 있다. - 톰캣이 
 		
@@ -133,7 +133,7 @@ public class HelloServlet extends HttpServlet {
  *	- 배치서술자라고 한다(dd파일) 
  *	- 서블릿 클래스 등록, URL매핑 - 요청(get:링크,단위테스트, header,post:자스, body)
  *	- 톰캣서버 기동시 가장 먼저 스캔한다.
- *	- Mservlet-mapping>-> url-pattern -> URL주소 -> main없자나 -> 브라우저 
+ *	- servlet-mapping>-> url-pattern -> URL주소 -> main없자나 -> 브라우저 
  *	- -> get방식(쿼리스트링으로 값을 전달 할 수 있다. 단위테스트 가능하다. 넘길 수 있는 값의 크기가 제한된다.노출된다.) / 로그인은 POST
  *	-
  *  
@@ -155,12 +155,12 @@ public class HelloServlet extends HttpServlet {
  * doPost():void
  * 
  * sendRedirect
- * : 바뀐다.
+ * : url이 바뀐다.
  * : 유지 안된다.
  * : get방식과 동일한 취급
  * 
  * forward
- * : 안바뀐다.
+ * : url이 안바뀐다.
  * : 유지된다.
  * : view.forward(req,res)
  * 

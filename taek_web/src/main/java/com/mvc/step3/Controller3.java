@@ -21,6 +21,7 @@ public interface Controller3 {
 	public Object login(HttpServletRequest req, HttpServletResponse res);
 	// 회원관리 메소드 시작
 	public Object memberList(HttpServletRequest req, HttpServletResponse res);
+	public Object doEmp(HttpServletRequest req, HttpServletResponse res);
 	// 게시판 추상메소드 시작
 	public Object boardList(HttpServletRequest req, HttpServletResponse res);
 	public Object boardDetail(HttpServletRequest req, HttpServletResponse res);
