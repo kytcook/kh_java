@@ -3,6 +3,7 @@ package com.mvc.step1;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -44,7 +45,7 @@ public class BoardController implements Action {
 		// 글조회
 		else if("boardselect".equals(upmu[1])) {
 			logger.info("boardSelect 호출 성공");
-			java.util.List<Map<String,Object>> boardList = new ArrayList<>();
+			List<Map<String,Object>> boardList = new ArrayList<>();
 			// 선언부와 생성부의 타입이 다를 때 다형성 - 폴리모피즘
 			// rmap으로 자손의 메소드는 호출이 불가하다.
 			Map<String, Object> rmap = new HashMap<>();//map의 구현체 클래스 Hashmap
@@ -61,4 +62,5 @@ public class BoardController implements Action {
 		af.setRedirect(isRedirect);
 		return af;
 	}
+	
 }

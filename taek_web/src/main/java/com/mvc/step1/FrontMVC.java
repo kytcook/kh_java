@@ -48,13 +48,11 @@ public class FrontMVC extends HttpServlet {
 		// 메소드의 파라미터 자리는 
 		// 서블릿 클래스만이 객체주입(게으른...)을 받을 수 있다. 필요할 때 넣어준다 ex-청소부
 		// 참조에 의한 호출
-		// 이 부분에 대해 2사람 이상에게 설명해 보자★★★
 		if("board".equals(upmu[0])) {
 			req.setAttribute("upmu", upmu);
 			af = boardController.execute(req, res);
 		}
-		
-		af = boardController.execute(req, res);
+		// 이 부분에 대해 2사람 이상에게 설명해 보자★★★
 		if(af != null) {
 			if(af.isRedirect()) {
 //				res.sendRedirect("xxx.jsp");상수싫어용 변수 좋아용 변수보단 getter setter

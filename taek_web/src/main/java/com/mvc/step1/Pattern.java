@@ -12,6 +12,8 @@ public class Pattern {
 		command = command.substring(0, end);
 		String upmu[] = null;
 		upmu = command.split("/");
+		//pay : 업무이름 - CRUD공통사항
+		//메소드 이름 - 다르게 처리
 		for(String imsi:upmu) {
 			System.out.println(imsi);//pay, payManager
 		}
