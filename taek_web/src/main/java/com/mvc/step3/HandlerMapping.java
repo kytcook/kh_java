@@ -26,7 +26,7 @@ public class HandlerMapping {
 			                         , HttpServletRequest req
 			                         , HttpServletResponse res) {
 		logger.info(upmu[0]+", "+upmu[1]);
-		Controller3 controller = null;
+		Controller3 controller = null;// 인터페이스이다.
 		Board3Controller boardController = null;
 		NoticeController noticeController = null;//공지사항 게시판
 		Object obj = null;
